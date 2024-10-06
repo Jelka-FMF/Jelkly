@@ -1,0 +1,160 @@
+/* Import all components */
+@import 'pxtsemantic';
+@import 'pxt';
+@import 'themepacks';
+@import 'blockly-toolbox';
+@import 'themes/default/globals/site.variables';
+@import 'themes/pxt/globals/site.variables';
+@import 'site/globals/site.variables';
+
+/* Reference import */
+@import (reference) "semantic.less";
+
+/*******************************
+    Add your custom CSS here
+*******************************/
+
+/* Roboto font */
+@RobotoFont: data-uri("../docs/static/fonts/Roboto_400_normal.woff");
+
+@font-face  {
+    font-family: 'Roboto';
+    src: @RobotoFont format("woff");
+}
+
+.ui.button.download-button {
+    &:extend(.ui.purple.button all);
+}
+
+.ui.button.hw-button {
+    background-color: darken(@purple, 10%);
+}
+
+.docs.inlinebutton.ui.button.download-button:hover {
+    &:extend(.ui.purple.button all);
+}
+
+.ui.button.play-button.play-button-full {
+    &:extend(.ui.inverted.button all);
+}
+
+.ui.button.getting-started-btn {
+    &:extend(.ui.orange.button all);
+}
+
+.ui.button.editortools-btn {
+    &:extend(.ui.blue.button all);
+}
+
+.ui.button.exit-tutorial-btn {
+    &:extend(.ui.inverted.button all);
+}
+
+#filelist, #editortools {
+    background: #fff data-uri("../docs/static/logo_texture.png") 0 0 repeat !important;
+}
+
+#downloadArea {
+    background: transparent !important;
+}
+
+#homescreen .ui.home {
+    .detailview .actions .card-action {
+        .button.approve {
+            background-color: @mainMenuTutorialBackground;
+        }
+    }
+    .tutorial-progress.orange {
+        background-color: @mainMenuTutorialBackground !important;
+        border-color: @mainMenuTutorialBackground !important;
+    }
+}
+
+#tutorialcard {
+    .ui.button.orange.right.attached {
+        background-color: @mainMenuTutorialBackground;
+        &:focus, &:hover {
+            background-color: darken(@mainMenuTutorialBackground, 20%);
+        }
+    }
+}
+
+.time-machine-header {
+    background-color: @blue;
+}
+
+.time-machine-preview {
+    // Loading div that appears while projects are importing
+    & > div {
+        background: #e8e8e8
+    }
+}
+
+#root:not(.hc) .tutorial-menu {
+    .ui.circular.label.selected {
+        background-color: @purple !important;
+        color: #e8e8e8 !important;
+        border: 1px solid #e8e8e8 !important;
+
+        &:focus, &:hover {
+            background-color: darken(@purple, 20%) !important;
+        }
+    }
+}
+
+.menubar {
+    .ui.menu .brand .ui.logo {
+        height: 1.1rem;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: @largestMobileScreen) {
+    #filelist {
+        background: transparent !important;
+    }
+    #blocklySearchArea {
+        display: none !important;
+    }
+}
+
+/* Tablet */
+@media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+    #filelist {
+        background: transparent !important;
+    }
+}
+
+/* Small Monitor */
+@media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+}
+
+/* Large Monitor */
+@media only screen and (min-width: @largeMonitorBreakpoint) {
+}
+
+
+/* Download dialog */
+.ui.downloaddialog.modal>.content {
+    padding: 1rem;
+}
+
+.ui.webusbpair, .ui.upload {
+    .firmware {
+        background-color: #FFFFCE;
+        div.image {
+            justify-content: center;
+            display: flex;
+            padding: 1rem;
+
+            img {
+                height:100px;
+            }
+        }
+    }
+    .instructions {
+        img {
+            margin-bottom:1rem;
+        }
+    }
+}

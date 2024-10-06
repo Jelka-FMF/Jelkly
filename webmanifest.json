@@ -1,0 +1,90 @@
+{
+    "name": "Jelkly",
+    "description": "Blockly editor for creating and editing Jelka FMF patterns",
+
+
+
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "lang": "sl",
+    "scope": "/",
+
+    "theme_color": "#007300",
+    "icons": [
+        {
+            "src": "/img/icons/favicon.svg",
+            "type": "image/svg+xml",
+            "sizes": "any"
+        },
+        {
+            "src": "/img/icons/favicon-maskable.svg",
+            "type": "image/svg+xml",
+            "sizes": "any",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/img/icons/favicon-monochrome.svg",
+            "type": "image/svg+xml",
+            "sizes": "any",
+            "purpose": "monochrome"
+        },
+        {
+            "src": "/img/icons/android-chrome-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/img/icons/android-chrome-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/img/icons/android-chrome-maskable-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/img/icons/android-chrome-maskable-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Urnik",
+            "url": "/timetable",
+            "icons": [
+                {
+                    "src": "/img/shortcuts/timetable.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Jedilnik",
+            "url": "/menu",
+            "icons": [
+                {
+                    "src": "/img/shortcuts/menu.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Okrožnice",
+            "url": "/circulars",
+            "icons": [
+                {
+                    "src": "/img/shortcuts/circulars.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "name": "Project",
+    "dependencies": {
+        "core": "file:../core"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts"
+    ]
+}

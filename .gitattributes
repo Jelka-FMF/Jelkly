@@ -1,0 +1,22 @@
+# Auto detect text files and perform LF normalization
+*   text eol=lf
+*   text=auto
+.*  text eol=lf
+.*  text=auto
+
+# Show language aware diffs
+*.css   diff=css
+*.htm   diff=html
+*.html  diff=html
+*.vue   diff=html
+*.py    diff=python
+*.md    diff=markdown
+*.sh    diff=bash
+
+# Exclude unused files in archive
+.editorconfig       export-ignore
+.gitattributes      export-ignore
+.gitignore          export-ignore
+.github             export-ignore
+benches             export-ignore
+tests               export-ignore
