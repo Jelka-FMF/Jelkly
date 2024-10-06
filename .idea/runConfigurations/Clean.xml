@@ -1,15 +1,13 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Build" type="js.build_tools.npm">
+  <configuration default="false" name="Clean" type="js.build_tools.npm" activateToolWindowBeforeRun="false">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="build" />
+      <script value="clean" />
     </scripts>
     <node-interpreter value="project" />
     <package-manager value="npm" />
     <envs />
-    <method v="2">
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Clean" run_configuration_type="js.build_tools.npm" />
-    </method>
+    <method v="2" />
   </configuration>
 </component>

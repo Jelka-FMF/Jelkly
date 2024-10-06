@@ -95,7 +95,7 @@
         "invertedMenu": true,
         "coloredToolbox": true,
         "monacoToolbox": true,
-        "hasAudio": true,
+        "hasAudio": false,
         "socialOptions": {
             "orgTwitterHandle": "MSMakeCode",
             "hashtags": "MakeCode",

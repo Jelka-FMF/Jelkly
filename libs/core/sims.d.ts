@@ -1,38 +1,38 @@
 // Auto-generated from simulator. Do not edit.
-declare namespace hare {
+declare namespace basic {
     /**
-     * This is hop
+     * Repeat the code forever in the background
+     * @param body code to execute
      */
-    //% blockId="sampleHop" block="hop %hop on color %color=colorNumberPicker"
-    //% hop.fieldEditor="gridpicker"
-    //% shim=hare::hop
-    function hop(hop: string, color: number): void;
+    //% blockId=device_forever afterOnStart=true
+    //% help=basic/forever weight=55
+    //% block="forever"
+    //% shim=basic::forever
+    function forever(body: () => void): void;
 
-    //% blockId=sampleOnLand block="on land"
-    //% optionalVariableArgs
-    //% shim=hare::onLand
-    function onLand(handler: (height: number, more: number, most: number) => void): void;
+    /**
+     * Pause for the specified time in milliseconds
+     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
+     */
+    //% blockId=device_pause
+    //% help=basic/pause weight=54
+    //% block="pause (ms) %pause"
+    //% pause.shadow=timePicker
+    //% shim=basic::pause
+    function pause(ms: number): void;
 
 }
+declare namespace example {
     /**
-     * A ghost on the screen.
+     * Repeat the code forever in the background
+     * @param body code to execute
      */
-    //%
-    declare class Sprite {
-        /**
-         * The X-coordiante
-         */
-        //%
-        //% shim=.x
-        public x: number;
+    //% blockId=example_block afterOnStart=true
+    //% help=basic/forever weight=55
+    //% block="show light %number| in %color"
+    //% shim=example::showLight
+    function showLight(number: number, color: string): void;
 
-        /**
-         * The Y-coordiante
-         */
-        //%
-        //% shim=.y
-        public y: number;
-
-    }
+}
 
 // Auto-generated. Do not edit. Really.
