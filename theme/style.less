@@ -1,11 +1,11 @@
 /* Import all components */
-@import 'pxtsemantic';
-@import 'pxt';
-@import 'themepacks';
-@import 'blockly-toolbox';
-@import 'themes/default/globals/site.variables';
-@import 'themes/pxt/globals/site.variables';
-@import 'site/globals/site.variables';
+@import "pxtsemantic";
+@import "pxt";
+@import "themepacks";
+@import "blockly-toolbox";
+@import "themes/default/globals/site.variables";
+@import "themes/pxt/globals/site.variables";
+@import "site/globals/site.variables";
 
 /* Reference import */
 @import (reference) "semantic.less";
@@ -17,8 +17,8 @@
 /* Roboto font */
 @RobotoFont: data-uri("../docs/static/fonts/Roboto_400_normal.woff");
 
-@font-face  {
-    font-family: 'Roboto';
+@font-face {
+    font-family: "Roboto";
     src: @RobotoFont format("woff");
 }
 
@@ -64,6 +64,7 @@
             background-color: @mainMenuTutorialBackground;
         }
     }
+
     .tutorial-progress.orange {
         background-color: @mainMenuTutorialBackground !important;
         border-color: @mainMenuTutorialBackground !important;
@@ -73,6 +74,7 @@
 #tutorialcard {
     .ui.button.orange.right.attached {
         background-color: @mainMenuTutorialBackground;
+
         &:focus, &:hover {
             background-color: darken(@mainMenuTutorialBackground, 20%);
         }
@@ -113,6 +115,7 @@
     #filelist {
         background: transparent !important;
     }
+
     #blocklySearchArea {
         display: none !important;
     }
@@ -133,28 +136,29 @@
 @media only screen and (min-width: @largeMonitorBreakpoint) {
 }
 
-
 /* Download dialog */
-.ui.downloaddialog.modal>.content {
+.ui.downloaddialog.modal > .content {
     padding: 1rem;
 }
 
 .ui.webusbpair, .ui.upload {
     .firmware {
         background-color: #FFFFCE;
+
         div.image {
             justify-content: center;
             display: flex;
             padding: 1rem;
 
             img {
-                height:100px;
+                height: 100px;
             }
         }
     }
+
     .instructions {
         img {
-            margin-bottom:1rem;
+            margin-bottom: 1rem;
         }
     }
 }
