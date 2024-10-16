@@ -30,7 +30,7 @@ It is meant for a single developer used and not designed to serve the editor to 
 
 ### Running
 
-Run this command from inside pxt-microbit to open a local web server.
+Run this command from inside the repository to open a local web server.
 
 ```
 npm run serve

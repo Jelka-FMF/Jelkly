@@ -31,7 +31,6 @@
   "String|block": "String",
   "_py|block": "_py",
   "basic.forever|block": "forever",
-  "basic.pause|block": "pause (ms) %pause",
   "basic|block": "basic",
   "example.showLight|block": "show light %number| in %color",
   "example|block": "example",

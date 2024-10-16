@@ -25,6 +25,16 @@ namespace pxsim {
         public testStateNum: number
         public testStateStr: string
 
+        // FIXME: This does not currently even work...
+        // Check how official and other simulators are implemented:
+        // https://github.com/microsoft/pxt-microbit
+        // https://github.com/microsoft/pxt-sample
+        // https://github.com/microsoft/pxt-adafruit
+        // https://github.com/microsoft/pxt-brainpad
+        // https://github.com/letssteam/pxt-lets-steam
+        // https://github.com/matthewtebbs-too/pxt-impetus
+        // https://github.com/Buildbee/makecode
+
         constructor () {
             super()
             this.testElement = document.getElementById("test-element")

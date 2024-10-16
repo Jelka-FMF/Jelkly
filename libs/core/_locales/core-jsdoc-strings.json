@@ -154,8 +154,6 @@
   "_py.stringSlice": "Returns a section of a string according to python's extended slice syntax",
   "basic.forever": "Repeat the code forever in the background",
   "basic.forever|param|body": "code to execute",
-  "basic.pause": "Pause for the specified time in milliseconds",
-  "basic.pause|param|ms": "how long to pause for, eg: 100, 200, 500, 1000, 2000",
   "example.showLight": "Repeat the code forever in the background",
   "parseFloat": "Convert a string to a number.",
   "parseInt": "Convert a string to an integer.\n\n\nIf this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.\nAll other strings are considered decimal.",
