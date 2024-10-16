@@ -1,4 +1,4 @@
-/* Import all components */
+/* Component imports */
 @import "pxtsemantic";
 @import "pxt";
 @import "themepacks";
@@ -14,12 +14,15 @@
     Add your custom CSS here
 *******************************/
 
-/* Roboto font */
-@RobotoFont: data-uri("../docs/static/fonts/Roboto_400_normal.woff");
+@RobotoWoff2: data-url("../docs/static/fonts/Roboto-Regular.woff2");
+@RobotoTtf: data-url("../docs/static/fonts/Roboto-Regular.ttf");
 
 @font-face {
     font-family: "Roboto";
-    src: @RobotoFont format("woff");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+    src: @RobotoWoff2 format("woff2"), @RobotoTtf format("truetype");
 }
 
 .ui.button.download-button {
@@ -51,7 +54,7 @@
 }
 
 #filelist, #editortools {
-    background: #fff data-uri("../docs/static/logo_texture.png") 0 0 repeat !important;
+    background: #fff data-uri("../docs/static/texture.png") 0 0 repeat !important;
 }
 
 #downloadArea {
