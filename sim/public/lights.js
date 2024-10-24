@@ -4,14 +4,35 @@ function parseCSV(data) {
     console.log("CSV data:", data);
     for (var i = 0; i < rows.length; i++) {
         var cols = rows[i].split(',');
-        if (cols.length === 3) {
-            var y = parseFloat(cols[1].trim());
-            var z = parseFloat(cols[2].trim());
-            positions.push({ y: y, z: z });
+        if (cols.length === 4) {
+            var id = parseFloat(cols[0].trim());
+            var x = parseFloat(cols[1].trim());
+            var y = parseFloat(cols[2].trim());
+            var z = parseFloat(cols[3].trim());
+            positions.push({ id: id, x: x, y: y, z: z });
         }
     }
     console.log("Parsed positions:", positions);
     return positions;
+}
+
+function sortPos(positions) {
+    var v = { x: 1, y: 0 }; // norma po kateri razdelimo lučke na pol
+    var spredaj = [];
+    var zadaj = [];
+    console.log("sorting positions ...")
+    positions.forEach(function (pos) {
+        var x = pos.x; // Assuming y is the x-coordinate in your context
+        var y = pos.z; // Assuming z is the y-coordinate in your context
+        console.log(x, y);
+        if ((v.x * x + v.y * y) > 0) {
+            spredaj.push(pos);
+        } else {
+            zadaj.push(pos);
+        }
+    });
+
+    return [spredaj, zadaj];
 }
 
 function drawLights(lights, name) {
@@ -42,10 +63,15 @@ function loadCSVFile(url, name) {
         .then(function (response) { return response.text(); })
         .then(function (data) {
         var positions = parseCSV(data);
-        drawLights(positions, name);
+        var sortedPositions = sortPos(positions);
+        drawLights(sortedPositions[0], 'canvas1');
+        drawLights(sortedPositions[1], 'canvas2');
     })
         .catch(function (error) { return console.error('Error loading CSV file:', error); });
 }
 
-loadCSVFile('spredaj.csv', 'canvas1');
-loadCSVFile('zadaj.csv', 'canvas2');
+function main() {
+    loadCSVFile('lucke3d.csv', 'canvas');
+}
+
+main()
