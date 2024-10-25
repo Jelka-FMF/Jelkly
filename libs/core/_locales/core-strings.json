@@ -32,6 +32,7 @@
   "_py|block": "_py",
   "basic.forever|block": "forever",
   "basic|block": "basic",
+  "example.colorPicker|block": "RGB color red %red| green %green| blue %blue",
   "example.showLight|block": "show light %number| in %color",
   "example|block": "example",
   "parseFloat|block": "parse to number %text",

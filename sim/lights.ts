@@ -56,13 +56,27 @@ function sortPos(positions: Position[]) {
     return [spredaj, zadaj];
 }
 
-function draw(userLights: Lamp[]) {
+
+function draw(userLights: number[], userColor: { red: number, green: number, blue: number }) {
     // we get in an array of numbers and construct Lamp[] array
     
+let lamps: Lamp[] = [];
+
+for (let i = 0; i < 500; i++) {
+    const isInUserLights = userLights.includes(i);
+    
+    lamps.push({
+        id: i,
+        on: isInUserLights,
+        red: userColor.red,
+        green: userColor.green,
+        blue: userColor.blue
+    });
+}
 
 
-    drawLights(sortedPositions[0], "canvas1", initLightsOnOff(sortedPositions[0], userLights));
-    drawLights(sortedPositions[1], "canvas2", LightsOnOff);
+    drawLights(sortedPositions[0], "canvas1", lamps);
+    drawLights(sortedPositions[1], "canvas2", lamps);
 }
 
 function drawLights(lights: Position[], name: string, LightsOnOff: Lamp[]) {
@@ -89,10 +103,10 @@ function drawLights(lights: Position[], name: string, LightsOnOff: Lamp[]) {
             
             if (lightStatus) {
                 ctx.fillStyle = `rgb(${lightStatus.red}, ${lightStatus.green}, ${lightStatus.blue})`;
-            } else {
+            } /*else {
                 const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
                 ctx.fillStyle = randomColor;
-            }
+            }*/
             
             ctx.fill();
             console.log("Point (".concat(y.toString(), ", ").concat(z.toString(), ") -> Canvas (").concat(canvasY.toString(), ", ").concat(canvasZ.toString(), ")"));
@@ -106,7 +120,7 @@ function drawLights(lights: Position[], name: string, LightsOnOff: Lamp[]) {
 }
 
 function initLightsOnOff(positions: Position[], userLights: Lamp[]): Lamp[] {
-
+    
     return positions.map(position => {
         const userLight = userLights.find(light => light.id === position.id);
         if (userLight) {

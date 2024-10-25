@@ -21,7 +21,22 @@ declare namespace example {
     //% help=basic/forever weight=55
     //% block="show light %number| in %color"
     //% shim=example::showLight
-    function showLight(number: number, color: string): void;
+    function showLight(num: number, color: { red: number; green: number; blue: number; }): void;
+
+    /**
+     * Create an RGB color
+     * @param red The intensity of red (0-255)
+     * @param green The intensity of green (0-255)
+     * @param blue The intensity of blue (0-255)
+     * @returns an RGB color object
+     */
+    //% blockId=color_picker_block
+    //% block="RGB color red %red| green %green| blue %blue"
+    //% red.min=0 red.max=255
+    //% green.min=0 green.max=255
+    //% blue.min=0 blue.max=255
+    //% shim=example::colorPicker
+    function colorPicker(red: number, green: number, blue: number): { red: number; green: number; blue: number; };
 
 }
 

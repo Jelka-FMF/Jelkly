@@ -22,8 +22,13 @@ namespace pxsim {
     export class Board extends pxsim.BaseBoard {
         // TODO: Declare properties here
         public testElement: HTMLSpanElement
+        public colorElement: HTMLSpanElement
+
         public testStateNum: number
-        public testStateStr: string
+        public colorState: { red: number, green: number, blue: number }
+        public red: number
+        public green: number
+        public blue: number
 
         // FIXME: This does not currently even work...
         // Check how official and other simulators are implemented:
@@ -38,6 +43,7 @@ namespace pxsim {
         constructor () {
             super()
             this.testElement = document.getElementById("test-element")
+            this.colorElement = document.getElementById("color-element")
             // TODO: Configure properties here
         }
 
@@ -50,7 +56,8 @@ namespace pxsim {
         updateView () {
             // TODO: Update stuff here
 
-            this.testElement.innerText = `${this.testStateNum} + ${this.testStateStr}`
+            this.testElement.innerText = `${this.testStateNum} + ${this.colorState}`
+            this.colorElement.innerText = `${this.red} + ${this.green} + ${this.blue}` 
         }
     }
 }
