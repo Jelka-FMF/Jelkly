@@ -9,5 +9,22 @@ namespace pxsim.example {
     export function showLight (number: number, color: string): void {
         board().testStateNum = number
         board().testStateStr = color
+
+        const lights = [
+            { id: board().testStateNum, color: board().testStateStr}
+        ];
+
+        // ideja: uporabnik da notri seznam lučk in barvo (rgb konstrukt),
+        // mi iz tega ustvarimo Lamp objekt in ga passamo v draw
+        var spredaj: Lamp[] = [];
+        
+        
+
+
+        draw()
+        
+    
+
+
     }
 }

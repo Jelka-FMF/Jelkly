@@ -1,0 +1,149 @@
+var sortedPositions = [Array(250).map(i => ({id: i, x: 0, y: 0, z: 0})), Array(250).map(i => ({id: i + 250, x: 0, y: 0, z: 0}))];
+
+function parseCSV(data: string) {
+    var rows = data.split('\n');
+    var positions = [];
+    console.log("CSV data:", data);
+    for (var i = 0; i < rows.length; i++) {
+        var cols = rows[i].split(',');
+        if (cols.length === 4) {
+            var id = parseFloat(cols[0].trim());
+            var x = parseFloat(cols[1].trim());
+            var y = parseFloat(cols[2].trim());
+            var z = parseFloat(cols[3].trim());
+            positions.push({ id: id, x: x, y: y, z: z });
+        }
+
+    }
+    console.log("Parsed positions:", positions);
+    return positions;
+
+}
+
+interface Position {
+    id: number;
+    x: number;
+    y: number;
+    z: number;
+}
+
+interface Lamp {
+    id: number;
+    on: boolean;
+    red: number;
+    green: number;
+    blue: number;
+}
+
+
+
+function sortPos(positions: Position[]) {
+    var v = { x: 1, y: 0 }; // norma po kateri razdelimo lučke na pol
+    var spredaj: Position[] = [];
+    var zadaj: Position[] = [];
+    console.log("sorting positions ...")
+    positions.forEach(function (pos) {
+        var x = pos.x; // Assuming y is the x-coordinate in your context
+        var y = pos.z; // Assuming z is the y-coordinate in your context
+        console.log(x, y);
+        if ((v.x * x + v.y * y) > 0) {
+            spredaj.push(pos);
+        } else {
+            zadaj.push(pos);
+        }
+    });
+
+    return [spredaj, zadaj];
+}
+
+function draw(userLights: Lamp[]) {
+    // we get in an array of numbers and construct Lamp[] array
+    
+
+
+    drawLights(sortedPositions[0], "canvas1", initLightsOnOff(sortedPositions[0], userLights));
+    drawLights(sortedPositions[1], "canvas2", LightsOnOff);
+}
+
+function drawLights(lights: Position[], name: string, LightsOnOff: Lamp[]) {
+    var canvas = document.getElementById(name);
+    if (!canvas)
+        return;
+    var ctx = (canvas as HTMLCanvasElement).getContext('2d');
+    if (!ctx)
+        return;
+    ctx.clearRect(0, 0, (canvas as HTMLCanvasElement).width, (canvas as HTMLCanvasElement).height); // clear
+    lights.forEach(function (light) {
+        
+        const lightStatus = LightsOnOff.find(status => status.id === light.id);
+        if (lightStatus && lightStatus.on) {
+            // turnOn();
+            var y = light.y;
+            var z = light.z;
+            // scale and translate lights
+            var canvasY = (canvas as HTMLCanvasElement).width / 2 + y;
+            var canvasZ = (canvas as HTMLCanvasElement).height / 2 - z;
+            // drawing - we draw the lights, that are "on" in LightsOnOff
+            ctx.beginPath();
+            ctx.arc(canvasY, canvasZ, 5, 0, 2 * Math.PI);
+            
+            if (lightStatus) {
+                ctx.fillStyle = `rgb(${lightStatus.red}, ${lightStatus.green}, ${lightStatus.blue})`;
+            } else {
+                const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+                ctx.fillStyle = randomColor;
+            }
+            
+            ctx.fill();
+            console.log("Point (".concat(y.toString(), ", ").concat(z.toString(), ") -> Canvas (").concat(canvasY.toString(), ", ").concat(canvasZ.toString(), ")"));
+
+        } 
+        else {
+            // pass
+        }
+
+            });
+}
+
+function initLightsOnOff(positions: Position[], userLights: Lamp[]): Lamp[] {
+
+    return positions.map(position => {
+        const userLight = userLights.find(light => light.id === position.id);
+        if (userLight) {
+            return {
+                id: position.id,
+                on: true,
+                red: userLight.red,
+                green: userLight.green,
+                blue: userLight.blue
+            };
+        } else {
+            return {
+                id: position.id,
+                on: false,
+                red: 200,
+                green: 100,
+                blue: 0
+            };
+        }
+    });
+}
+
+function loadCSVFile(url: string, name: string) {
+    fetch(url)
+        .then(function (response) { return response.text(); })
+        .then(function (data) {
+        let positions = parseCSV(data);
+        sortedPositions = sortPos(positions);
+        
+        drawLights(sortedPositions[0], 'canvas1', initLightsOnOff(sortedPositions[0]));
+        drawLights(sortedPositions[1], 'canvas2', initLightsOnOff(sortedPositions[1]));
+    })
+        .catch(function (error) { return console.error('Error loading CSV file:', error); });
+}
+
+function main() {
+    loadCSVFile('lucke3d.csv', 'canvas');
+}
+
+main()
