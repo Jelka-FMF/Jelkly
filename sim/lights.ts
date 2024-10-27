@@ -1,23 +1,26 @@
 var sortedPositions = [Array(250).map(i => ({id: i, x: 0, y: 0, z: 0})), Array(250).map(i => ({id: i + 250, x: 0, y: 0, z: 0}))];
 
-function parseCSV(data: string) {
-    var rows = data.split('\n');
-    var positions = [];
-    console.log("CSV data:", data);
-    for (var i = 0; i < rows.length; i++) {
-        var cols = rows[i].split(',');
-        if (cols.length === 4) {
-            var id = parseFloat(cols[0].trim());
-            var x = parseFloat(cols[1].trim());
-            var y = parseFloat(cols[2].trim());
-            var z = parseFloat(cols[3].trim());
-            positions.push({ id: id, x: x, y: y, z: z });
-        }
-
-    }
-    console.log("Parsed positions:", positions);
-    return positions;
-
+function parseCSV(url: string) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            var rows = data.split('\n');
+            var positions = [];
+            console.log("CSV data:", data);
+            for (var i = 0; i < rows.length; i++) {
+                var cols = rows[i].split(',');
+                if (cols.length === 4) {
+                    var id = parseFloat(cols[0].trim());
+                    var x = parseFloat(cols[1].trim());
+                    var y = parseFloat(cols[2].trim());
+                    var z = parseFloat(cols[3].trim());
+                    positions.push({ id: id, x: x, y: y, z: z });
+                }
+            }
+            console.log("Parsed positions:", positions);
+            sortedPositions = sortPos(positions);
+        })
+        .catch(error => console.error('Error loading CSV file:', error));
 }
 
 interface Position {
@@ -60,19 +63,19 @@ function sortPos(positions: Position[]) {
 function draw(userLights: number[], userColor: { red: number, green: number, blue: number }) {
     // we get in an array of numbers and construct Lamp[] array
     
-let lamps: Lamp[] = [];
+    let lamps: Lamp[] = [];
 
-for (let i = 0; i < 500; i++) {
-    const isInUserLights = userLights.includes(i);
-    
-    lamps.push({
-        id: i,
-        on: isInUserLights,
-        red: userColor.red,
-        green: userColor.green,
-        blue: userColor.blue
-    });
-}
+    for (let i = 0; i < 500; i++) {
+        const isInUserLights = userLights.includes(i);
+        
+        lamps.push({
+            id: i,
+            on: isInUserLights,
+            red: userColor.red,
+            green: userColor.green,
+            blue: userColor.blue
+        });
+    }
 
 
     drawLights(sortedPositions[0], "canvas1", lamps);
@@ -119,45 +122,10 @@ function drawLights(lights: Position[], name: string, LightsOnOff: Lamp[]) {
             });
 }
 
-function initLightsOnOff(positions: Position[], userLights: Lamp[]): Lamp[] {
-    
-    return positions.map(position => {
-        const userLight = userLights.find(light => light.id === position.id);
-        if (userLight) {
-            return {
-                id: position.id,
-                on: true,
-                red: userLight.red,
-                green: userLight.green,
-                blue: userLight.blue
-            };
-        } else {
-            return {
-                id: position.id,
-                on: false,
-                red: 200,
-                green: 100,
-                blue: 0
-            };
-        }
-    });
-}
 
-function loadCSVFile(url: string, name: string) {
-    fetch(url)
-        .then(function (response) { return response.text(); })
-        .then(function (data) {
-        let positions = parseCSV(data);
-        sortedPositions = sortPos(positions);
-        
-        drawLights(sortedPositions[0], 'canvas1', initLightsOnOff(sortedPositions[0]));
-        drawLights(sortedPositions[1], 'canvas2', initLightsOnOff(sortedPositions[1]));
-    })
-        .catch(function (error) { return console.error('Error loading CSV file:', error); });
-}
 
 function main() {
-    loadCSVFile('lucke3d.csv', 'canvas');
+    parseCSV('lucke3d.csv');
 }
 
 main()
