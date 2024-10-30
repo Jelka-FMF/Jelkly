@@ -1,4 +1,4 @@
-var sortedPositions = [Array(250).map(i => ({id: i, x: 0, y: 0, z: 0})), Array(250).map(i => ({id: i + 250, x: 0, y: 0, z: 0}))];
+var sortedPositions = [Array.from({ length: 250 }, (_, i) => ({ id: i, x: 0, y: 0, z: 0 })), Array.from({ length: 250 }, (_, i) => ({ id: i + 250, x: 0, y: 0, z: 0 }))];
 
 function parseCSV(url: string) {
     fetch(url)
@@ -6,7 +6,7 @@ function parseCSV(url: string) {
         .then(data => {
             var rows = data.split('\n');
             var positions = [];
-            console.log("CSV data:", data);
+            // console.log("CSV data:", data);
             for (var i = 0; i < rows.length; i++) {
                 var cols = rows[i].split(',');
                 if (cols.length === 4) {
@@ -17,7 +17,7 @@ function parseCSV(url: string) {
                     positions.push({ id: id, x: x, y: y, z: z });
                 }
             }
-            console.log("Parsed positions:", positions);
+            // console.log("Parsed positions:", positions);
             sortedPositions = sortPos(positions);
         })
         .catch(error => console.error('Error loading CSV file:', error));
@@ -48,7 +48,7 @@ function sortPos(positions: Position[]) {
     positions.forEach(function (pos) {
         var x = pos.x; // Assuming y is the x-coordinate in your context
         var y = pos.z; // Assuming z is the y-coordinate in your context
-        console.log(x, y);
+        // console.log(x, y);
         if ((v.x * x + v.y * y) > 0) {
             spredaj.push(pos);
         } else {
@@ -63,10 +63,15 @@ function sortPos(positions: Position[]) {
 function draw(userLights: number[], userColor: { red: number, green: number, blue: number }) {
     // we get in an array of numbers and construct Lamp[] array
     
+
+
+    console.log("User lights:", userLights);
     let lamps: Lamp[] = [];
 
     for (let i = 0; i < 500; i++) {
-        const isInUserLights = userLights.includes(i);
+        
+        
+        var isInUserLights = userLights.includes(i);
         
         lamps.push({
             id: i,

@@ -24,7 +24,7 @@ namespace pxsim {
         public testElement: HTMLSpanElement
         public colorElement: HTMLSpanElement
 
-        public testStateNum: number
+        public testStateNum: number[]
         public colorState: { red: number, green: number, blue: number }
         public red: number
         public green: number
@@ -44,7 +44,12 @@ namespace pxsim {
             super()
             this.testElement = document.getElementById("test-element")
             this.colorElement = document.getElementById("color-element")
-            // TODO: Configure properties here
+            
+            this.testStateNum = []
+            this.colorState = { red: 0, green: 0, blue: 0 }
+            this.red = 0
+            this.green = 0
+            this.blue = 0
         }
 
         initAsync (msg: pxsim.SimulatorRunMessage): Promise<void> {
@@ -56,7 +61,8 @@ namespace pxsim {
         updateView () {
             // TODO: Update stuff here
 
-            this.testElement.innerText = `${this.testStateNum} + ${this.colorState}`
+            this.testElement.innerText = `${this.testStateNum.join(", ")} + ${this.colorState}`
+            
             this.colorElement.innerText = `${this.red} + ${this.green} + ${this.blue}` 
         }
     }

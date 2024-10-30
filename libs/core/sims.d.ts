@@ -14,14 +14,15 @@ declare namespace basic {
 }
 declare namespace example {
     /**
-     * Repeat the code forever in the background
-     * @param body code to execute
+     * Show light in the specified color
+     * @param num array of numbers representing the lights
+     * @param color RGB color object
      */
     //% blockId=example_block afterOnStart=true
     //% help=basic/forever weight=55
-    //% block="show light %number| in %color"
+    //% block="show light %num| in %color"
     //% shim=example::showLight
-    function showLight(num: number, color: { red: number; green: number; blue: number; }): void;
+    function showLight(num: {}, color: { red: number; green: number; blue: number; }): void;
 
     /**
      * Create an RGB color

@@ -1,21 +1,19 @@
 namespace pxsim.example {
     /**
-     * Repeat the code forever in the background
-     * @param body code to execute
+     * Show light in the specified color
+     * @param num array of numbers representing the lights
+     * @param color RGB color object
      */
     //% blockId=example_block afterOnStart=true
     //% help=basic/forever weight=55
-    //% block="show light %number| in %color"
-    export function showLight (num: number, color: { red: number, green: number, blue: number }): void {
+    //% block="show light %num| in %color"
+    export function showLight(num: number[], color: { red: number, green: number, blue: number }): void {
         board().testStateNum = num
-        board().colorState = { red: color.red, green: color.green, blue: color.blue }
+        board().colorState = { red: color.red, green: color.green, blue: color.blue };
 
-        // user inputs a list of IDs of lights, and a color
-        // we pass both things to draw function
-        var lights: number[] = [];
-        lights.push(num); // currently just for 1 light. Later, this will be an array of IDs
-        draw(lights, board().colorState)  
-
+        let lights: number[] = num;
+        console.log("Lights num: ", board().testStateNum.data); // PRAVILNO :) 
+        draw(lights.data, board().colorState);
     }
 
     /**
