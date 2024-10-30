@@ -19,7 +19,7 @@ namespace pxsim.basic {
 
         async function loop () {
             // @ts-ignore: Handler is actually RefAction
-            await runtime.runFiberAsync(handler, [frameNumber])
+            await runtime.runFiberAsync(handler, frameNumber)
             await U.delay(20)
             frameNumber++
             loop()
