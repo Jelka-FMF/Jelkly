@@ -6,14 +6,26 @@
 //% block.loc.sl="Osnovno"
 namespace pxsim.basic {
     /**
-     * Repeat the code forever in the background
-     * @param body code to execute
+     * Repeat the code for each frame
+     * @param handler code to execute
      */
-    //% blockId=device_forever afterOnStart=true
+    //% blockId=pxt-on-frame afterOnStart=true
+    //% draggableParameters="reporter"
     //% help=basic/forever weight=55
-    //% block="forever"
-    //% block.loc.sl="ponavljaj"
-    export function forever (body: RefAction): void {
-        thread.forever(body)
+    //% block="on frame $frameNumber"
+    //% block.loc.sl="na sličici $frameNumber"
+    export function onFrame (handler: (frameNumber: number) => void): void {
+        let frameNumber = 0
+
+        async function loop () {
+            // @ts-ignore: Handler is actually RefAction
+            await runtime.runFiberAsync(handler, [frameNumber])
+            await U.delay(20)
+            frameNumber++
+            loop()
+        }
+
+        pxtrt.nullCheck(handler)
+        loop()
     }
 }

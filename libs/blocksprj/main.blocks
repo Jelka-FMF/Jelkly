@@ -1,4 +1,11 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="pxt-on-start"></block>
-  <block type="device_forever"></block>
+  <block type="pxt-on-start" />
+  <block type="pxt-on-frame">
+    <value name="HANDLER_DRAG_PARAM_frameNumber">
+      <block type="argument_reporter_number">
+        <mutation duplicateondrag="true" />
+        <field name="VALUE">frameNumber</field>
+      </block>
+    </value>
+  </block>
 </xml>

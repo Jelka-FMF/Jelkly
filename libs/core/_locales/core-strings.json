@@ -30,7 +30,7 @@
   "String.substr|block": "substring of %this=text|from %start|of length %length",
   "String|block": "String",
   "_py|block": "_py",
-  "basic.forever|block": "forever",
+  "basic.onFrame|block": "on frame $frameNumber",
   "basic|block": "basic",
   "example.colorPicker|block": "RGB color red %red| green %green| blue %blue",
   "example.showLight|block": "show light %num| in %color",

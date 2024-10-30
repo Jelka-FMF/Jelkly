@@ -1,15 +1,16 @@
 // Auto-generated from simulator. Do not edit.
 declare namespace basic {
     /**
-     * Repeat the code forever in the background
-     * @param body code to execute
+     * Repeat the code for each frame
+     * @param handler code to execute
      */
-    //% blockId=device_forever afterOnStart=true
+    //% blockId=pxt-on-frame afterOnStart=true
+    //% draggableParameters="reporter"
     //% help=basic/forever weight=55
-    //% block="forever"
-    //% block.loc.sl="ponavljaj"
-    //% shim=basic::forever
-    function forever(body: () => void): void;
+    //% block="on frame $frameNumber"
+    //% block.loc.sl="na sličici $frameNumber"
+    //% shim=basic::onFrame
+    function onFrame(handler: (frameNumber: number) => void): void;
 
 }
 declare namespace example {
