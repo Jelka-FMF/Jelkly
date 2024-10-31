@@ -31,6 +31,7 @@
   "String|block": "String",
   "_py|block": "_py",
   "basic.onFrame|block": "on frame $frameNumber",
+  "basic.setFrameRate|block": "set frame rate to $frameRate",
   "basic|block": "basic",
   "example.colorPicker|block": "RGB color red %red| green %green| blue %blue",
   "example.showLight|block": "show light %num| in %color",

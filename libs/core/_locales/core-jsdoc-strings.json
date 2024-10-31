@@ -154,6 +154,8 @@
   "_py.stringSlice": "Returns a section of a string according to python's extended slice syntax",
   "basic.onFrame": "Repeat the code for each frame",
   "basic.onFrame|param|handler": "code to execute",
+  "basic.setFrameRate": "Set the pattern frame rate",
+  "basic.setFrameRate|param|frameRate": "frame rate in frames per second",
   "example.colorPicker": "Create an RGB color\n\n\n\n@returns an RGB color object",
   "example.colorPicker|param|blue": "The intensity of blue (0-255)",
   "example.colorPicker|param|green": "The intensity of green (0-255)",

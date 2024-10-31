@@ -20,6 +20,8 @@ namespace pxsim {
      * Do not store state anywhere else!
      */
     export class Board extends pxsim.BaseBoard {
+        public frameRate: number = 50
+
         // TODO: Declare properties here
         public testElement: HTMLSpanElement
         public colorElement: HTMLSpanElement

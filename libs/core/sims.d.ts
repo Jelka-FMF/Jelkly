@@ -1,12 +1,24 @@
 // Auto-generated from simulator. Do not edit.
 declare namespace basic {
     /**
+     * Set the pattern frame rate
+     * @param frameRate frame rate in frames per second
+     */
+    //% blockId=pxt-set-frame-rate afterOnStart=true
+    //% block="set frame rate to $frameRate"
+    //% block.loc.sl="nastavi število sličic na sekundo na $frameRate"
+    //% frameRate.min=1 frameRate.max=60 frameRate.defl=50
+    //% help=basic/set-frame-rate weight=50
+    //% shim=basic::setFrameRate
+    function setFrameRate(frameRate: number): void;
+
+    /**
      * Repeat the code for each frame
      * @param handler code to execute
      */
     //% blockId=pxt-on-frame afterOnStart=true
     //% draggableParameters="reporter"
-    //% help=basic/forever weight=55
+    //% help=basic/on-frame weight=55
     //% block="on frame $frameNumber"
     //% block.loc.sl="na sličici $frameNumber"
     //% shim=basic::onFrame
