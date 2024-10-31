@@ -3,7 +3,7 @@
 *******************************/
 
 div.blocklyTreeRow {
-    box-shadow: inset 0 -1px 0 0 #ecf0f1;
+    box-shadow: inset 0 -1px 0 0 #ECF0F1;
 
     margin-bottom: 0 !important;
 
@@ -13,7 +13,6 @@ div.blocklyTreeRow {
     transition-duration: 1s;
 }
 
-/* Blockly toolbox font size same as the page font */
 span.blocklyTreeLabel {
     font-family: @pageFont !important;
     font-weight: 200;
@@ -25,6 +24,7 @@ span.blocklyTreeLabel {
 }
 
 /* Mobile */
+
 @media only screen and (max-width: @largestMobileScreen) {
     .blocklyToolboxDiv, .monacoToolboxDiv {
         border-left: 0 !important;
@@ -36,6 +36,7 @@ span.blocklyTreeLabel {
 }
 
 /* Tablet */
+
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
     .blocklyToolboxDiv, .monacoToolboxDiv {
         border-left: 0 !important;

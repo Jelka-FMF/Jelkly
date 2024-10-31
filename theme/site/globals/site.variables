@@ -14,14 +14,12 @@
 @red: #E41B21;
 @pink: #F46197;
 @yellow: #FDE74C;
-@grey: #95a5a6;
+@grey: #95A5A6;
 @green: #107C10;
+@orange: #FF8B27;
+@purple: #6633CC;
 
-/* Microbit.org colors */
-@orange: #ff8b27;
-@purple: #6633cc;
-
-@pageBackground: #fff;
+@pageBackground: #FFFFFF;
 
 /*******************************
          PXT Overrides
@@ -33,9 +31,7 @@
 
 @mainMenuInvertedBackground: @blue;
 @mainMenuTutorialBackground: @purple;
-
-@mainMenuBlocksJsToggleColor: @primaryColor;
-
+@mainMenuBlocksJsToggleColor: @purple;
 @tutorialSelectedMenuColor: @blue;
 
 /*-------------------
@@ -43,7 +39,7 @@
 --------------------*/
 
 @sideBarWidth: 22rem;
-@simulatorWidth: 27rem;
+@simulatorWidth: 28rem;
 @simulatorWidthSmall: 20rem;
 
 /*-------------------
@@ -52,7 +48,7 @@
 
 @simulatorBackground: #FDFDFF;
 @editorToolsBackground: @simulatorBackground;
-@blocklySvgColor: #ecf0f1;
+@blocklySvgColor: #ECF0F1;
 @cloudCardBackground: lighten(@blue, 7);
 
 /*-------------------
@@ -69,13 +65,12 @@
 @blocklyToolboxColor: rgba(0, 0, 0, 0.05);
 @trashIconColor: @primaryColor;
 
-
 /*-------------------
    Flyout
 --------------------*/
 
 @flyoutLabelColor: white;
-@blocklyFlyoutColor: #4b4949;
+@blocklyFlyoutColor: #4B4949;
 @blocklyFlyoutColorOpacity: 1.0;
 @monacoFlyoutColor: @blocklyFlyoutColor;
 @blocklyFlyoutButtonColor: @secondaryColor;
@@ -85,26 +80,29 @@
 --------------------*/
 
 @serialTextColor: black;
-@serialGraphBackground: #d9d9d9;
+@serialGraphBackground: #D9D9D9;
 
 /*---------------------------
    Tutorial
 ----------------------------*/
-@tutorialCodeValidationCorrectBackground: #cd0365;
+
+@tutorialCodeValidationCorrectBackground: #CD0365;
 @sidebarPrimaryColor: @primaryColor;
 @sidebarSecondaryColor: @white;
 @sidbarActiveTabIconColor: @primaryColor;
-@tutorialBarBackgroundColor: #ecf0f1;
+@tutorialBarBackgroundColor: #ECF0F1;
 @tutorialSimframeMargin: 0.3rem;
 
 /*---------------------------
    Cloud Status
 ----------------------------*/
+
 @cloudStatusColor: @blue;
 
 /*---------------------------
    Teaching Bubble
 ----------------------------*/
+
 @teachingBubbleBackgroundColor: @blue;
 @teachingBubbleTextColor: @white;
 @teachingBubbleStepsColor: @lightGrey;

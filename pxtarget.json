@@ -3,16 +3,17 @@
     "name": "Jelkly",
     "title": "Jelkly",
     "description": "Blockly editor for creating and editing Jelka FMF patterns",
+
     "corepkg": "core",
-    "bundleddirs": [
-        "libs/core"
-    ],
+    "bundleddirs": ["libs/core"],
+
     "cloud": {
         "packages": true,
         "sharing": true,
         "publishing": true,
         "importing": true
     },
+
     "runtime": {
         "mathBlocks": true,
         "loopsBlocks": true,
@@ -30,57 +31,36 @@
         "onStartNamespace": "basic",
         "onStartWeight": 69
     },
+
     "simulator": {
         "autoRun": true,
         "aspectRatio": 0.8
     },
+
     "appTheme": {
-        "accentColor": "#5C005C",
-        "logoUrl": "https://microbit.org/",
-        "logo": "./static/logo.portrait.white.svg",
-        "docsLogo": "./static/logo.square.white.svg",
-        "portraitLogo": "./static/logo.square.white.svg",
-        "footerLogo": "./static/logo.portrait.black.svg",
-        "cardLogo": "./static/icons/apple-touch-icon.png",
-        "appLogo": "./static/icons/apple-touch-icon.png",
-        "organization": "Microsoft MakeCode",
-        "organizationUrl": "https://makecode.com/",
-        "organizationLogo": "./static/Microsoft_logo_rgb_W-white_D-square.png",
-        "organizationWideLogo": "./static/Microsoft_logo_rgb_W-white_D.png",
-        "homeScreenHero": {
-            "imageUrl": "/static/herogallery/hero-banner.png",
-            "name": "Flashing Heart",
-            "url": "/projects/flashing-heart",
-            "description": "New? Start here!",
-            "cardType": "tutorial"
-        },
-        "homeScreenHeroGallery": "/hero-banner",
+        "logo": "./static/icons/favicon-wide.svg",
+        "docsLogo": "./static/icons/favicon-wide.svg",
+        "portraitLogo": "./static/icons/favicon.svg",
+        "appLogo": "./static/icons/favicon.svg",
+        "cardLogo": "./static/icons/favicon.svg",
+
+        "organization": "Fakulteta za matematiko in fiziko",
+        "organizationUrl": "https://www.fmf.uni-lj.si/",
+        "organizationLogo": "./static/orglogowide.png",
+        "organizationWideLogo": "./static/orglogowide.png",
+
         "homeUrl": "https://makecode.microbit.org/",
-        "embedUrl": "https://makecode.microbit.org/",
+        "logoUrl": "https://makecode.microbit.org/",
         "shareUrl": "https://makecode.microbit.org/",
+        "embedUrl": "https://makecode.microbit.org/",
         "privacyUrl": "https://makecode.com/privacy",
         "termsOfUseUrl": "https://makecode.com/termsofuse",
-        "githubUrl": "https://github.com/Microsoft/pxt-microbit",
-        "boardName": "micro:bit",
-        "boardNickname": "micro:bit",
-        "driveDisplayName": "MICROBIT",
-        "appStoreID": "1092687276",
-        "mobileSafariDownloadProtocol": "microbithex://?data",
+        "contactUrl": "https://makecode.com/contact",
+        "feedbackUrl": "https://makecode.com/feedback",
+        "githubUrl": "https://github.com/Jelka-FMF/Jelkly",
+
         "crowdinProject": "makecode",
-        "extendEditor": true,
-        "enableTrace": true,
-        "ignoreDocsErrors": false,
-        "errorList": true,
-        "workspaceSearch": true,
-        "allowPackageExtensions": true,
-        "addNewTypeScriptFile": true,
-        "saveInMenu": true,
-        "experiments": [
-            "accessibleBlocks",
-            "blocksErrorList",
-            "debugExtensionCode",
-            "identity"
-        ],
+
         "docMenu": [
             {
                 "name": "About",
@@ -91,26 +71,12 @@
                 "path": "/docs"
             }
         ],
-        "hasReferenceDocs": true,
-        "hideHomeDetailsVideo": true,
-        "invertedMenu": true,
-        "coloredToolbox": true,
-        "monacoToolbox": true,
-        "hasAudio": false,
-        "socialOptions": {
-            "orgTwitterHandle": "MSMakeCode",
-            "hashtags": "MakeCode",
-            "discourse": "https://forum.makecode.com/",
-            "discourseCategory": "micro:bit"
-        },
-        "blocklyOptions": {
-            "grid": {
-                "spacing": 45,
-                "length": 7,
-                "colour": "rgba(189, 195, 199, 0.30)",
-                "snap": false
-            }
-        },
+
+        "boardName": "Jelka",
+        "boardNickname": "Jelka",
+
+        "accentColor": "#3454D1",
+        "backgroundColor": "#FFFFFF",
         "blockColors": {
             "logic": "#00A4A6",
             "loops": "#00AA00",
@@ -121,11 +87,69 @@
             "functions": "#3455DB",
             "arrays": "#E65722"
         },
+        "monacoColors": {
+            "editor.background": "#ECF0F1"
+        },
+
+        "blocklyOptions": {
+            "grid": {
+                "spacing": 45,
+                "length": 7,
+                "colour": "rgba(189, 195, 199, 0.30)",
+                "snap": false
+            }
+        },
+
+        "experiments": [
+            "accessibleBlocks",
+            "blocksErrorList",
+            "debugExtensionCode",
+            "identity"
+        ],
+
+        "extendEditor": true,
+        "extendFieldEditors": false,
+
+        "errorList": true,
+        "blocksErrorList": true,
+        "ignoreDocsErrors": false,
         "blocksCollapsing": true,
+        "workspaceSearch": true,
+        "addNewTypeScriptFile": true,
+        "showProjectSettings": true,
+        "saveInMenu": true,
+        "hasReferenceDocs": true,
+        "hideHomeDetailsVideo": true,
+        "invertedMenu": true,
+        "coloredToolbox": true,
+        "monacoToolbox": true,
+        "hasAudio": false,
         "highContrast": true,
         "greenScreen": true,
+        "qrCode": true,
         "print": true,
+        "debugger": true,
+        "python": true,
         "selectLanguage": true,
+        "tutorialCodeValidation": true,
+        "tutorialSimSidebarLayout": true,
+        "immersiveReader": true,
+        "condenseProfile": true,
+        "nameProjectFirst": true,
+        "githubEditor": true,
+        "openProjectNewTab": true,
+
+        "simGifTransparent": "rgba(0,0,0,0)",
+        "simGifMaxFrames": 44,
+        "simScreenshot": true,
+        "simScreenshotMaxUriLength": 300000,
+        "simGif": true,
+        "simGifWidth": 240,
+
+        "timeMachine": true,
+        "timeMachineDiffInterval": 600000,
+        "timeMachineSnapshotInterval": 1800000,
+
         "availableLocales": [
             "en",
             "ar",
@@ -162,46 +186,9 @@
             "vi",
             "zh-CN",
             "zh-TW"
-        ],
-        "monacoColors": {
-            "editor.background": "#ecf0f1"
-        },
-        "monacoFieldEditors": [
-            "soundeffect-editor",
-            "image-editor"
-        ],
-        "showProjectSettings": true,
-        "scriptManager": true,
-        "debugger": true,
-        "simGifTransparent": "rgba(0,0,0,0)",
-        "simGifMaxFrames": 44,
-        "simScreenshot": true,
-        "simScreenshotMaxUriLength": 300000,
-        "simGif": true,
-        "simGifWidth": 240,
-        "qrCode": true,
-        "importExtensionFiles": true,
-        "nameProjectFirst": true,
-        "githubEditor": true,
-        "chooseLanguageRestrictionOnNewProject": true,
-        "openProjectNewTab": true,
-        "python": true,
-        "appFlashingTroubleshoot": "/device/windows-app/troubleshoot",
-        "immersiveReader": true,
-        "tutorialCodeValidation": true,
-        "tours": {
-            "editor": "/tours/editor-tour"
-        },
-        "tutorialSimSidebarLayout": true,
-        "preferWebUSBDownload": true,
-        "hideReplaceMyCode": true,
-        "matchWebUSBDeviceInSim": true,
-        "condenseProfile": true,
-        "cloudProfileIcon": "/static/profile/microbit-cloud.png",
-        "timeMachine": true,
-        "timeMachineDiffInterval": 600000,
-        "timeMachineSnapshotInterval": 1800000
+        ]
     },
+
     "queryVariants": {
         "hidemenu": {
             "appTheme": {

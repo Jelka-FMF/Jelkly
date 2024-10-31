@@ -1,4 +1,4 @@
-/* Component imports */
+/* Component Imports */
 @import "pxtsemantic";
 @import "pxt";
 @import "themepacks";
@@ -7,7 +7,7 @@
 @import "themes/pxt/globals/site.variables";
 @import "site/globals/site.variables";
 
-/* Reference import */
+/* Reference Import */
 @import (reference) "semantic.less";
 
 /*******************************
@@ -54,7 +54,9 @@
 }
 
 #filelist, #editortools {
-    background: #fff data-uri("../docs/static/texture.png") 0 0 repeat !important;
+    background-image: data-uri("../docs/static/texture.png");
+    background-size: contain;
+    background-color: #FFFFFF;
 }
 
 #downloadArea {
@@ -89,17 +91,16 @@
 }
 
 .time-machine-preview {
-    // Loading div that appears while projects are importing
     & > div {
-        background: #e8e8e8
+        background: #E8E8E8;
     }
 }
 
 #root:not(.hc) .tutorial-menu {
     .ui.circular.label.selected {
         background-color: @purple !important;
-        color: #e8e8e8 !important;
-        border: 1px solid #e8e8e8 !important;
+        color: #E8E8E8 !important;
+        border: 1px solid #E8E8E8 !important;
 
         &:focus, &:hover {
             background-color: darken(@purple, 20%) !important;
@@ -114,6 +115,7 @@
 }
 
 /* Mobile */
+
 @media only screen and (max-width: @largestMobileScreen) {
     #filelist {
         background: transparent !important;
@@ -125,6 +127,7 @@
 }
 
 /* Tablet */
+
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
     #filelist {
         background: transparent !important;
@@ -132,36 +135,11 @@
 }
 
 /* Small Monitor */
+
 @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
 }
 
 /* Large Monitor */
+
 @media only screen and (min-width: @largeMonitorBreakpoint) {
-}
-
-/* Download dialog */
-.ui.downloaddialog.modal > .content {
-    padding: 1rem;
-}
-
-.ui.webusbpair, .ui.upload {
-    .firmware {
-        background-color: #FFFFCE;
-
-        div.image {
-            justify-content: center;
-            display: flex;
-            padding: 1rem;
-
-            img {
-                height: 100px;
-            }
-        }
-    }
-
-    .instructions {
-        img {
-            margin-bottom: 1rem;
-        }
-    }
 }
