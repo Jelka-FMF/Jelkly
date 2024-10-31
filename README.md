@@ -58,6 +58,17 @@ npm run clean
 Make sure to pull changes from all repos regularly.
 More instructions are at https://github.com/Microsoft/pxt#running-a-target-from-localhost.
 
+## Production Server Setup
+
+Run this command to create a production build of the editor.
+
+```
+npm run build
+```
+
+The build output will be in the `built/packaged/` folder.
+You can use any static file server to serve the editor from this folder.
+
 ## Repos
 
 The Jelkly target depends on several other repos. The main ones are:

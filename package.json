@@ -9,7 +9,7 @@
     "scripts": {
         "clean": "npm exec -- pxt clean",
         "serve": "npm exec -- pxt serve",
-        "build": "npm exec -- pxt buildtarget"
+        "build": "npm exec -- pxt staticpkg"
     },
     "files": [
         "README.md",
