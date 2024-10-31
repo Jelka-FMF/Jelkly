@@ -2,24 +2,20 @@
     "name": "Jelkly",
     "description": "Blockly editor for creating and editing Jelka FMF patterns",
     "display": "standalone",
-    "theme_color": "#3454D1",
-    "background_color": "#FFFFFF",
-    "start_url": "/",
-    "scope": "/",
     "icons": [
         {
-            "src": "/static/icons/favicon.svg",
+            "src": "./docs/static/icons/favicon.svg",
             "type": "image/svg+xml",
             "sizes": "any"
         },
         {
-            "src": "/static/icons/favicon-maskable.svg",
+            "src": "./docs/static/icons/favicon-maskable.svg",
             "type": "image/svg+xml",
             "sizes": "any",
             "purpose": "maskable"
         },
         {
-            "src": "/static/icons/favicon-monochrome.svg",
+            "src": "./docs/static/icons/favicon-monochrome.svg",
             "type": "image/svg+xml",
             "sizes": "any",
             "purpose": "monochrome"
