@@ -1,6 +1,6 @@
 {
     "name": "project",
-    "description": "The base project for Jelkly",
+    "description": "",
     "dependencies": {
         "core": "file:../core"
     },

@@ -51,8 +51,8 @@
 
         "homeUrl": "https://makecode.microbit.org/",
         "logoUrl": "https://makecode.microbit.org/",
-        "shareUrl": "https://makecode.microbit.org/",
         "embedUrl": "https://makecode.microbit.org/",
+        "shareUrl": "https://makecode.microbit.org/share/",
         "privacyUrl": "https://makecode.com/privacy",
         "termsOfUseUrl": "https://makecode.com/termsofuse",
         "contactUrl": "https://makecode.com/contact",

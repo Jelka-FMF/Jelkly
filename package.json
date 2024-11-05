@@ -31,14 +31,15 @@
     "packageManager": "npm@10.8.1",
     "dependencies": {
         "pxt-common-packages": "^12.1.1",
-        "pxt-core": "^11.2.19"
+        "pxt-core": "^11.2.20",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
     },
     "devDependencies": {
-        "@types/marked": "0.3.0",
-        "@types/node": "8.10.66",
-        "@types/react": "16.0.0",
-        "@types/react-dom": "16.0.0",
-        "@types/web-bluetooth": "0.0.20",
+        "@types/marked": "^0.3.0",
+        "@types/react": "^18.3.12",
+        "@types/react-dom": "^18.3.1",
+        "@types/web-bluetooth": "^0.0.20",
         "less": "^4.2.0",
         "pxt": "^0.5.1",
         "typescript": "^5.6.3"
