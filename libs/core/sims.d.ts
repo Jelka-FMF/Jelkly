@@ -28,14 +28,14 @@ declare namespace basic {
 declare namespace example {
     /**
      * Show light in the specified color
-     * @param num array of numbers representing the lights
+     * @param {number[]} num array of numbers representing the lights
      * @param color RGB color object
      */
     //% blockId=example_block afterOnStart=true
     //% help=basic/forever weight=55
     //% block="show light %num| in %color"
     //% shim=example::showLight
-    function showLight(num: {}, color: { red: number; green: number; blue: number; }): void;
+    function showLight(num: any, color: { red: number; green: number; blue: number; }): void;
 
     /**
      * Create an RGB color

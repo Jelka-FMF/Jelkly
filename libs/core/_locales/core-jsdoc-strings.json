@@ -160,7 +160,7 @@
   "example.colorPicker|param|blue": "The intensity of blue (0-255)",
   "example.colorPicker|param|green": "The intensity of green (0-255)",
   "example.colorPicker|param|red": "The intensity of red (0-255)",
-  "example.showLight": "Show light in the specified color",
+  "example.showLight": "Show light in the specified color\n@param {number[]} num array of numbers representing the lights",
   "example.showLight|param|color": "RGB color object",
   "parseFloat": "Convert a string to a number.",
   "parseInt": "Convert a string to an integer.\n\n\nIf this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.\nAll other strings are considered decimal.",

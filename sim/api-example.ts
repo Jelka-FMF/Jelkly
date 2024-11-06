@@ -1,19 +1,22 @@
 namespace pxsim.example {
     /**
      * Show light in the specified color
-     * @param num array of numbers representing the lights
+     * @param {number[]} num array of numbers representing the lights
      * @param color RGB color object
      */
     //% blockId=example_block afterOnStart=true
     //% help=basic/forever weight=55
     //% block="show light %num| in %color"
-    export function showLight(num: number[], color: { red: number, green: number, blue: number }): void {
-        board().testStateNum = num
+    export function showLight(num: any, color: { red: number, green: number, blue: number }): void {
+
+        const lights = Array.isArray(num) ? num : (num.data || []);
+        board().testStateNum = lights;
+        console.log("Test State Num: ", board().testStateNum);
         board().colorState = { red: color.red, green: color.green, blue: color.blue };
 
-        let lights: number[] = num;
-        console.log("Lights num: ", board().testStateNum.data); // PRAVILNO :) 
-        draw(lights.data, board().colorState);
+        
+        console.log("Lights num: ", lights); // PRAVILNO :) 
+        draw(lights, board().colorState);
     }
 
     /**
