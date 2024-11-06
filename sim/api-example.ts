@@ -33,4 +33,33 @@ namespace pxsim.example {
         return { red: red, green: green, blue: blue };
     }
 
+    
+
+    /**
+     * Choose a coordinate
+     * @param operation Choose 'x' or 'y' or 'z' coordinate of light
+     * @param numbers Array of light IDs
+     */
+    //% blockId=operation_picker
+    //% block="$operation"
+    //% blockHidden=true
+    //% operation.fieldEditor="textdropdown"
+    //% operation.fieldOptions.decompileLiterals=true
+    //% operation.fieldOptions.values='x,y,z'
+    //% operation.defl='x'
+    export function __operationPicker(operation: string): string {
+        return operation;
+    }
+
+    //% blockId=lightCoord_block
+    //% block="coordinate %operation| of lights %nums"
+    //% block.loc.sl="koordinata %operation| od lučk %nums"
+    //% operation.shadow="operation_picker"
+    export function calculateMinMax(operation: string, nums: number[]): number[] {
+        board().testStateNum = nums;
+
+        // FIXME: This is not implemented yet. It should return array of x/y/z coordinates of lights.
+        return nums;
+    }
+
 }

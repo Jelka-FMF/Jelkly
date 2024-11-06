@@ -52,6 +52,28 @@ declare namespace example {
     //% shim=example::colorPicker
     function colorPicker(red: number, green: number, blue: number): { red: number; green: number; blue: number; };
 
+    /**
+     * Choose a coordinate
+     * @param operation Choose 'x' or 'y' or 'z' coordinate of light
+     * @param numbers Array of light IDs
+     */
+    //% blockId=operation_picker
+    //% block="$operation"
+    //% blockHidden=true
+    //% operation.fieldEditor="textdropdown"
+    //% operation.fieldOptions.decompileLiterals=true
+    //% operation.fieldOptions.values='x,y,z'
+    //% operation.defl='x'
+    //% shim=example::__operationPicker
+    function __operationPicker(operation: string): string;
+
+    //% blockId=lightCoord_block
+    //% block="coordinate %operation| of lights %nums"
+    //% block.loc.sl="koordinata %operation| od lučk %nums"
+    //% operation.shadow="operation_picker"
+    //% shim=example::calculateMinMax
+    function calculateMinMax(operation: string, nums: {}): {};
+
 }
 
 // Auto-generated. Do not edit. Really.

@@ -31,6 +31,7 @@ namespace pxsim {
         public red: number
         public green: number
         public blue: number
+        public direction: string
 
         // FIXME: This does not currently even work...
         // Check how official and other simulators are implemented:
