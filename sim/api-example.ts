@@ -10,12 +10,10 @@ namespace pxsim.example {
     export function showLight(num: any, color: { red: number, green: number, blue: number }): void {
 
         const lights = Array.isArray(num) ? num : (num.data || []);
-        board().testStateNum = lights;
-        console.log("Test State Num: ", board().testStateNum);
-        board().colorState = { red: color.red, green: color.green, blue: color.blue };
 
+        board().testStateNum = lights;
+        board().colorState = { red: color.red, green: color.green, blue: color.blue };
         
-        console.log("Lights num: ", lights); // PRAVILNO :) 
         draw(lights, board().colorState);
     }
 

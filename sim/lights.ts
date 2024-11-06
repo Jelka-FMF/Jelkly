@@ -44,10 +44,10 @@ function sortPos(positions: Position[]) {
     var v = { x: 1, y: 0 }; // norma po kateri razdelimo lučke na pol
     var spredaj: Position[] = [];
     var zadaj: Position[] = [];
-    console.log("sorting positions ...")
+    console.log("Sorting positions ...")
     positions.forEach(function (pos) {
-        var x = pos.x; // Assuming y is the x-coordinate in your context
-        var y = pos.z; // Assuming z is the y-coordinate in your context
+        var x = pos.x; 
+        var y = pos.z; 
         // console.log(x, y);
         if ((v.x * x + v.y * y) > 0) {
             spredaj.push(pos);
@@ -61,11 +61,9 @@ function sortPos(positions: Position[]) {
 
 
 function draw(userLights: number[], userColor: { red: number, green: number, blue: number }) {
-    // we get in an array of numbers and construct Lamp[] array
     
 
-
-    console.log("User lights:", userLights);
+    // console.log("User lights:", userLights);
     let lamps: Lamp[] = [];
 
     for (let i = 0; i < 500; i++) {
