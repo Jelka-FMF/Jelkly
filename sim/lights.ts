@@ -1,3 +1,4 @@
+var positions: {id: number, x: number, y: number, z: number}[] = [];
 var sortedPositions = [Array.from({ length: 250 }, (_, i) => ({ id: i, x: 0, y: 0, z: 0 })), Array.from({ length: 250 }, (_, i) => ({ id: i + 250, x: 0, y: 0, z: 0 }))];
 
 function parseCSV(url: string) {
@@ -5,7 +6,6 @@ function parseCSV(url: string) {
         .then(response => response.text())
         .then(data => {
             var rows = data.split('\n');
-            var positions = [];
             // console.log("CSV data:", data);
             for (var i = 0; i < rows.length; i++) {
                 var cols = rows[i].split(',');
@@ -59,6 +59,16 @@ function sortPos(positions: Position[]) {
     return [spredaj, zadaj];
 }
 
+function getSphere(x: number, y: number, z: number, r: number, positions: Position[]) {
+    var sphere = [];
+    for (const pos of positions) {
+        var d = Math.sqrt((pos.x - x) ** 2 + (pos.y - y) ** 2 + (pos.z - z) ** 2);
+        if (d < r) {
+            sphere.push(pos.id);
+        }
+    }
+    return sphere;
+}
 
 function draw(userLights: number[], userColor: { red: number, green: number, blue: number }) {
     
@@ -79,13 +89,33 @@ function draw(userLights: number[], userColor: { red: number, green: number, blu
             blue: userColor.blue
         });
     }
-
-
-    drawLights(sortedPositions[0], "canvas1", lamps);
-    drawLights(sortedPositions[1], "canvas2", lamps);
+    drawCanvas(positions, "canvas", lamps);
 }
 
-function drawLights(lights: Position[], name: string, LightsOnOff: Lamp[]) {
+function drawJelkas(ctx: CanvasRenderingContext2D, jelkaWidth: number, jelkaHeight: number, canvasWidth: number, canvasHeight: number) {
+
+    // draw jelka 1
+    ctx.beginPath();
+    ctx.moveTo(0,jelkaHeight); // levo spodaj
+    ctx.lineTo(jelkaWidth/2, 0); // vrh
+    ctx.lineTo(jelkaWidth, jelkaHeight); // desno spodaj
+    ctx.closePath();
+    // the fill color
+    ctx.fillStyle = "#008000";
+    ctx.fill();
+    
+    // draw jelka 2
+    ctx.beginPath();
+    ctx.moveTo(canvasWidth, jelkaHeight); // desno spodaj
+    ctx.lineTo(canvasWidth - jelkaWidth/2, 0); // vrh
+    ctx.lineTo(canvasWidth - jelkaWidth, jelkaHeight); // desno spodaj
+    ctx.closePath();
+    // the fill color
+    ctx.fillStyle = "#008000";
+    ctx.fill();
+}
+
+function drawCanvas(lights: Position[], name:string, LightsOnOff: Lamp[]) {
     var canvas = document.getElementById(name);
     if (!canvas)
         return;
@@ -93,42 +123,81 @@ function drawLights(lights: Position[], name: string, LightsOnOff: Lamp[]) {
     if (!ctx)
         return;
     ctx.clearRect(0, 0, (canvas as HTMLCanvasElement).width, (canvas as HTMLCanvasElement).height); // clear
+
+    var canvasWidth = (canvas as HTMLCanvasElement).width;
+    var canvasHeight = (canvas as HTMLCanvasElement).height;
+
+    var smallestY = Math.min(...lights.map(light => light.y));
+    var biggestY = Math.max(...lights.map(light => light.y));
+    var smallestZ = Math.min(...lights.map(light => light.z));
+    var biggestZ = Math.max(...lights.map(light => light.z));
+
+    
+    // finfd center of mass
+    var sumY = 0;
+    var sumZ = 0;
+    for (const light of lights) {
+        sumY += light.y;
+        sumZ += light.z;
+    }
+    var centerY = sumY / lights.length;
+    var centerZ = sumZ / lights.length;
+
+
+
+    // draw jelkas
+    var jelkaHeight = 0.95 * canvasHeight;
+    var jelkaWidth = 0.4 * canvasWidth;
+    drawJelkas(ctx, jelkaWidth, jelkaHeight, canvasWidth, canvasHeight);
+
+    // draw lights
     lights.forEach(function (light) {
-        
         const lightStatus = LightsOnOff.find(status => status.id === light.id);
         if (lightStatus && lightStatus.on) {
-            // turnOn();
-            var y = light.y;
-            var z = light.z;
-            // scale and translate lights
-            var canvasY = (canvas as HTMLCanvasElement).width / 2 + y;
-            var canvasZ = (canvas as HTMLCanvasElement).height / 2 - z;
+        // turnOn();
+            if (sortedPositions[0].includes(light)) {
+                var y = (light.y - smallestY) / (biggestY - smallestY) * jelkaWidth;
+                var z = (jelkaHeight - (light.z - smallestZ) / (biggestZ - smallestZ) * jelkaHeight);
+            }
+            else {
+                var y = canvasWidth - (light.y - smallestY) / (biggestY - smallestY) * jelkaWidth ;
+                var z = (jelkaHeight - (light.z - smallestZ) / (biggestZ - smallestZ) * jelkaHeight);
+            }
+
             // drawing - we draw the lights, that are "on" in LightsOnOff
             ctx.beginPath();
-            ctx.arc(canvasY, canvasZ, 5, 0, 2 * Math.PI);
-            
+            ctx.arc(y, z, 2, 0, 2 * Math.PI);
+
             if (lightStatus) {
                 ctx.fillStyle = `rgb(${lightStatus.red}, ${lightStatus.green}, ${lightStatus.blue})`;
-            } /*else {
-                const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-                ctx.fillStyle = randomColor;
-            }*/
-            
-            ctx.fill();
-            console.log("Point (".concat(y.toString(), ", ").concat(z.toString(), ") -> Canvas (").concat(canvasY.toString(), ", ").concat(canvasZ.toString(), ")"));
-
-        } 
+            }
+            ctx.fill()
+        }
         else {
             // pass
         }
-
-            });
+    })
 }
 
+function getCoordinateForLight(id: number, positions: Position[], axis: string) {
+    if (axis === 'x') {
+        return positions.find(pos => pos.id === id).x;
+    }
+    if (axis === 'y') {
+        return positions.find(pos => pos.id === id).y;
+    }
+    if (axis === 'z') {
+        return positions.find(pos => pos.id === id).z;
+    }
+    else {
+        return 0;
+    }
+}
 
 
 function main() {
     parseCSV('lucke3d.csv');
+    console.log(positions)
 }
 
 main()

@@ -55,11 +55,41 @@ namespace pxsim.example {
     //% block="coordinate %operation| of lights %nums"
     //% block.loc.sl="koordinata %operation| od lučk %nums"
     //% operation.shadow="operation_picker"
-    export function calculateMinMax(operation: string, nums: number[]): number[] {
-        board().testStateNum = nums;
+    export function getCoordinates(operation: string, nums: any): number[] {
+        const lights = Array.isArray(nums) ? nums : (nums.data || []);
+        const optionCoordinates: number[] = [];
+        for (const num of lights) {
+            optionCoordinates.push(getCoordinateForLight(num, positions, operation));
+        }
+        // console.log(optionCoordinates);
 
-        // FIXME: This is not implemented yet. It should return array of x/y/z coordinates of lights.
-        return nums;
+        return optionCoordinates;
+    }
+    
+    //% blockId=lightList_block
+    //% block="list of lights"
+    //% block.loc.sl="seznam lučk"
+    export function getLightsList(){
+        return positions.map(pos => pos.id);
+    }
+
+    /**
+     * Show light in the specified color
+     * @param x x coordinate of the light
+     * @param y y coordinate of the light
+     * @param z z coordinate of the light
+     * @param color RGB color object
+     */
+    //% blockId=sphere_block
+    //% block="sphere with center x %num| y %num| z %num| and radius %nums| in color %color"
+    //% block.loc.sl="krogla s centrom x %num| y %num| z %num| in radijem %nums| v barvi %color"
+    export function sphere(x :number, y: number, z: number, r: number, color: { red: number, green: number, blue: number }): void {
+        var sph = getSphere(x, y, z, r, positions);
+
+        board().testStateNum = sph;
+        board().colorState = { red: color.red, green: color.green, blue: color.blue };
+
+        draw(sph, board().colorState);
     }
 
 }

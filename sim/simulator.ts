@@ -22,10 +22,6 @@ namespace pxsim {
     export class Board extends pxsim.BaseBoard {
         public frameRate: number = 50
 
-        // TODO: Declare properties here
-        public testElement: HTMLSpanElement
-        public colorElement: HTMLSpanElement
-
         public testStateNum: number[]
         public colorState: { red: number, green: number, blue: number }
         public red: number
@@ -45,9 +41,7 @@ namespace pxsim {
 
         constructor () {
             super()
-            this.testElement = document.getElementById("test-element")
-            this.colorElement = document.getElementById("color-element")
-            
+
             this.testStateNum = []
             this.colorState = { red: 0, green: 0, blue: 0 }
             this.red = 0
@@ -62,11 +56,6 @@ namespace pxsim {
         }
 
         updateView () {
-            // TODO: Update stuff here
-
-            this.testElement.innerText = `${this.testStateNum.join(", ")} + ${this.colorState}`
-            
-            this.colorElement.innerText = `${this.red} + ${this.green} + ${this.blue}` 
         }
     }
 }

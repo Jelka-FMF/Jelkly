@@ -71,8 +71,27 @@ declare namespace example {
     //% block="coordinate %operation| of lights %nums"
     //% block.loc.sl="koordinata %operation| od lučk %nums"
     //% operation.shadow="operation_picker"
-    //% shim=example::calculateMinMax
-    function calculateMinMax(operation: string, nums: {}): {};
+    //% shim=example::getCoordinates
+    function getCoordinates(operation: string, nums: any): {};
+
+    //% blockId=lightList_block
+    //% block="list of lights"
+    //% block.loc.sl="seznam lučk"
+    //% shim=example::getLightsList
+    function getLightsList(): any;
+
+    /**
+     * Show light in the specified color
+     * @param x x coordinate of the light
+     * @param y y coordinate of the light
+     * @param z z coordinate of the light
+     * @param color RGB color object
+     */
+    //% blockId=sphere_block
+    //% block="sphere with center x %num| y %num| z %num| and radius %nums| in color %color"
+    //% block.loc.sl="krogla s centrom x %num| y %num| z %num| in radijem %nums| v barvi %color"
+    //% shim=example::sphere
+    function sphere(x: number, y: number, z: number, r: number, color: { red: number; green: number; blue: number; }): void;
 
 }
 
