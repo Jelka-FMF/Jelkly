@@ -88,6 +88,8 @@ namespace pxsim.example {
 
         board().testStateNum = sph;
         board().colorState = { red: color.red, green: color.green, blue: color.blue };
+        // console.log("fins izhodisce");
+        console.log("izhodisce: ", findIzhodiscneKoordinate(positions, 10, 5));
 
         draw(sph, board().colorState);
     }

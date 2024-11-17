@@ -92,7 +92,7 @@ function draw(userLights: number[], userColor: { red: number, green: number, blu
     drawCanvas(positions, "canvas", lamps);
 }
 
-function drawJelkas(ctx: CanvasRenderingContext2D, jelkaWidth: number, jelkaHeight: number, canvasWidth: number, canvasHeight: number) {
+function drawJelkas(ctx: CanvasRenderingContext2D, jelkaWidth: number, jelkaHeight: number, canvasWidth: number) {
 
     // draw jelka 1
     ctx.beginPath();
@@ -104,7 +104,7 @@ function drawJelkas(ctx: CanvasRenderingContext2D, jelkaWidth: number, jelkaHeig
     ctx.fillStyle = "#008000";
     ctx.fill();
     
-    // draw jelka 2
+    // draw jelka 2 (prezrcaljena)
     ctx.beginPath();
     ctx.moveTo(canvasWidth, jelkaHeight); // desno spodaj
     ctx.lineTo(canvasWidth - jelkaWidth/2, 0); // vrh
@@ -132,23 +132,31 @@ function drawCanvas(lights: Position[], name:string, LightsOnOff: Lamp[]) {
     var smallestZ = Math.min(...lights.map(light => light.z));
     var biggestZ = Math.max(...lights.map(light => light.z));
 
-    
-    // finfd center of mass
-    var sumY = 0;
-    var sumZ = 0;
-    for (const light of lights) {
-        sumY += light.y;
-        sumZ += light.z;
-    }
-    var centerY = sumY / lights.length;
-    var centerZ = sumZ / lights.length;
-
-
 
     // draw jelkas
-    var jelkaHeight = 0.95 * canvasHeight;
-    var jelkaWidth = 0.4 * canvasWidth;
-    drawJelkas(ctx, jelkaWidth, jelkaHeight, canvasWidth, canvasHeight);
+    var jelka = findIzhodiscneKoordinate(positions, 10000, 100);
+    // var izhodisce = {y: 10, z: 5};
+
+    if (!jelka) {
+        console.error('Error: izhodisce is undefined');
+        return; // Exit the function or handle the error appropriately
+    }
+    
+    var maxJelkaWidth = 0.4 * canvasWidth;
+    var maxJelkaHeight = canvasHeight;
+    
+    var jelkaWidth = maxJelkaWidth;
+    var jelkaHeight = (jelka.z - jelka.lz) / (jelka.y - jelka.ly) * jelkaWidth;
+
+    if (jelkaHeight > maxJelkaHeight) {
+        jelkaHeight = maxJelkaHeight;
+        jelkaWidth = 2 * jelka.y * jelkaHeight / maxJelkaWidth; // TODO: check if this is correct
+    }
+
+    console.log("Jelka width:", jelkaWidth);
+    console.log("Jelka height:", jelkaHeight);
+
+    drawJelkas(ctx, jelkaWidth, jelkaHeight, canvasWidth);
 
     // draw lights
     lights.forEach(function (light) {
@@ -156,11 +164,11 @@ function drawCanvas(lights: Position[], name:string, LightsOnOff: Lamp[]) {
         if (lightStatus && lightStatus.on) {
         // turnOn();
             if (sortedPositions[0].includes(light)) {
-                var y = (light.y - smallestY) / (biggestY - smallestY) * jelkaWidth;
-                var z = (jelkaHeight - (light.z - smallestZ) / (biggestZ - smallestZ) * jelkaHeight);
+                var y = jelkaWidth * (light.y - jelka.ly) / (jelka.y - jelka.ly) - jelkaWidth / 2; //TODO: check if this is correct
+                var z = 2* jelkaHeight - (light.z - jelka.lz) / (jelka.z - jelka.lz) * jelkaHeight;
             }
             else {
-                var y = canvasWidth - (light.y - smallestY) / (biggestY - smallestY) * jelkaWidth ;
+                var y = canvasWidth - (light.y - smallestY) / (biggestY - smallestY) * jelkaWidth ; //TODO
                 var z = (jelkaHeight - (light.z - smallestZ) / (biggestZ - smallestZ) * jelkaHeight);
             }
 
@@ -197,7 +205,7 @@ function getCoordinateForLight(id: number, positions: Position[], axis: string) 
 
 function main() {
     parseCSV('lucke3d.csv');
-    console.log(positions)
+    // console.log(positions)
 }
 
 main()
