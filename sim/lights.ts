@@ -115,7 +115,41 @@ function drawJelkas(ctx: CanvasRenderingContext2D, jelkaWidth: number, jelkaHeig
     ctx.fill();
 }
 
-function drawCanvas(lights: Position[], name:string, LightsOnOff: Lamp[]) {
+function getJelkaWidthHeight(name:string, canvasHeight:number, canvasWidth:number){
+    // var canvas = document.getElementById(name);
+    // if (!canvas)
+    //     return;
+    // var ctx = (canvas as HTMLCanvasElement).getContext('2d');
+    // if (!ctx)
+    //     return;
+
+    // var canvasWidth = (canvas as HTMLCanvasElement).width;
+    // var canvasHeight = (canvas as HTMLCanvasElement).height;
+
+    // draw jelkas
+    var jelka = findIzhodiscneKoordinate(positions, 10000, 100);
+    // var izhodisce = {y: 10, z: 5};
+
+    // if (!jelka) {
+    //     console.error('Error: izhodisce is undefined');
+    //     return; // Exit the function or handle the error appropriately
+    // }
+    
+    var maxJelkaWidth = 0.4 * canvasWidth;
+    var maxJelkaHeight = canvasHeight;
+    
+    var jelkaWidth = maxJelkaWidth;
+    var jelkaHeight = (jelka.z - jelka.lz) / (jelka.y - jelka.ly) * jelkaWidth;
+
+    if (jelkaHeight > maxJelkaHeight) {
+        jelkaHeight = maxJelkaHeight;
+        jelkaWidth = (jelka.ly - jelka.y) / (jelka.lz - jelka.z) * jelkaHeight
+    }
+    // var jelka_return = {weight:Number, height:Number}
+    return {width:jelkaWidth, height:jelkaHeight, izhodiscey:jelka.ly, izhodiscez:jelka.lz, vrhy:jelka.y, vrhz:jelka.z}
+}
+
+function drawCanvas(lights: Position[], name:string, LightsOnOff: Lamp[], jelkaWidth:number, jelkaHeight:number) {
     var canvas = document.getElementById(name);
     if (!canvas)
         return;
@@ -127,31 +161,19 @@ function drawCanvas(lights: Position[], name:string, LightsOnOff: Lamp[]) {
     var canvasWidth = (canvas as HTMLCanvasElement).width;
     var canvasHeight = (canvas as HTMLCanvasElement).height;
 
-    var smallestY = Math.min(...lights.map(light => light.y));
-    var biggestY = Math.max(...lights.map(light => light.y));
-    var smallestZ = Math.min(...lights.map(light => light.z));
-    var biggestZ = Math.max(...lights.map(light => light.z));
-
 
     // draw jelkas
-    var jelka = findIzhodiscneKoordinate(positions, 10000, 100);
+    // var jelka = findIzhodiscneKoordinate(positions, 10000, 100);
     // var izhodisce = {y: 10, z: 5};
 
-    if (!jelka) {
-        console.error('Error: izhodisce is undefined');
-        return; // Exit the function or handle the error appropriately
-    }
+    // if (!jelka) {
+    //     console.error('Error: izhodisce is undefined');
+    //     return; // Exit the function or handle the error appropriately
+    // }
     
-    var maxJelkaWidth = 0.4 * canvasWidth;
-    var maxJelkaHeight = canvasHeight;
-    
-    var jelkaWidth = maxJelkaWidth;
-    var jelkaHeight = (jelka.z - jelka.lz) / (jelka.y - jelka.ly) * jelkaWidth;
-
-    if (jelkaHeight > maxJelkaHeight) {
-        jelkaHeight = maxJelkaHeight;
-        jelkaWidth = 2 * jelka.y * jelkaHeight / maxJelkaWidth; // TODO: check if this is correct
-    }
+    var jelka = getJelkaWidthHeight(name, canvasHeight, canvasWidth);
+    var jelkaWidth = jelka.width;
+    var jelkaHeight = jelka.height;
 
     console.log("Jelka width:", jelkaWidth);
     console.log("Jelka height:", jelkaHeight);
@@ -163,13 +185,11 @@ function drawCanvas(lights: Position[], name:string, LightsOnOff: Lamp[]) {
         const lightStatus = LightsOnOff.find(status => status.id === light.id);
         if (lightStatus && lightStatus.on) {
         // turnOn();
-            if (sortedPositions[0].includes(light)) {
-                var y = jelkaWidth * (light.y - jelka.ly) / (jelka.y - jelka.ly) - jelkaWidth / 2; //TODO: check if this is correct
-                var z = 2* jelkaHeight - (light.z - jelka.lz) / (jelka.z - jelka.lz) * jelkaHeight;
-            }
-            else {
-                var y = canvasWidth - (light.y - smallestY) / (biggestY - smallestY) * jelkaWidth ; //TODO
-                var z = (jelkaHeight - (light.z - smallestZ) / (biggestZ - smallestZ) * jelkaHeight);
+            var y = jelkaWidth * (light.y - jelka.izhodiscey) / (jelka.vrhy - jelka.izhodiscey) - jelkaWidth / 2; //TODO: check if this is correct, ker ne bi smel bit ampak dela, kar pomen da je najbrž neki drucag narobe aaaaaaaaaaaaaaaaaaaaaaa
+            var z = 2* jelkaHeight - (light.z - jelka.izhodiscez) / (jelka.vrhz - jelka.izhodiscez) * jelkaHeight;
+            
+            if (sortedPositions[1].includes(light)) {
+                var y = canvasWidth - y
             }
 
             // drawing - we draw the lights, that are "on" in LightsOnOff

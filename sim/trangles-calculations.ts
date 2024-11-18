@@ -3,7 +3,7 @@ function algorithm_fiksen_zamik (positions: Position[], zamiky: number, zamikz: 
     var sumY = 0;
     var sumZ = 0;
     for (const light of positions) {
-        sumY += light.y;
+        sumY += light.y
         sumZ += light.z;
     }
     var centerY = sumY / positions.length;
