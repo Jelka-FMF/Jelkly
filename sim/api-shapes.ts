@@ -14,9 +14,9 @@ namespace pxsim.shapes {
      */
     //% blockId=shapes-ball
     //% help=shapes/ball weight=50
-    //% block="ball with center $x0 $y0 $z0 and radius $r0"
-    //% block.loc.sl="krogla s središčem $x0 $y0 $z0 in polmerom $r0"
-    //% inlineInputMode=inline
+    //% block="ball with center | x: $x0 | y: $y0 | z: $z0 | and radius $r0"
+    //% block.loc.sl="krogla s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r0"
+    //% inlineInputMode=external
     //% r0.min=0
     export function ball (x0: number, y0: number, z0: number, r0: number): number[] {
         const lights = []

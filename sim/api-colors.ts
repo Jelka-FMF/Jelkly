@@ -35,8 +35,9 @@ namespace pxsim.colors {
      */
     //% blockId=colors-rgb
     //% help=colors/rgb-color weight=49
-    //% block="red $red green $green blue $blue"
-    //% block.loc.sl="rdeča $red zelena $green modra $blue"
+    //% block="red $red | green $green | blue $blue"
+    //% block.loc.sl="rdeča $red | zelena $green | modra $blue"
+    //% inlineInputMode=external
     //% red.min=0 red.max=255
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
