@@ -1,6 +1,7 @@
 var positions: {id: number, x: number, y: number, z: number}[] = [];
 var sortedPositions = [Array.from({ length: 250 }, (_, i) => ({ id: i, x: 0, y: 0, z: 0 })), Array.from({ length: 250 }, (_, i) => ({ id: i + 250, x: 0, y: 0, z: 0 }))];
 
+
 function parseCSV(url: string) {
     fetch(url)
         .then(response => response.text())
@@ -89,10 +90,26 @@ function draw(userLights: number[], userColor: { red: number, green: number, blu
             blue: userColor.blue
         });
     }
-    drawCanvas(positions, "canvas", lamps);
+
+    var jelkaHW = getJelkaWidthHeight()
+    var jelkaHeight = jelkaHW.height
+    var jelkaWidth = jelkaHW.width
+    var izhodiscey = jelkaHW.izhodiscey
+    var izhodiscez = jelkaHW.izhodiscez
+    var vrhy = jelkaHW.vrhy
+    var vrhz = jelkaHW.vrhz
+    drawCanvas(positions, "canvas", lamps, jelkaWidth, jelkaHeight);
 }
 
-function drawJelkas(ctx: CanvasRenderingContext2D, jelkaWidth: number, jelkaHeight: number, canvasWidth: number) {
+function drawJelkas(ctx: CanvasRenderingContext2D, canvasWidth: number) {
+
+    var jelkaHW = getJelkaWidthHeight()
+    var jelkaHeight = jelkaHW.height
+    var jelkaWidth = jelkaHW.width
+    var izhodiscey = jelkaHW.izhodiscey
+    var izhodiscez = jelkaHW.izhodiscez
+    var vrhy = jelkaHW.vrhy
+    var vrhz = jelkaHW.vrhz
 
     // draw jelka 1
     ctx.beginPath();
@@ -115,16 +132,16 @@ function drawJelkas(ctx: CanvasRenderingContext2D, jelkaWidth: number, jelkaHeig
     ctx.fill();
 }
 
-function getJelkaWidthHeight(name:string, canvasHeight:number, canvasWidth:number){
-    // var canvas = document.getElementById(name);
-    // if (!canvas)
-    //     return;
-    // var ctx = (canvas as HTMLCanvasElement).getContext('2d');
-    // if (!ctx)
-    //     return;
+function getJelkaWidthHeight(){
+    var canvas = document.getElementById("canvas");
+    if (!canvas)
+        return {};
+    var ctx = (canvas as HTMLCanvasElement).getContext('2d');
+    if (!ctx)
+        return {};
 
-    // var canvasWidth = (canvas as HTMLCanvasElement).width;
-    // var canvasHeight = (canvas as HTMLCanvasElement).height;
+    var canvasWidth = (canvas as HTMLCanvasElement).width;
+    var canvasHeight = (canvas as HTMLCanvasElement).height;
 
     // draw jelkas
     var jelka = findIzhodiscneKoordinate(positions, 10000, 100);
@@ -163,6 +180,14 @@ function drawCanvas(lights: Position[], name:string, LightsOnOff: Lamp[], jelkaW
 
 
     // draw jelkas
+
+    var jelkaHW = getJelkaWidthHeight()
+    var jelkaHeight = jelkaHW.height
+    var jelkaWidth = jelkaHW.width
+    var izhodiscey = jelkaHW.izhodiscey
+    var izhodiscez = jelkaHW.izhodiscez
+    var vrhy = jelkaHW.vrhy
+    var vrhz = jelkaHW.vrhz
     // var jelka = findIzhodiscneKoordinate(positions, 10000, 100);
     // var izhodisce = {y: 10, z: 5};
 
@@ -171,22 +196,22 @@ function drawCanvas(lights: Position[], name:string, LightsOnOff: Lamp[], jelkaW
     //     return; // Exit the function or handle the error appropriately
     // }
     
-    var jelka = getJelkaWidthHeight(name, canvasHeight, canvasWidth);
-    var jelkaWidth = jelka.width;
-    var jelkaHeight = jelka.height;
+    // var jelka = getJelkaWidthHeight();
+    // var jelkaWidth = jelka.width;
+    // var jelkaHeight = jelka.height;
 
     console.log("Jelka width:", jelkaWidth);
     console.log("Jelka height:", jelkaHeight);
 
-    drawJelkas(ctx, jelkaWidth, jelkaHeight, canvasWidth);
+    drawJelkas(ctx, canvasWidth);
 
     // draw lights
     lights.forEach(function (light) {
         const lightStatus = LightsOnOff.find(status => status.id === light.id);
         if (lightStatus && lightStatus.on) {
         // turnOn();
-            var y = jelkaWidth * (light.y - jelka.izhodiscey) / (jelka.vrhy - jelka.izhodiscey) - jelkaWidth / 2; //TODO: check if this is correct, ker ne bi smel bit ampak dela, kar pomen da je najbrž neki drucag narobe aaaaaaaaaaaaaaaaaaaaaaa
-            var z = 2* jelkaHeight - (light.z - jelka.izhodiscez) / (jelka.vrhz - jelka.izhodiscez) * jelkaHeight;
+            var y = jelkaWidth * (light.y - izhodiscey) / (vrhy - izhodiscey) - jelkaWidth / 2; //TODO: check if this is correct, ker ne bi smel bit ampak dela, kar pomen da je najbrž neki drucag narobe aaaaaaaaaaaaaaaaaaaaaaa
+            var z = 2* jelkaHeight - (light.z - izhodiscez) / (vrhz - izhodiscez) * jelkaHeight;
             
             if (sortedPositions[1].includes(light)) {
                 var y = canvasWidth - y

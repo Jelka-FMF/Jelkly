@@ -15,12 +15,13 @@ function algorithm_fiksen_zamik (positions: Position[], zamiky: number, zamikz: 
 
 
     var biggestKoeficient = Math.max(...positions.map(pos => 
-        (pos.y - lefty)/(pos.z - leftz)
+        (pos.y - lefty)/(pos.z - leftz) //koeficient premice
     ));
 
     var a = centerY; // približna simetrala 
     var b = biggestKoeficient * a; // vrh jelke
 
+    console.log({y:a, z:b, ly:lefty, lz:leftz});
     return {y:a, z:b, ly:lefty, lz:leftz}; // vrh jelke in lev rob jelke
 }
 
@@ -40,6 +41,7 @@ function findIzhodiscneKoordinate (positions: Position[], maksZamikY: number, ma
 
     //return the shift with the smallest area
     var zamika = mozniZamiki.find(zamik => algorithm_fiksen_zamik(positions, zamik.y, zamik.z).y * algorithm_fiksen_zamik(positions, zamik.y, zamik.z).z === najmanjsaPloscina);
+    console.log("plsocina", najmanjsaPloscina);
     var izhodisce = algorithm_fiksen_zamik(positions, zamika.y, zamika.z);
     return izhodisce;
 }

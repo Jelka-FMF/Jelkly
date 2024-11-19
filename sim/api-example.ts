@@ -95,3 +95,10 @@ namespace pxsim.example {
     }
 
 }
+
+// TODO
+// vrni seznam luč, ki so del krogle
+// vrni seznam luč ki so na premici z debelino (valji)
+// ravnina
+// poljubna funkcija, ki poda mnogoterost če ti uspe
+// kvadrati če hočeš
