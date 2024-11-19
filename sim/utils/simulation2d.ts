@@ -49,9 +49,9 @@ function drawTriangles2D (ctx: CanvasRenderingContext2D, triangleWidth: number, 
 
     // Draw the second triangle
     ctx.beginPath()
-    ctx.moveTo(canvasWidth, triangleHeight) // Bottom left
+    ctx.moveTo(canvasWidth, triangleHeight) // Bottom right
     ctx.lineTo(canvasWidth - triangleWidth / 2, 0) // Top
-    ctx.lineTo(canvasWidth - triangleWidth, triangleHeight) // Bottom right
+    ctx.lineTo(canvasWidth - triangleWidth, triangleHeight) // Bottom left
     ctx.closePath()
     ctx.fillStyle = "#008000"
     ctx.fill()
