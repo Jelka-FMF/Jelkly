@@ -2,16 +2,23 @@
 
 <html lang="en">
     <head>
+        <title>Simulator</title>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="/blb/semantic.css" />
         <link rel="stylesheet" href="/sim/sim.css" />
     </head>
-    <body>
-        <div class="container">
-                <canvas id="canvas"></canvas>
-        </div>        
 
-         <script src="lights.js"></script>
-        
+    <body>
+        <div class="toolbar">
+            <div class="ui tiny buttons">
+                <button class="ui button active" id="mode-2d" tabindex="0">2D</button>
+                <button class="ui button" id="mode-3d" tabindex="0">3D</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <canvas class="sim" id="canvas"></canvas>
+        </div>
 
         <script src="/cdn/pxtsim.js"></script>
         <script src="/sim/sim.js"></script>

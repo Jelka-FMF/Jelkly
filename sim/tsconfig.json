@@ -5,10 +5,10 @@
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "declaration": true,
+        "moduleResolution": "node",
         "outFile": "../built/sim.js",
         "rootDir": "..",
         "newLine": "LF",
-        "moduleResolution": "node",
         "sourceMap": false,
         "lib": [
             "DOM",
@@ -18,6 +18,6 @@
         ]
     },
     "include": [
-        "*.ts"
+        "**/*.ts"
     ]
 }

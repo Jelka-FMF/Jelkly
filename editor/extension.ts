@@ -4,8 +4,13 @@
 import { createRoot } from "react-dom/client"
 import { renderSubmitButton, renderSubmitDialog } from "./components"
 
+const API_ROOT_DEVELOPMENT = "http://localhost:8001/editor/pxt/"
+const API_ROOT_PRODUCTION = "https://jelka.fmf.uni-lj.si/editor/pxt/"
+
+const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1"
+
 pxt.BrowserUtils.isLocalHost = () => false
-pxt.Cloud.apiRoot = "http://localhost:8001/editor/pxt/"
+pxt.Cloud.apiRoot = isLocalhost ? API_ROOT_DEVELOPMENT : API_ROOT_PRODUCTION
 
 pxt.editor.initExtensionsAsync = async function (opts) {
     opts.projectView.onEditorContentLoaded = () => {

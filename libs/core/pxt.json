@@ -8,8 +8,10 @@
         "pxt-helpers.ts",
         "pxt-python.d.ts",
         "pxt-python-helpers.ts",
+        "compatibility.d.ts",
         "sims.d.ts",
-        "types.d.ts"
+        "types.d.ts",
+        "namespaces.d.ts"
     ],
     "public": true
 }

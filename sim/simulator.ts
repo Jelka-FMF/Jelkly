@@ -1,4 +1,38 @@
 /// <reference path="../node_modules/pxt-core/built/pxtsim.d.ts"/>
+/// <reference path="../libs/core/types.d.ts"/>
+
+// Check how official and other simulators are implemented:
+// https://github.com/microsoft/pxt-microbit
+// https://github.com/microsoft/pxt-sample
+// https://github.com/microsoft/pxt-adafruit
+// https://github.com/microsoft/pxt-brainpad
+// https://github.com/letssteam/pxt-lets-steam
+// https://github.com/matthewtebbs-too/pxt-impetus
+// https://github.com/Buildbee/makecode
+
+const DEFAULT_FRAME_RATE = 50
+
+const enum SimulationMode {
+    "2D",
+    "3D",
+}
+
+let simulationMode: SimulationMode = SimulationMode["2D"]
+
+const mode2dButton = document.getElementById("mode-2d")
+const mode3dButton = document.getElementById("mode-3d")
+
+mode2dButton.addEventListener("click", () => {
+    simulationMode = SimulationMode["2D"]
+    mode2dButton.classList.add("active")
+    mode3dButton.classList.remove("active")
+})
+
+mode3dButton.addEventListener("click", () => {
+    simulationMode = SimulationMode["3D"]
+    mode3dButton.classList.add("active")
+    mode2dButton.classList.remove("active")
+})
 
 namespace pxsim {
     /**
@@ -20,42 +54,33 @@ namespace pxsim {
      * Do not store state anywhere else!
      */
     export class Board extends pxsim.BaseBoard {
-        public frameRate: number = 50
-
-        public testStateNum: number[]
-        public colorState: { red: number, green: number, blue: number }
-        public red: number
-        public green: number
-        public blue: number
-        public direction: string
-
-        // FIXME: This does not currently even work...
-        // Check how official and other simulators are implemented:
-        // https://github.com/microsoft/pxt-microbit
-        // https://github.com/microsoft/pxt-sample
-        // https://github.com/microsoft/pxt-adafruit
-        // https://github.com/microsoft/pxt-brainpad
-        // https://github.com/letssteam/pxt-lets-steam
-        // https://github.com/matthewtebbs-too/pxt-impetus
-        // https://github.com/Buildbee/makecode
+        public frameRate: number = DEFAULT_FRAME_RATE
+        public colorStates: { [index: number]: Color } = {}
 
         constructor () {
             super()
-
-            this.testStateNum = []
-            this.colorState = { red: 0, green: 0, blue: 0 }
-            this.red = 0
-            this.green = 0
-            this.blue = 0
         }
 
         initAsync (msg: pxsim.SimulatorRunMessage): Promise<void> {
-            // TODO: Initialize here
+            // Reset the board state
+            this.frameRate = DEFAULT_FRAME_RATE
+            this.colorStates = {}
+
+            // Draw the initial view
+            this.updateView()
 
             return Promise.resolve()
         }
 
         updateView () {
+            switch (simulationMode) {
+                case SimulationMode["2D"]:
+                    renderView2D()
+                    break
+                case SimulationMode["3D"]:
+                    renderView3D()
+                    break
+            }
         }
     }
 }
