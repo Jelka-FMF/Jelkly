@@ -65,7 +65,7 @@ declare namespace lights {
     //% block="set lights $lights to color $color"
     //% block.loc.sl="nastavi lučke $lights na barvo $color"
     //% shim=lights::setLights
-    function setLights(lights: number | {}, color: Color): void;
+    function setLights(lights: number | number[], color: Color): void;
 
     /**
      * Turn off all lights
@@ -87,7 +87,7 @@ declare namespace lights {
     //% block="colors of lights $lights"
     //% block.loc.sl="barve lučk $lights"
     //% shim=lights::getColors
-    function getColors(lights: number | {}): {};
+    function getColors(lights: number | number[]): Color[];
 
     /**
      * Get the color of the specified light
@@ -111,7 +111,7 @@ declare namespace lights {
     //% block="coordinates $axis of lights $lights"
     //% block.loc.sl="koordinate $axis lučk $lights"
     //% shim=lights::getCoordinates
-    function getCoordinates(axis: Axis, lights: number | {}): {};
+    function getCoordinates(axis: Axis, lights: number | number[]): number[];
 
     /**
      * Get the coordinate of the specified light
@@ -134,7 +134,7 @@ declare namespace lights {
     //% block="array of lights"
     //% block.loc.sl="seznam lučk"
     //% shim=lights::getLights
-    function getLights(): {};
+    function getLights(): number[];
 
     /**
      * Get a number of lights
@@ -172,7 +172,7 @@ declare namespace shapes {
     //% inlineInputMode=external
     //% r0.min=0
     //% shim=shapes::ball
-    function ball(x0: number, y0: number, z0: number, r0: number): {};
+    function ball(x0: number, y0: number, z0: number, r0: number): number[];
 
 }
 
