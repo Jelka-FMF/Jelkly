@@ -6,12 +6,16 @@ body {
     text-align: center;
     justify-content: center;
     margin-top: 1rem;
+    z-index: 999;
+    position: relative;
 }
 
 .container {
-    position: relative;
+    position: fixed;
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 4rem;
+    width: 100%;
+    height: 100%;
+    top: 0;
 }

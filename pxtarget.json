@@ -34,7 +34,7 @@
 
     "simulator": {
         "autoRun": true,
-        "aspectRatio": 0.8
+        "aspectRatio": 1.2
     },
 
     "appTheme": {
