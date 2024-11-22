@@ -93,6 +93,8 @@ namespace pxsim.lights {
         pxtrt.nullCheck(axis)
         pxtrt.nullCheck(lights)
 
+        console.log("get coordinates")
+
         // @ts-ignore: Different type during runtime
         if (lights.hasOwnProperty("data")) lights = lights.data
 

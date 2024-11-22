@@ -22,6 +22,8 @@ function renderView3D () {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     drawLights3D(ctx, canvas.width, canvas.height, sizeScale)
+
+    drawCoordinateSystem(ctx, canvas.width, canvas.height, sizeScale)
 }
 
 function onMouseDown (event: MouseEvent) {
@@ -65,9 +67,37 @@ function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, 
     // Rotation matrix
     let newx = Math.cos(alpha) * Math.cos(beta) * x - Math.sin(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
     let newy = Math.sin(alpha) * Math.cos(beta) * x + Math.cos(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
-    let newz = Math.sin(beta) * x + Math.cos(beta) * z
+    let newz = Math.sin(beta) * x + Math.cos(beta) * z 
 
     return { x: newx, y: newy, z: newz }
+}
+
+function drawCoordinateSystem (ctx: CanvasRenderingContext2D, canvasWidth: number, canvasHeight: number, scale: number) {
+    let origin = { x: canvasWidth / 2, y: canvasWidth / 2 , z: 3 * canvasHeight / 4 }
+    let xaxis = getRotatedCoordinates(100, 0, 0,  alpha, - beta)
+    let yaxis = getRotatedCoordinates(0, 100, 0,  alpha, - beta)
+    let zaxis = getRotatedCoordinates(0, 0, 100,  alpha, - beta)
+
+    // Draw x axis
+    ctx.beginPath();
+    ctx.moveTo(origin.x, origin.z);
+    ctx.lineTo(xaxis.x * scale + origin.x, xaxis.z * scale + origin.z);
+    ctx.strokeStyle = "red";
+    ctx.stroke();
+
+    // Draw y axis
+    ctx.moveTo(origin.x, origin.z);
+    ctx.lineTo(yaxis.x * scale + origin.x, yaxis.z * scale + origin.z);
+    ctx.strokeStyle = "green";
+    ctx.stroke();
+
+    // Draw z axis
+    ctx.moveTo(origin.x, origin.z);
+    ctx.lineTo(-zaxis.x * scale + origin.x, -zaxis.z * scale + origin.z);
+    ctx.strokeStyle = "blue";
+    ctx.stroke();
+
+    ctx.closePath();    
 }
 
 function drawLights3D (ctx: CanvasRenderingContext2D, canvasWidth: number, canvasHeight: number, scale: number) {
@@ -82,7 +112,7 @@ function drawLights3D (ctx: CanvasRenderingContext2D, canvasWidth: number, canva
             continue
         }
 
-        let y = canvasWidth / 2 + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).x
+        let y = canvasWidth / 2 + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).y
         let z = 3 * canvasHeight / 4 - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).z)
 
         if (color.green == 0 && color.red == 0 && color.blue == 0) {
