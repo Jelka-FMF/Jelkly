@@ -1,45 +1,44 @@
 function findFixedOffset (positions: Position[], offsetY: number, offsetZ: number) {
-    // center of the positions
-    var sumY = 0
-    var sumZ = 0
+    // Calculate center of the positions
+    let sumY = 0
+    let sumZ = 0
     for (const light of positions) {
         sumY += light.y
         sumZ += light.z
     }
-    var centerY = sumY / positions.length
+    const centerY = sumY / positions.length
 
-    // prezrcalimo čez simetralo in najdemo najmanjošo koordinato y
-    var lefty = Math.min(...positions.map(pos => centerY - Math.abs(centerY - pos.y))) - offsetY
-    var leftz = Math.min(...positions.map(light => light.y)) - offsetZ
-    // lefty in leftz sta sedaj spodnji levi kot jelka
+    // Mirror over the symmetrical axis and find the smallest y coordinate
+    // We use this as the bottom left corner of the tree triangle
+    const lefty = Math.min(...positions.map(pos => centerY - Math.abs(centerY - pos.y))) - offsetY
+    const leftz = Math.min(...positions.map(light => light.y)) - offsetZ
 
-    var biggestKoeficient = Math.max(...positions.map(pos =>
-        (pos.y - lefty) / (pos.z - leftz), //koeficient premice
-    ))
+    // Find the largest coefficient of the line
+    const largestCoefficient = Math.max(...positions.map(pos => (pos.y - lefty) / (pos.z - leftz)))
 
-    var a = centerY // približna simetrala
-    var b = biggestKoeficient * a // vrh jelke
-
-    return { y: a, z: b, ly: lefty, lz: leftz } // vrh jelke in lev rob jelke
+    return {
+        y: centerY, // Approximate symmetry axis
+        z: largestCoefficient * centerY, // Triangle top
+        ly: lefty, // Left corner of the triangle
+        lz: leftz, // Left corner of the triangle
+    }
 }
 
-function findOrigin (positions: Position[], maksZamikY: number, maksZamikZ: number) {
-    // generate possible shifts
-    var zamikiY = Array.from(Array(100).keys()).map(i => maksZamikY / (i + 1))
-    var zamikiZ = Array.from(Array(100).keys()).map(i => maksZamikZ / (i + 1))
+function findOrigin (positions: Position[], maxOffsetY: number, maxOffsetZ: number) {
+    // Generate possible shifts
+    const offsetsY = Array.from(Array(100).keys()).map(i => maxOffsetY / (i + 1))
+    const offsetsZ = Array.from(Array(100).keys()).map(i => maxOffsetZ / (i + 1))
 
-    var mozniZamiki = []
-    for (const zamiky of zamikiY) {
-        for (const zamikz of zamikiZ) {
-            mozniZamiki.push({ y: zamiky, z: zamikz }) // izhodisca
-            // mozniVrhovi.push(algorithm_fiksen_a(positions, zamiky, zamikz)); // vrhovi jelk
+    const possibleOffsets = []
+    for (const zamiky of offsetsY) {
+        for (const zamikz of offsetsZ) {
+            possibleOffsets.push({ y: zamiky, z: zamikz }) // Origins
         }
     }
-    var najmanjsaPloscina = Math.min(...mozniZamiki.map(zamik => findFixedOffset(positions, zamik.y, zamik.z).y * findFixedOffset(positions, zamik.y, zamik.z).z))
+    const lowestArea = Math.min(...possibleOffsets.map(zamik => findFixedOffset(positions, zamik.y, zamik.z).y * findFixedOffset(positions, zamik.y, zamik.z).z))
+    // console.debug("Triangle area", lowestArea)
 
-    //return the shift with the smallest area
-    var zamika = mozniZamiki.find(zamik => findFixedOffset(positions, zamik.y, zamik.z).y * findFixedOffset(positions, zamik.y, zamik.z).z === najmanjsaPloscina)
-    // console.debug("Triangle area", najmanjsaPloscina)
-    var izhodisce = findFixedOffset(positions, zamika.y, zamika.z)
-    return izhodisce
+    // Return the origin with the smallest area
+    const offsets = possibleOffsets.find(zamik => findFixedOffset(positions, zamik.y, zamik.z).y * findFixedOffset(positions, zamik.y, zamik.z).z === lowestArea)
+    return findFixedOffset(positions, offsets.y, offsets.z)
 }

@@ -49,14 +49,12 @@
         "organizationLogo": "./static/orglogowide.png",
         "organizationWideLogo": "./static/orglogowide.png",
 
-        "homeUrl": "https://makecode.microbit.org/",
-        "logoUrl": "https://makecode.microbit.org/",
-        "embedUrl": "https://makecode.microbit.org/",
-        "shareUrl": "https://makecode.microbit.org/share/",
-        "privacyUrl": "https://makecode.com/privacy",
-        "termsOfUseUrl": "https://makecode.com/termsofuse",
-        "contactUrl": "https://makecode.com/contact",
-        "feedbackUrl": "https://makecode.com/feedback",
+        "homeUrl": "https://jelkly.fmf.uni-lj.si/",
+        "logoUrl": "https://jelkly.fmf.uni-lj.si/",
+        "embedUrl": "https://jelkly.fmf.uni-lj.si/",
+        "shareUrl": "https://jelkly.fmf.uni-lj.si/",
+        "contactUrl": "https://jelka.fmf.uni-lj.si/contact",
+        "feedbackUrl": "https://jelka.fmf.uni-lj.si/contact",
         "githubUrl": "https://github.com/Jelka-FMF/Jelkly",
 
         "crowdinProject": "makecode",
@@ -68,7 +66,7 @@
             },
             {
                 "name": "Docs",
-                "path": "/docs"
+                "path": "/index"
             }
         ],
 
