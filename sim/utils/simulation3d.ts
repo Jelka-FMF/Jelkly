@@ -4,7 +4,7 @@ let lastMouseY = 0;
 let lastWheelY = 0;
 
 let rotationScale = 0.01
-let sizeScale = 4
+let sizeScale = 5
 
 let alpha = 0
 let beta = 0
