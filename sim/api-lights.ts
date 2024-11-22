@@ -18,8 +18,8 @@ namespace pxsim.lights {
         pxtrt.nullCheck(lights)
         pxtrt.nullCheck(color)
 
-        // @ts-ignore: Different type during runtime
-        if (lights.hasOwnProperty("data")) lights = lights.data
+        // Convert from RefCollection type
+        lights = fromRefCollection(lights)
 
         // Handle a single light case
         if (typeof lights === "number") lights = [lights]
@@ -53,13 +53,14 @@ namespace pxsim.lights {
     export function getColors (lights: number | number[]): Color[] {
         pxtrt.nullCheck(lights)
 
-        // @ts-ignore: Different type during runtime
-        if (lights.hasOwnProperty("data")) lights = lights.data
+        // Convert from RefCollection type
+        lights = fromRefCollection(lights)
 
         // Handle a single light case
         if (typeof lights === "number") lights = [lights]
 
-        return lights.map(light => board().colorStates[light] || { red: 0, green: 0, blue: 0 })
+        const colors = lights.map(light => board().colorStates[light] || { red: 0, green: 0, blue: 0 })
+        return toRefCollection(colors)
     }
 
     /**
@@ -73,9 +74,6 @@ namespace pxsim.lights {
     //% blockGap=40
     export function getColor (light: number): Color {
         pxtrt.nullCheck(light)
-
-        // @ts-ignore: Different type during runtime
-        if (light.hasOwnProperty("data")) light = light.data
 
         return board().colorStates[light] || { red: 0, green: 0, blue: 0 }
     }
@@ -93,15 +91,13 @@ namespace pxsim.lights {
         pxtrt.nullCheck(axis)
         pxtrt.nullCheck(lights)
 
-        console.log("get coordinates")
-
-        // @ts-ignore: Different type during runtime
-        if (lights.hasOwnProperty("data")) lights = lights.data
+        // Convert from RefCollection type
+        lights = fromRefCollection(lights)
 
         // Handle a single light case
         if (typeof lights === "number") lights = [lights]
 
-        return lights.map(light => {
+        const coordinates = lights.map(light => {
             switch (axis) {
                 case Axis.X:
                     return positions[light]?.x
@@ -111,6 +107,8 @@ namespace pxsim.lights {
                     return positions[light]?.z
             }
         })
+
+        return toRefCollection(coordinates)
     }
 
     /**
@@ -126,9 +124,6 @@ namespace pxsim.lights {
     export function getCoordinate (axis: Axis, light: number): number {
         pxtrt.nullCheck(axis)
         pxtrt.nullCheck(light)
-
-        // @ts-ignore: Different type during runtime
-        if (lights.hasOwnProperty("data")) lights = lights.data
 
         switch (axis) {
             case Axis.X:
@@ -148,7 +143,7 @@ namespace pxsim.lights {
     //% block="array of lights"
     //% block.loc.sl="seznam lučk"
     export function getLights (): number[] {
-        return Object.keys(positions).map(Number)
+        return toRefCollection(Object.keys(positions).map(Number))
     }
 
     /**

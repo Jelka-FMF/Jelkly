@@ -27,6 +27,6 @@ namespace pxsim.shapes {
             }
         }
 
-        return lights
+        return toRefCollection(lights)
     }
 }
