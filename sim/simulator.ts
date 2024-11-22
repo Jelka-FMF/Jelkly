@@ -22,17 +22,29 @@ let simulationMode: SimulationMode = SimulationMode["2D"]
 const mode2dButton = document.getElementById("mode-2d")
 const mode3dButton = document.getElementById("mode-3d")
 
+if (simulationMode === SimulationMode["2D"]) mode2dButton.classList.add("active")
+else if (simulationMode === SimulationMode["3D"]) mode3dButton.classList.add("active")
+
 mode2dButton.addEventListener("click", () => {
     simulationMode = SimulationMode["2D"]
     mode2dButton.classList.add("active")
     mode3dButton.classList.remove("active")
+    pxsim.board().updateView()
 })
 
 mode3dButton.addEventListener("click", () => {
     simulationMode = SimulationMode["3D"]
     mode3dButton.classList.add("active")
     mode2dButton.classList.remove("active")
+    pxsim.board().updateView()
 })
+
+const canvas = document.getElementById("canvas") as HTMLCanvasElement
+const ctx = canvas.getContext("2d")
+
+window.addEventListener("resize", () => {
+    pxsim.board().updateView()
+}, true)
 
 namespace pxsim {
     /**
