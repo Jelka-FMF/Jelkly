@@ -44,8 +44,6 @@ function drawTriangles2D (ctx: CanvasRenderingContext2D, triangleWidth: number, 
     const triangleBottom = (paddingZ + canvasHeight + triangleHeight) / 2
     const triangleTop = (paddingZ + canvasHeight - triangleHeight) / 2
 
-    console.log("Triangle bottom", triangleBottom, canvasHeight, paddingZ, triangleHeight)
-
     // Draw the first triangle
     ctx.beginPath()
     ctx.moveTo(paddingY, triangleBottom) // Bottom left

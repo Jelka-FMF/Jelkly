@@ -33,6 +33,7 @@ declare namespace colors {
     //% help=colors/random-color weight=50
     //% block="random color"
     //% block.loc.sl="naključna barva"
+    //% blockGap=40
     //% shim=colors::randomColor
     function randomColor(): Color;
 
@@ -52,6 +53,108 @@ declare namespace colors {
     //% blue.min=0 blue.max=255
     //% shim=colors::rgbColor
     function rgbColor(red: number, green: number, blue: number): Color;
+
+    /**
+     * Create an HSL color
+     * @param hue The hue of the color (0-360)
+     * @param saturation The saturation of the color (0-100)
+     * @param lightness The lightness of the color (0-100)
+     */
+    //% blockId=colors-hsl
+    //% help=colors/hsl-color weight=48
+    //% block="hue $hue | saturation $saturation | lightness $lightness"
+    //% block.loc.sl="odtenek $hue | nasičenost $saturation | svetlost $lightness"
+    //% inlineInputMode=external
+    //% hue.min=0 hue.max=360
+    //% saturation.min=0 saturation.max=100 saturation.defl=100
+    //% lightness.min=0 lightness.max=100 lightness.defl=50
+    //% shim=colors::hslColor
+    function hslColor(hue: number, saturation: number, lightness: number): Color;
+
+    /**
+     * Create an HSV color
+     * @param hue The hue of the color (0-360)
+     * @param saturation The saturation of the color (0-100)
+     * @param value The value of the color (0-100)
+     */
+    //% blockId=colors-hsv
+    //% help=colors/hsv-color weight=47
+    //% block="hue $hue | saturation $saturation | value $value"
+    //% block.loc.sl="odtenek $hue | nasičenost $saturation | vrednost $value"
+    //% inlineInputMode=external
+    //% hue.min=0 hue.max=360
+    //% saturation.min=0 saturation.max=100 saturation.defl=100
+    //% value.min=0 value.max=100 value.defl=100
+    //% shim=colors::hsvColor
+    function hsvColor(hue: number, saturation: number, value: number): Color;
+
+    /**
+     * Create a CMYK color
+     * @param cyan The intensity of cyan (0-100)
+     * @param magenta The intensity of magenta (0-100)
+     * @param yellow The intensity of yellow (0-100)
+     * @param key The intensity of black (0-100)
+     */
+    //% blockId=colors-cmyk
+    //% help=colors/cmyk-color weight=46
+    //% block="cyan $cyan | magenta $magenta | yellow $yellow | key $key"
+    //% block.loc.sl="cian $cyan | magenta $magenta | rumena $yellow | črna $key"
+    //% inlineInputMode=external
+    //% cyan.min=0 cyan.max=100
+    //% magenta.min=0 magenta.max=100
+    //% yellow.min=0 yellow.max=100
+    //% key.min=0 key.max=100
+    //% blockGap=40
+    //% shim=colors::cmykColor
+    function cmykColor(cyan: number, magenta: number, yellow: number, key: number): Color;
+
+    /**
+     * Get an RGB component of a color
+     * @param component The RGB component to get
+     * @param color The color to get the component from
+     */
+    //% blockId=colors-rgb-component
+    //% help=colors/rgb-component weight=45
+    //% block="component $component of $color"
+    //% block.loc.sl="komponenta $component od $color"
+    //% shim=colors::rgbComponent
+    function rgbComponent(component: RgbComponent, color: Color): number;
+
+    /**
+     * Get an HSL component of a color
+     * @param component The HSL component to get
+     * @param color The color to get the component from
+     */
+    //% blockId=colors-hsl-component
+    //% help=colors/hsl-component weight=44
+    //% block="component $component of $color"
+    //% block.loc.sl="komponenta $component od $color"
+    //% shim=colors::hslComponent
+    function hslComponent(component: HslComponent, color: Color): number;
+
+    /**
+     * Get an HSV component of a color
+     * @param component The HSV component to get
+     * @param color The color to get the component from
+     */
+    //% blockId=colors-hsv-component
+    //% help=colors/hsv-component weight=43
+    //% block="component $component of $color"
+    //% block.loc.sl="komponenta $component od $color"
+    //% shim=colors::hsvComponent
+    function hsvComponent(component: HsvComponent, color: Color): number;
+
+    /**
+     * Get a CMYK component of a color
+     * @param component The CMYK component to get
+     * @param color The color to get the component from
+     */
+    //% blockId=colors-cmyk-component
+    //% help=colors/cmyk-component weight=42
+    //% block="component $component of $color"
+    //% block.loc.sl="komponenta $component od $color"
+    //% shim=colors::cmykComponent
+    function cmykComponent(component: CmykComponent, color: Color): number;
 
 }
 declare namespace lights {
