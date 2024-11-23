@@ -55,15 +55,15 @@ jobs:
       - name: Download the artifact
         uses: actions/download-artifact@v4
 
-      - name: Delete existing release
+      - name: Delete an existing release
         run: |
-          gh release delete latest -y
-          git tag --delete latest
-          git push --delete origin latest
+          gh release delete latest --cleanup-tag --yes || true
+          git tag --delete latest || true
+          git push --delete origin latest || true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create new release
+      - name: Create a new release
         uses: softprops/action-gh-release@v2
         with:
           name: Latest Release
