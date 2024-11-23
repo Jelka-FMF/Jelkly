@@ -84,6 +84,11 @@ namespace pxsim {
             return Promise.resolve()
         }
 
+        screenshotAsync(width?: number): Promise<ImageData> {
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+            return Promise.resolve(imageData)
+        }
+
         updateView () {
             switch (simulationMode) {
                 case SimulationMode["2D"]:
