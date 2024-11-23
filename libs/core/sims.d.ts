@@ -277,6 +277,42 @@ declare namespace shapes {
     //% shim=shapes::ball
     function ball(x0: number, y0: number, z0: number, r0: number): number[];
 
+    /**
+     * Get a list of lights intersecting with the sphere
+     * @param x0 the x coordinate of the sphere center
+     * @param y0 the y coordinate of the sphere center
+     * @param z0 the z coordinate of the sphere center
+     * @param r0 the radius of the sphere
+     * @param d the thickness of the sphere
+     */
+    //% blockId=shapes-sphere
+    //% help=shapes/sphere weight=50
+    //% block="sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | and thickness $d"
+    //% block.loc.sl="sfera s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r0 | in debelino $d"
+    //% inlineInputMode=external
+    //% r0.min=0
+    //% shim=shapes::sphere
+    function sphere(x0: number, y0: number, z0: number, r0: number, d: number): number[];
+
+    /**
+     * Get a list of lights intersecting with the cilinder
+     * @param x0 the x coordinate of the cilinder center
+     * @param y0 the y coordinate of the cilinder center
+     * @param z0 the z coordinate of the cilinder center
+     * @param r the radius of the cilinder
+     * @param h the hight of the cilinder
+     * @param phi the first rotation of the cilinder
+     * @param ksi the second rotation of the cilinder
+     */
+    //% blockId=shapes-cilinder
+    //% help=shapes/cilinder weight=50
+    //% block="cilinder with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | hight $h0 | rotation $ksi | and rotation $phi"
+    //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r0 | višino $h0 | rotacijo $ksi | in rotacijo $phi"
+    //% inlineInputMode=external
+    //% r0.min=0
+    //% shim=shapes::cilinder
+    function cilinder(x0: number, y0: number, z0: number, r0: number, h0: number, phi: number, ksi: number): number[];
+
 }
 
 // Auto-generated. Do not edit. Really.

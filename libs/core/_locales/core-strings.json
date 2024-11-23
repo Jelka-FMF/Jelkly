@@ -73,6 +73,8 @@
   "parseInt|block": "parse to integer %text",
   "randint|block": "pick random %min|to %limit",
   "shapes.ball|block": "ball with center | x: $x0 | y: $y0 | z: $z0 | and radius $r0",
+  "shapes.cilinder|block": "cilinder with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | hight $h0 | rotation $ksi | and rotation $phi",
+  "shapes.sphere|block": "sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | and thickness $d",
   "shapes|block": "Shapes",
   "{id:category}Array": "Array",
   "{id:category}Arrays": "Arrays",
