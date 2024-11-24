@@ -82,16 +82,87 @@ namespace pxsim.shapes {
             let directionVector = {x:Math.cos(phi), y:Math.sin(phi), z:Math.sin(ksi)};
             let pointVector = {x:x - x0, y:y - y0, z:z - z0};
 
-            let deltaSquerd = ( // distance between point and line
+            let delta = ( // distance between point and line
                 Math.pow(directionVector.y * z - y * directionVector.z, 2) +
                 Math.pow(directionVector.z * x - z * directionVector.x, 2) +
                 Math.pow(directionVector.x * y - x * directionVector.y, 2)
-            ) / (Math.pow(directionVector.x, 2) + Math.pow(directionVector.y, 2) + Math.pow(directionVector.z, 2));
+            ) / Math.sqrt(Math.pow(directionVector.x, 2) + Math.pow(directionVector.y, 2) + Math.pow(directionVector.z, 2));
 
-            if (deltaSquerd <= r0 * r0) {
+            // remove lights that are too high or too low unsing plaines
+            let d1 = (directionVector.x * h0 + x0) * directionVector.x + (directionVector.y * h0 + y0) * directionVector.y + (directionVector.z * h0 + z0) * directionVector.z;
+            let d2 = (directionVector.x * -h0 + x0) * directionVector.x + (directionVector.y * -h0 + y0) * directionVector.y + (directionVector.z * -h0 + z0) * directionVector.z;
+
+            let d = (directionVector.x * pointVector.x + directionVector.y * pointVector.y + directionVector.z * pointVector.z);
+
+            if (delta <= r0 && d1 >= d && d2 <= d) {
                 lights.push(parseInt(index))
             }
             
+        }
+
+        return toRefCollection(lights)
+    }
+
+    /**
+     * Get a list of lights intersecting with the ball
+     * @param x0 the x coordinate of the point in plane
+     * @param y0 the y coordinate of the point in plane
+     * @param z0 the z coordinate of the point in plane
+     * @param a the x coordinate of direction vector
+     * @param b the y coordinate of direction vector
+     * @param c the z coordinate of direction vector
+     * @param d the thickness of the plane
+     */
+    //% blockId=shapes-plane
+    //% help=shapes/plane weight=50
+    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | direction vector | x: $a | y: $b | z: $c and thickness $d"
+    //% block.loc.sl="ravnina s točko | x: $x0 | y: $y0 | z: $z0 | smernim vektorjem | x: $a | y: $b | z: $c in debelino $d"
+    //% inlineInputMode=external
+    export function plane (x0: number, y0: number, z0: number, a: number, b: number, c: number, d: number): number[] {
+        const lights = []
+
+        for (const [index, { x, y, z }] of Object.entries(positions)) {
+            let distance = Math.abs((a * (x - x0) + b * (y - y0) + c * (z - z0)) / Math.sqrt(a * a + b * b + c * c));
+
+            if (distance <= d) {
+                lights.push(parseInt(index))
+            }
+        }
+
+        return toRefCollection(lights)
+    }
+
+    /**
+     * Get a list of in relation to the plane
+     * @param x0 the x coordinate of the point in plane
+     * @param y0 the y coordinate of the point in plane
+     * @param z0 the z coordinate of the point in plane
+     * @param a the x coordinate of direction vector
+     * @param b the y coordinate of direction vector
+     * @param c the z coordinate of direction vector
+     */
+    //% blockId=shapes-greaterPlane
+    //% help=shapes/greaterPlane weight=50
+    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | and direction vector | x: $a | y: $b | z: $c"
+    //% block.loc.sl="večje od ravnine s točko | x: $x0 | y: $y0 | z: $z0 | in smernim vektorjem | x: $a | y: $b | z: $c"
+    //% inlineInputMode=external
+    export function greaterPlane (x0: number, y0: number, z0: number, a: number, b: number, c: number): number[] {
+        let operation = ">"
+        const lights = []
+
+        let d = a * x0 + b * y0 + c * z0;
+
+        for (const [index, { x, y, z }] of Object.entries(positions)) {
+            if (operation == ">") {
+                if (a * x + b * y + c * z > d) {
+                    lights.push(parseInt(index))
+                }
+            }
+            if (operation == "<") {
+                if (a * x + b * y + c * z < d) {
+                    lights.push(parseInt(index))
+                }
+            }
         }
 
         return toRefCollection(lights)

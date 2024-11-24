@@ -74,6 +74,8 @@
   "randint|block": "pick random %min|to %limit",
   "shapes.ball|block": "ball with center | x: $x0 | y: $y0 | z: $z0 | and radius $r0",
   "shapes.cilinder|block": "cilinder with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | hight $h0 | rotation $ksi | and rotation $phi",
+  "shapes.greaterPlane|block": "plane with point | x: $x0 | y: $y0 | z: $z0 | and direction vector | x: $a | y: $b | z: $c",
+  "shapes.plane|block": "plane with point | x: $x0 | y: $y0 | z: $z0 | direction vector | x: $a | y: $b | z: $c and thickness $d",
   "shapes.sphere|block": "sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | and thickness $d",
   "shapes|block": "Shapes",
   "{id:category}Array": "Array",
