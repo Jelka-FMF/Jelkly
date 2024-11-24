@@ -311,7 +311,7 @@ declare namespace shapes {
     //% inlineInputMode=external
     //% r0.min=0
     //% shim=shapes::cilinder
-    function cilinder(x0: number, y0: number, z0: number, r0: number, h0: number, phi: number, ksi: number): number[];
+    function cilinder(x0: number, y0: number, z0: number, r0: number, h0: number, psi: number, ksi: number): number[];
 
     /**
      * Get a list of lights intersecting with the ball

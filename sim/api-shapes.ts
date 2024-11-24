@@ -75,24 +75,27 @@ namespace pxsim.shapes {
     //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r0 | višino $h0 | rotacijo $ksi | in rotacijo $phi"
     //% inlineInputMode=external
     //% r0.min=0
-    export function cilinder (x0: number, y0: number, z0: number, r0: number, h0:number, phi:number, ksi:number): number[] {
+    export function cilinder (x0: number, y0: number, z0: number, r0: number, h0:number, psi:number, ksi:number): number[] {
         const lights = []
+        const a = Math.cos(psi) * Math.cos(ksi);
+        const b = Math.sin(psi) * Math.cos(ksi);
+        const c = Math.sin(ksi);
 
         for (const [index, { x, y, z }] of Object.entries(positions)) {
-            let directionVector = {x:Math.cos(phi), y:Math.sin(phi), z:Math.sin(ksi)};
+            // let directionVector = {x:Math.cos(phi) * Ma, y:Math.sin(phi), z:Math.sin(ksi)};
             let pointVector = {x:x - x0, y:y - y0, z:z - z0};
 
             let delta = ( // distance between point and line
-                Math.pow(directionVector.y * z - y * directionVector.z, 2) +
-                Math.pow(directionVector.z * x - z * directionVector.x, 2) +
-                Math.pow(directionVector.x * y - x * directionVector.y, 2)
-            ) / Math.sqrt(Math.pow(directionVector.x, 2) + Math.pow(directionVector.y, 2) + Math.pow(directionVector.z, 2));
+                Math.pow(b * z - y * c, 2) +
+                Math.pow(c * x - z * a, 2) +
+                Math.pow(a * y - x * b, 2)
+            ) / Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2));
 
             // remove lights that are too high or too low unsing plaines
-            let d1 = (directionVector.x * h0 + x0) * directionVector.x + (directionVector.y * h0 + y0) * directionVector.y + (directionVector.z * h0 + z0) * directionVector.z;
-            let d2 = (directionVector.x * -h0 + x0) * directionVector.x + (directionVector.y * -h0 + y0) * directionVector.y + (directionVector.z * -h0 + z0) * directionVector.z;
+            let d1 = (a * h0 + x0) * a + (b * h0 + y0) * b + (c * h0 + z0) * c;
+            let d2 = (a * -h0 + x0) * a + (b * -h0 + y0) * b + (c * -h0 + z0) * c;
 
-            let d = (directionVector.x * pointVector.x + directionVector.y * pointVector.y + directionVector.z * pointVector.z);
+            let d = (a * a + b * b + c * c);
 
             if (delta <= r0 && d1 >= d && d2 <= d) {
                 lights.push(parseInt(index))
@@ -119,14 +122,14 @@ namespace pxsim.shapes {
     //% inlineInputMode=external
     export function plane (x0: number, y0: number, z0: number, psi:number, ksi:number, d: number): number[] {
         const lights = []
-        const a = Math.cos(psi);
-        const b = Math.sin(psi);
+        const a = Math.cos(psi) * Math.cos(ksi);
+        const b = Math.sin(psi) * Math.cos(ksi);
         const c = Math.sin(ksi);
 
         for (const [index, { x, y, z }] of Object.entries(positions)) {
             let distance = Math.abs((a * (x - x0) + b * (y - y0) + c * (z - z0)) / Math.sqrt(a * a + b * b + c * c));
 
-            if (distance <= d) {
+            if (distance <= d / 2) {
                 lights.push(parseInt(index))
             }
         }
