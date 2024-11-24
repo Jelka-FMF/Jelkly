@@ -66,7 +66,7 @@ function onMouseMove (event: MouseEvent) {
 function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, beta: number) {
     // Rotation matrix
     let newx = Math.cos(alpha) * Math.cos(beta) * x - Math.sin(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
-    let newy = Math.sin(alpha) * Math.cos(beta) * x + Math.cos(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
+    let newy = Math.sin(alpha) * Math.cos(beta) * x + Math.cos(alpha) * y - Math.sin(alpha) * Math.sin(beta) * z
     let newz = Math.sin(beta) * x + Math.cos(beta) * z 
 
     return { x: newx, y: newy, z: newz }
@@ -80,20 +80,20 @@ function drawCoordinateSystem (ctx: CanvasRenderingContext2D, canvasWidth: numbe
 
     // Draw x axis
     ctx.beginPath();
-    ctx.moveTo(origin.x, origin.z);
-    ctx.lineTo(xaxis.x * scale + origin.x, xaxis.z * scale + origin.z);
+    ctx.moveTo(origin.y, origin.z);
+    ctx.lineTo(xaxis.y * scale + origin.y, xaxis.z * scale + origin.z);
     ctx.strokeStyle = "red";
     ctx.stroke();
 
     // Draw y axis
-    ctx.moveTo(origin.x, origin.z);
-    ctx.lineTo(yaxis.x * scale + origin.x, yaxis.z * scale + origin.z);
+    ctx.moveTo(origin.y, origin.z);
+    ctx.lineTo(yaxis.y * scale + origin.y, yaxis.z * scale + origin.z);
     ctx.strokeStyle = "green";
     ctx.stroke();
 
     // Draw z axis
-    ctx.moveTo(origin.x, origin.z);
-    ctx.lineTo(-zaxis.x * scale + origin.x, -zaxis.z * scale + origin.z);
+    ctx.moveTo(origin.y, origin.z);
+    ctx.lineTo( - zaxis.y * scale + origin.y, - zaxis.z * scale + origin.z);
     ctx.strokeStyle = "blue";
     ctx.stroke();
 

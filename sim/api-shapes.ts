@@ -154,9 +154,9 @@ namespace pxsim.shapes {
         let operation = ">"
         const lights = []
 
-        const a = Math.cos(psi); //rotacija okoli z osi 
-        const b = Math.sin(psi);
-        const c = Math.sin(ksi); // rotacija proti z osi
+        const a = Math.cos(psi) * Math.cos(ksi);
+        const b = Math.sin(psi) * Math.cos(ksi);
+        const c = Math.sin(ksi);
 
         const d = a * x0 + b * y0 + c * z0;
 
