@@ -318,35 +318,33 @@ declare namespace shapes {
      * @param x0 the x coordinate of the point in plane
      * @param y0 the y coordinate of the point in plane
      * @param z0 the z coordinate of the point in plane
-     * @param a the x coordinate of direction vector
-     * @param b the y coordinate of direction vector
-     * @param c the z coordinate of direction vector
+     * @param psi the first rotation of the plane
+     * @param ksi the second rotation of the plane
      * @param d the thickness of the plane
      */
     //% blockId=shapes-plane
     //% help=shapes/plane weight=50
-    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | direction vector | x: $a | y: $b | z: $c and thickness $d"
-    //% block.loc.sl="ravnina s točko | x: $x0 | y: $y0 | z: $z0 | smernim vektorjem | x: $a | y: $b | z: $c in debelino $d"
+    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | and thickness $d"
+    //% block.loc.sl="ravnina s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | in debelino $d"
     //% inlineInputMode=external
     //% shim=shapes::plane
-    function plane(x0: number, y0: number, z0: number, a: number, b: number, c: number, d: number): number[];
+    function plane(x0: number, y0: number, z0: number, psi: number, ksi: number, d: number): number[];
 
     /**
      * Get a list of in relation to the plane
      * @param x0 the x coordinate of the point in plane
      * @param y0 the y coordinate of the point in plane
      * @param z0 the z coordinate of the point in plane
-     * @param a the x coordinate of direction vector
-     * @param b the y coordinate of direction vector
-     * @param c the z coordinate of direction vector
+     * @param psi the first rotation of the plane
+     * @param ksi the second rotation of the plane
      */
     //% blockId=shapes-greaterPlane
     //% help=shapes/greaterPlane weight=50
-    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | and direction vector | x: $a | y: $b | z: $c"
-    //% block.loc.sl="večje od ravnine s točko | x: $x0 | y: $y0 | z: $z0 | in smernim vektorjem | x: $a | y: $b | z: $c"
+    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi"
+    //% block.loc.sl="večje od ravnine s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi"
     //% inlineInputMode=external
     //% shim=shapes::greaterPlane
-    function greaterPlane(x0: number, y0: number, z0: number, a: number, b: number, c: number): number[];
+    function greaterPlane(x0: number, y0: number, z0: number, psi: number, ksi: number): number[];
 
 }
 
