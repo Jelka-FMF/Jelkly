@@ -168,4 +168,52 @@ namespace pxsim.lights {
         const lights = Object.keys(positions)
         return Math.floor(Math.random() * lights.length)
     }
+
+    //% blockId=lights-where
+    //% help=lights/lights-where weight=10
+    //% block="lights where axis $axis $relation $value of $lights"
+    //% block.loc.sl="lučke kjer je $axis $relation $value od $lights"
+    export function lightsWhere (axis:Axis, relation: Relation, value:number, lights: number[]) {
+        pxtrt.nullCheck(axis)
+        pxtrt.nullCheck(relation)
+        pxtrt.nullCheck(value)
+        pxtrt.nullCheck(lights)
+
+        // Convert from RefCollection type
+        lights = fromRefCollection(lights)
+
+        const result = lights.filter(light => {
+            switch (axis) {
+                case Axis.X:
+                    switch (relation) {
+                        case Relation.Equal:
+                            return positions[light]?.x == value
+                        case Relation.Greater:
+                            return positions[light]?.x > value
+                        case Relation.Less:
+                            return positions[light]?.x < value
+                    }
+                case Axis.Y:
+                    switch (relation) {
+                        case Relation.Equal:
+                            return positions[light]?.y == value
+                        case Relation.Greater:
+                            return positions[light]?.y > value
+                        case Relation.Less:
+                            return positions[light]?.y < value
+                    }
+                case Axis.Z:
+                    switch (relation) {
+                        case Relation.Equal:
+                            return positions[light]?.z == value
+                        case Relation.Greater:
+                            return positions[light]?.z > value
+                        case Relation.Less:
+                            return positions[light]?.z < value
+                    }
+            }
+        })
+
+        return toRefCollection(result)
+    }
 }

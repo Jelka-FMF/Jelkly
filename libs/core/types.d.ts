@@ -7,6 +7,15 @@ declare const enum Axis {
     Z,
 }
 
+declare const enum Relation {
+    //% block="="
+    Equal,
+    //% block=">"
+    Greater,
+    //% block="<"
+    Less,
+}
+
 declare const enum RgbComponent {
     //% block="red"
     //% block.loc.sl="rdeča"

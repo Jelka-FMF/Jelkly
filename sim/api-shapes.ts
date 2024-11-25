@@ -72,7 +72,7 @@ namespace pxsim.shapes {
      */
     //% blockId=shapes-cilinder
     //% help=shapes/cilinder weight=50
-    //% block="cilinder with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | hight $h0 | rotation $ksi | and rotation $phi"
+    //% block="cilinder with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | hight $h0 | rotation $ksi  and rotation $phi"
     //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r0 | višino $h0 | rotacijo $ksi | in rotacijo $phi"
     //% inlineInputMode=external
     //% r0.min=0
