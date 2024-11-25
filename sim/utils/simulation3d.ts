@@ -118,11 +118,6 @@ function drawLights3D (ctx: CanvasRenderingContext2D, canvasWidth: number, canva
         if (color.green == 0 && color.red == 0 && color.blue == 0) {
             // Skip turned off lights
             // To se nikoli ne zgodi
-            console.log("LUČKA")
-            ctx.beginPath()
-            ctx.fillStyle = `rgb(${128}, ${250}, ${128})`
-            ctx.arc(y, z, 1, 0, 2 * Math.PI)
-            ctx.fill()
             continue
         }
 
