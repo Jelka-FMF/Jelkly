@@ -19,11 +19,13 @@ function renderView3D () {
     canvas.setAttribute("width", (canvas.getBoundingClientRect().width * 5).toString())
     canvas.setAttribute("height", (canvas.getBoundingClientRect().height * 5).toString())
 
+    const origin = { x: canvas.width / 2, y: canvas.width / 2 , z: 3 * canvas.height / 4 } // kje na canvasu je izhodišče jelke
+
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    drawLights3D(ctx, canvas.width, canvas.height, sizeScale)
+    drawLights3D(ctx, origin, sizeScale)
 
-    drawCoordinateSystem(ctx, canvas.width, canvas.height, sizeScale)
+    drawCoordinateSystem(ctx, origin, sizeScale)
 }
 
 function onMouseDown (event: MouseEvent) {
@@ -72,8 +74,8 @@ function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, 
     return { x: newx, y: newy, z: newz }
 }
 
-function drawCoordinateSystem (ctx: CanvasRenderingContext2D, canvasWidth: number, canvasHeight: number, scale: number) {
-    let origin = { x: canvasWidth / 2, y: canvasWidth / 2 , z: 3 * canvasHeight / 4 }
+function drawCoordinateSystem (ctx: CanvasRenderingContext2D, origin: Position , scale: number) {
+
     let xaxis = getRotatedCoordinates(100, 0, 0,  alpha, - beta)
     let yaxis = getRotatedCoordinates(0, 100, 0,  alpha, - beta)
     let zaxis = getRotatedCoordinates(0, 0, 100,  alpha, - beta)
@@ -100,7 +102,7 @@ function drawCoordinateSystem (ctx: CanvasRenderingContext2D, canvasWidth: numbe
     ctx.closePath();    
 }
 
-function drawLights3D (ctx: CanvasRenderingContext2D, canvasWidth: number, canvasHeight: number, scale: number) {
+function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: number) {
     // const relativeHeight = Math.max(...Object.values(positions).map(pos => pos.y)) - Math.min(...Object.values(positions).map(pos => pos.y))
     // const lowestPoint = Math.max(...Object.values(positions).map(pos => pos.y))
 
@@ -112,8 +114,8 @@ function drawLights3D (ctx: CanvasRenderingContext2D, canvasWidth: number, canva
             continue
         }
 
-        let y = canvasWidth / 2 + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).y
-        let z = 3 * canvasHeight / 4 - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).z)
+        let y = origin.y + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).y
+        let z = origin.z - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).z)
 
         if (color.green == 0 && color.red == 0 && color.blue == 0) {
             // Skip turned off lights

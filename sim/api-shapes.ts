@@ -1,3 +1,4 @@
+function degToRad (deg:number) {return deg / 180 * Math.PI}
 /**
  * Provides access to shapes and objects.
  */
@@ -77,6 +78,8 @@ namespace pxsim.shapes {
     //% r0.min=0
     export function cilinder (x0: number, y0: number, z0: number, r0: number, h0:number, psi:number, ksi:number): number[] {
         const lights = []
+        psi = degToRad(psi)
+        ksi = degToRad(ksi)
         const a = Math.cos(psi) * Math.cos(ksi);
         const b = Math.sin(psi) * Math.cos(ksi);
         const c = Math.sin(ksi);
@@ -122,6 +125,8 @@ namespace pxsim.shapes {
     //% inlineInputMode=external
     export function plane (x0: number, y0: number, z0: number, psi:number, ksi:number, d: number): number[] {
         const lights = []
+        psi = degToRad(psi)
+        ksi = degToRad(ksi)
         const a = Math.cos(psi) * Math.cos(ksi);
         const b = Math.sin(psi) * Math.cos(ksi);
         const c = Math.sin(ksi);
@@ -153,6 +158,9 @@ namespace pxsim.shapes {
     export function greaterPlane (x0: number, y0: number, z0: number, psi:number, ksi:number,): number[] {
         let operation = ">"
         const lights = []
+
+        psi = degToRad(psi);
+        ksi = degToRad(ksi)
 
         const a = Math.cos(psi) * Math.cos(ksi);
         const b = Math.sin(psi) * Math.cos(ksi);
