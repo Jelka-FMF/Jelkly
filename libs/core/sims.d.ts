@@ -8,6 +8,8 @@ declare namespace basic {
     //% help=basic/set-frame-rate weight=50
     //% block="set frame rate to $frameRate"
     //% block.loc.sl="nastavi število sličic na sekundo na $frameRate"
+    //% jsdoc.loc.sl="Nastavi število sličic na sekundo"
+    //% frameRate.loc.sl="število sličic na sekundo"
     //% frameRate.min=1 frameRate.max=60 frameRate.defl=50
     //% shim=basic::setFrameRate
     function setFrameRate(frameRate: number): void;
@@ -15,12 +17,18 @@ declare namespace basic {
     /**
      * Repeat the code for each frame
      * @param handler the code to execute
+     * @param handler.frameNumber the current frame number
+     * @param handler.timeSinceStart the time since start in milliseconds
      */
     //% blockId=pxt-on-frame afterOnStart=true
     //% draggableParameters="reporter"
     //% help=basic/on-frame weight=55
     //% block="on frame $frameNumber $timeSinceStart"
     //% block.loc.sl="na sličici $frameNumber $timeSinceStart"
+    //% jsdoc.loc.sl="Izvedi kodo ob vsaki sličici"
+    //% handler.loc.sl="koda za izvedbo"
+    //% frameNumber.loc.sl="trenutna številka sličice"
+    //% timeSinceStart.loc.sl="čas od začetka v milisekundah"
     //% shim=basic::onFrame
     function onFrame(handler: (frameNumber: number, timeSinceStart: number) => void): void;
 
@@ -33,6 +41,7 @@ declare namespace colors {
     //% help=colors/random-color weight=55
     //% block="random color"
     //% block.loc.sl="naključna barva"
+    //% jsdoc.loc.sl="Ustvari naključno barvo"
     //% blockGap=40
     //% shim=colors::randomColor
     function randomColor(): Color;
@@ -47,6 +56,10 @@ declare namespace colors {
     //% help=colors/rgb-color weight=45
     //% block="red $red | green $green | blue $blue"
     //% block.loc.sl="rdeča $red | zelena $green | modra $blue"
+    //% jsdoc.loc.sl="Ustvari RGB barvo"
+    //% red.loc.sl="vrednost rdeče komponente (0-255)"
+    //% green.loc.sl="vrednost zelene komponente (0-255)"
+    //% blue.loc.sl="vrednost modre komponente (0-255)"
     //% inlineInputMode=external
     //% red.min=0 red.max=255
     //% green.min=0 green.max=255
@@ -64,6 +77,10 @@ declare namespace colors {
     //% help=colors/hsl-color weight=44
     //% block="hue $hue | saturation $saturation | lightness $lightness"
     //% block.loc.sl="odtenek $hue | nasičenost $saturation | svetlost $lightness"
+    //% jsdoc.loc.sl="Ustvari HSL barvo"
+    //% hue.loc.sl="barvni odtenek (0-360)"
+    //% saturation.loc.sl="nasičenost barve (0-100)"
+    //% lightness.loc.sl="svetlost barve (0-100)"
     //% inlineInputMode=external
     //% hue.min=0 hue.max=360
     //% saturation.min=0 saturation.max=100 saturation.defl=100
@@ -81,6 +98,10 @@ declare namespace colors {
     //% help=colors/hsv-color weight=43
     //% block="hue $hue | saturation $saturation | value $value"
     //% block.loc.sl="odtenek $hue | nasičenost $saturation | vrednost $value"
+    //% jsdoc.loc.sl="Ustvari HSV barvo"
+    //% hue.loc.sl="barvni odtenek (0-360)"
+    //% saturation.loc.sl="nasičenost barve (0-100)"
+    //% value.loc.sl="vrednost barve (0-100)"
     //% inlineInputMode=external
     //% hue.min=0 hue.max=360
     //% saturation.min=0 saturation.max=100 saturation.defl=100
@@ -99,6 +120,11 @@ declare namespace colors {
     //% help=colors/cmyk-color weight=42
     //% block="cyan $cyan | magenta $magenta | yellow $yellow | key $key"
     //% block.loc.sl="cian $cyan | magenta $magenta | rumena $yellow | črna $key"
+    //% jsdoc.loc.sl="Ustvari CMYK barvo"
+    //% cyan.loc.sl="vrednost cian komponente (0-100)"
+    //% magenta.loc.sl="vrednost magenta komponente (0-100)"
+    //% yellow.loc.sl="vrednost rumene komponente (0-100)"
+    //% key.loc.sl="vrednost črne komponente (0-100)"
     //% inlineInputMode=external
     //% cyan.min=0 cyan.max=100
     //% magenta.min=0 magenta.max=100
@@ -117,6 +143,9 @@ declare namespace colors {
     //% help=colors/rgb-component weight=35
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
+    //% jsdoc.loc.sl="Vrne vrednost RGB komponente barve"
+    //% component.loc.sl="komponenta barve"
+    //% color.loc.sl="želena barva"
     //% shim=colors::rgbComponent
     function rgbComponent(component: RgbComponent, color: Color): number;
 
@@ -129,6 +158,9 @@ declare namespace colors {
     //% help=colors/hsl-component weight=34
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
+    //% jsdoc.loc.sl="Vrne vrednost HSL komponente barve"
+    //% component.loc.sl="komponenta barve"
+    //% color.loc.sl="želena barva"
     //% shim=colors::hslComponent
     function hslComponent(component: HslComponent, color: Color): number;
 
@@ -141,6 +173,9 @@ declare namespace colors {
     //% help=colors/hsv-component weight=33
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
+    //% jsdoc.loc.sl="Vrne vrednost HSV komponente barve"
+    //% component.loc.sl="komponenta barve"
+    //% color.loc.sl="želena barva"
     //% shim=colors::hsvComponent
     function hsvComponent(component: HsvComponent, color: Color): number;
 
@@ -153,6 +188,9 @@ declare namespace colors {
     //% help=colors/cmyk-component weight=32
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
+    //% jsdoc.loc.sl="Vrne vrednost CMYK komponente barve"
+    //% component.loc.sl="komponenta barve"
+    //% color.loc.sl="želena barva"
     //% shim=colors::cmykComponent
     function cmykComponent(component: CmykComponent, color: Color): number;
 
@@ -167,6 +205,9 @@ declare namespace lights {
     //% help=lights/set-lights weight=55
     //% block="set lights $lights to color $color"
     //% block.loc.sl="nastavi lučke $lights na barvo $color"
+    //% jsdoc.loc.sl="Nastavi lučke na določeno barvo"
+    //% lights.loc.sl="lučka ali seznam lučk, ki jih želimo nastaviti"
+    //% color.loc.sl="barva lučk, ki jo želimo nastaviti"
     //% shim=lights::setLights
     function setLights(lights: number | number[], color: Color): void;
 
@@ -177,6 +218,7 @@ declare namespace lights {
     //% help=lights/reset-lights weight=54
     //% block="reset lights"
     //% block.loc.sl="ponastavi lučke"
+    //% jsdoc.loc.sl="Izklopi vse lučke"
     //% blockGap=40
     //% shim=lights::resetLights
     function resetLights(): void;
@@ -189,6 +231,8 @@ declare namespace lights {
     //% help=lights/get-colors weight=25
     //% block="colors of lights $lights"
     //% block.loc.sl="barve lučk $lights"
+    //% jsdoc.loc.sl="Vrni barve izbranih lučk"
+    //% lights.loc.sl="lučke, za katere želimo barve"
     //% shim=lights::getColors
     function getColors(lights: number | number[]): Color[];
 
@@ -200,6 +244,8 @@ declare namespace lights {
     //% help=lights/get-color weight=24
     //% block="color of light $light"
     //% block.loc.sl="barva lučke $light"
+    //% jsdoc.loc.sl="Vrni barvo izbrane lučke"
+    //% light.loc.sl="lučka, za katero želimo barvo"
     //% blockGap=40
     //% shim=lights::getColor
     function getColor(light: number): Color;
@@ -207,12 +253,15 @@ declare namespace lights {
     /**
      * Get the coordinates of the specified lights
      * @param axis the coordinate axis to get the value of
-     * @param lights the lights to get the coordinate of
+     * @param lights the lights to get the coordinates of
      */
     //% blockId=lights-get-coordinates
     //% help=lights/get-coordinates weight=15
     //% block="coordinates $axis of lights $lights"
     //% block.loc.sl="koordinate $axis lučk $lights"
+    //% jsdoc.loc.sl="Vrni koordinate izbranih lučk"
+    //% axis.loc.sl="os, za katero želimo koordinate"
+    //% lights.loc.sl="lučke, za katere želimo koordinate"
     //% shim=lights::getCoordinates
     function getCoordinates(axis: Axis, lights: number | number[]): number[];
 
@@ -225,6 +274,9 @@ declare namespace lights {
     //% help=lights/get-coordinate weight=14
     //% block="coordinate $axis of light $light"
     //% block.loc.sl="koordinata $axis lučke $light"
+    //% jsdoc.loc.sl="Vrni koordinato izbrane lučke"
+    //% axis.loc.sl="os, za katero želimo koordinato"
+    //% light.loc.sl="lučka, za katero želimo koordinato"
     //% blockGap=40
     //% shim=lights::getCoordinate
     function getCoordinate(axis: Axis, light: number): number;
@@ -236,6 +288,7 @@ declare namespace lights {
     //% help=lights/list-lights weight=45
     //% block="array of lights"
     //% block.loc.sl="seznam lučk"
+    //% jsdoc.loc.sl="Vrni seznam lučk"
     //% shim=lights::getLights
     function getLights(): number[];
 
@@ -246,6 +299,7 @@ declare namespace lights {
     //% help=lights/count-lights weight=44
     //% block="number of lights"
     //% block.loc.sl="število lučk"
+    //% jsdoc.loc.sl="Vrni število lučk"
     //% shim=lights::countLights
     function countLights(): number;
 
@@ -256,6 +310,7 @@ declare namespace lights {
     //% help=lights/random-light weight=43
     //% block="random light"
     //% block.loc.sl="naključna lučka"
+    //% jsdoc.loc.sl="Vrni naključno lučko"
     //% blockGap=40
     //% shim=lights::randomLight
     function randomLight(): number;
@@ -271,6 +326,11 @@ declare namespace lights {
     //% help=lights/lights-where weight=35
     //% block="lights where $axis $relation $value from $lights"
     //% block.loc.sl="lučke kjer je $axis $relation $value iz $lights"
+    //% jsdoc.loc.sl="Najdi lučke, kjer je vrednost osi v določenem razmerju"
+    //% axis.loc.sl="os, ki jo želimo preveriti"
+    //% relation.loc.sl="razmerje, ki ga želimo preveriti"
+    //% value.loc.sl="vrednost, ki jo želimo preveriti"
+    //% lights.loc.sl="seznam lučk, ki jih želimo preveriti"
     //% inlineInputMode="inline"
     //% lights.shadow="lights-list" lights.defl="lights-list"
     //% blockGap=40
@@ -290,6 +350,11 @@ declare namespace shapes {
     //% help=shapes/ball weight=50
     //% block="ball with center | x: $x0 | y: $y0 | z: $z0 | and radius $r"
     //% block.loc.sl="krogla s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo s kroglo"
+    //% x0.loc.sl="x koordinata središča krogle"
+    //% y0.loc.sl="y koordinata središča krogle"
+    //% z0.loc.sl="z koordinata središča krogle"
+    //% r.loc.sl="polmer krogle"
     //% inlineInputMode=external
     //% r.min=0
     //% shim=shapes::ball
@@ -307,6 +372,12 @@ declare namespace shapes {
     //% help=shapes/sphere weight=50
     //% block="sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r | and thickness $d"
     //% block.loc.sl="sfera s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r | in debelino $d"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo s sfero"
+    //% x0.loc.sl="x koordinata središča sfere"
+    //% y0.loc.sl="y koordinata središča sfere"
+    //% z0.loc.sl="z koordinata središča sfere"
+    //% r.loc.sl="polmer sfere"
+    //% d.loc.sl="debelina sfere"
     //% inlineInputMode=external
     //% r.min=0
     //% d.min=0
@@ -327,6 +398,14 @@ declare namespace shapes {
     //% help=shapes/cilinder weight=50
     //% block="cilinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h"
     //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | polmerom $r | in višino $h"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z valjem"
+    //% x0.loc.sl="x koordinata središča valja"
+    //% y0.loc.sl="y koordinata središča valja"
+    //% z0.loc.sl="z koordinata središča valja"
+    //% psi.loc.sl="prva rotacija valja (v stopinjah)"
+    //% ksi.loc.sl="druga rotacija valja (v stopinjah)"
+    //% r.loc.sl="polmer valja"
+    //% h.loc.sl="višina valja"
     //% inlineInputMode=external
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
@@ -348,6 +427,13 @@ declare namespace shapes {
     //% help=shapes/plane weight=50
     //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | and thickness $d"
     //% block.loc.sl="ravnina s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | in debelino $d"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z ravnino"
+    //% x0.loc.sl="x koordinata točke na ravnini"
+    //% y0.loc.sl="y koordinata točke na ravnini"
+    //% z0.loc.sl="z koordinata točke na ravnini"
+    //% psi.loc.sl="prva rotacija ravnine (v stopinjah)"
+    //% ksi.loc.sl="druga rotacija ravnine (v stopinjah)"
+    //% d.loc.sl="debelina ravnine"
     //% inlineInputMode=external
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
@@ -368,6 +454,13 @@ declare namespace shapes {
     //% help=shapes/plane-relation weight=50
     //% block="$relation than plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi"
     //% block.loc.sl="$relation od ravnine s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki so v razmerju z ravnino"
+    //% relation.loc.sl="razmerje, ki ga želimo preveriti"
+    //% x0.loc.sl="x koordinata točke na ravnini"
+    //% y0.loc.sl="y koordinata točke na ravnini"
+    //% z0.loc.sl="z koordinata točke na ravnini"
+    //% psi.loc.sl="prva rotacija ravnine (v stopinjah)"
+    //% ksi.loc.sl="druga rotacija ravnine (v stopinjah)"
     //% inlineInputMode=external
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360

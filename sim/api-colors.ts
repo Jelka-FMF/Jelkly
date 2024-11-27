@@ -12,6 +12,7 @@ namespace pxsim.colors {
     //% help=colors/random-color weight=55
     //% block="random color"
     //% block.loc.sl="naključna barva"
+    //% jsdoc.loc.sl="Ustvari naključno barvo"
     //% blockGap=40
     export function randomColor (): Color {
         // Generate random RGB values
@@ -38,6 +39,10 @@ namespace pxsim.colors {
     //% help=colors/rgb-color weight=45
     //% block="red $red | green $green | blue $blue"
     //% block.loc.sl="rdeča $red | zelena $green | modra $blue"
+    //% jsdoc.loc.sl="Ustvari RGB barvo"
+    //% red.loc.sl="vrednost rdeče komponente (0-255)"
+    //% green.loc.sl="vrednost zelene komponente (0-255)"
+    //% blue.loc.sl="vrednost modre komponente (0-255)"
     //% inlineInputMode=external
     //% red.min=0 red.max=255
     //% green.min=0 green.max=255
@@ -56,6 +61,10 @@ namespace pxsim.colors {
     //% help=colors/hsl-color weight=44
     //% block="hue $hue | saturation $saturation | lightness $lightness"
     //% block.loc.sl="odtenek $hue | nasičenost $saturation | svetlost $lightness"
+    //% jsdoc.loc.sl="Ustvari HSL barvo"
+    //% hue.loc.sl="barvni odtenek (0-360)"
+    //% saturation.loc.sl="nasičenost barve (0-100)"
+    //% lightness.loc.sl="svetlost barve (0-100)"
     //% inlineInputMode=external
     //% hue.min=0 hue.max=360
     //% saturation.min=0 saturation.max=100 saturation.defl=100
@@ -74,6 +83,10 @@ namespace pxsim.colors {
     //% help=colors/hsv-color weight=43
     //% block="hue $hue | saturation $saturation | value $value"
     //% block.loc.sl="odtenek $hue | nasičenost $saturation | vrednost $value"
+    //% jsdoc.loc.sl="Ustvari HSV barvo"
+    //% hue.loc.sl="barvni odtenek (0-360)"
+    //% saturation.loc.sl="nasičenost barve (0-100)"
+    //% value.loc.sl="vrednost barve (0-100)"
     //% inlineInputMode=external
     //% hue.min=0 hue.max=360
     //% saturation.min=0 saturation.max=100 saturation.defl=100
@@ -93,6 +106,11 @@ namespace pxsim.colors {
     //% help=colors/cmyk-color weight=42
     //% block="cyan $cyan | magenta $magenta | yellow $yellow | key $key"
     //% block.loc.sl="cian $cyan | magenta $magenta | rumena $yellow | črna $key"
+    //% jsdoc.loc.sl="Ustvari CMYK barvo"
+    //% cyan.loc.sl="vrednost cian komponente (0-100)"
+    //% magenta.loc.sl="vrednost magenta komponente (0-100)"
+    //% yellow.loc.sl="vrednost rumene komponente (0-100)"
+    //% key.loc.sl="vrednost črne komponente (0-100)"
     //% inlineInputMode=external
     //% cyan.min=0 cyan.max=100
     //% magenta.min=0 magenta.max=100
@@ -112,6 +130,9 @@ namespace pxsim.colors {
     //% help=colors/rgb-component weight=35
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
+    //% jsdoc.loc.sl="Vrne vrednost RGB komponente barve"
+    //% component.loc.sl="komponenta barve"
+    //% color.loc.sl="želena barva"
     export function rgbComponent (component: RgbComponent, color: Color): number {
         switch (component) {
             case RgbComponent.Red:
@@ -132,6 +153,9 @@ namespace pxsim.colors {
     //% help=colors/hsl-component weight=34
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
+    //% jsdoc.loc.sl="Vrne vrednost HSL komponente barve"
+    //% component.loc.sl="komponenta barve"
+    //% color.loc.sl="želena barva"
     export function hslComponent (component: HslComponent, color: Color): number {
         const { hue, saturation, lightness } = rgbToHsl(color)
         switch (component) {
@@ -153,6 +177,9 @@ namespace pxsim.colors {
     //% help=colors/hsv-component weight=33
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
+    //% jsdoc.loc.sl="Vrne vrednost HSV komponente barve"
+    //% component.loc.sl="komponenta barve"
+    //% color.loc.sl="želena barva"
     export function hsvComponent (component: HsvComponent, color: Color): number {
         const { hue, saturation, value } = rgbToHsv(color)
         switch (component) {
@@ -174,6 +201,9 @@ namespace pxsim.colors {
     //% help=colors/cmyk-component weight=32
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
+    //% jsdoc.loc.sl="Vrne vrednost CMYK komponente barve"
+    //% component.loc.sl="komponenta barve"
+    //% color.loc.sl="želena barva"
     export function cmykComponent (component: CmykComponent, color: Color): number {
         const { cyan, magenta, yellow, key } = rgbToCmyk(color)
         switch (component) {

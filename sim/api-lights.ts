@@ -14,6 +14,9 @@ namespace pxsim.lights {
     //% help=lights/set-lights weight=55
     //% block="set lights $lights to color $color"
     //% block.loc.sl="nastavi lučke $lights na barvo $color"
+    //% jsdoc.loc.sl="Nastavi lučke na določeno barvo"
+    //% lights.loc.sl="lučka ali seznam lučk, ki jih želimo nastaviti"
+    //% color.loc.sl="barva lučk, ki jo želimo nastaviti"
     export function setLights (lights: number | number[], color: Color): void {
         // Check for null values
         pxtrt.nullCheck(lights)
@@ -38,6 +41,7 @@ namespace pxsim.lights {
     //% help=lights/reset-lights weight=54
     //% block="reset lights"
     //% block.loc.sl="ponastavi lučke"
+    //% jsdoc.loc.sl="Izklopi vse lučke"
     //% blockGap=40
     export function resetLights (): void {
         board().colorStates = {}
@@ -51,6 +55,8 @@ namespace pxsim.lights {
     //% help=lights/get-colors weight=25
     //% block="colors of lights $lights"
     //% block.loc.sl="barve lučk $lights"
+    //% jsdoc.loc.sl="Vrni barve izbranih lučk"
+    //% lights.loc.sl="lučke, za katere želimo barve"
     export function getColors (lights: number | number[]): Color[] {
         // Check for null values
         pxtrt.nullCheck(lights)
@@ -74,6 +80,8 @@ namespace pxsim.lights {
     //% help=lights/get-color weight=24
     //% block="color of light $light"
     //% block.loc.sl="barva lučke $light"
+    //% jsdoc.loc.sl="Vrni barvo izbrane lučke"
+    //% light.loc.sl="lučka, za katero želimo barvo"
     //% blockGap=40
     export function getColor (light: number): Color {
         // Check for null values
@@ -86,12 +94,15 @@ namespace pxsim.lights {
     /**
      * Get the coordinates of the specified lights
      * @param axis the coordinate axis to get the value of
-     * @param lights the lights to get the coordinate of
+     * @param lights the lights to get the coordinates of
      */
     //% blockId=lights-get-coordinates
     //% help=lights/get-coordinates weight=15
     //% block="coordinates $axis of lights $lights"
     //% block.loc.sl="koordinate $axis lučk $lights"
+    //% jsdoc.loc.sl="Vrni koordinate izbranih lučk"
+    //% axis.loc.sl="os, za katero želimo koordinate"
+    //% lights.loc.sl="lučke, za katere želimo koordinate"
     export function getCoordinates (axis: Axis, lights: number | number[]): number[] {
         // Check for null values
         pxtrt.nullCheck(axis)
@@ -126,6 +137,9 @@ namespace pxsim.lights {
     //% help=lights/get-coordinate weight=14
     //% block="coordinate $axis of light $light"
     //% block.loc.sl="koordinata $axis lučke $light"
+    //% jsdoc.loc.sl="Vrni koordinato izbrane lučke"
+    //% axis.loc.sl="os, za katero želimo koordinato"
+    //% light.loc.sl="lučka, za katero želimo koordinato"
     //% blockGap=40
     export function getCoordinate (axis: Axis, light: number): number {
         // Check for null values
@@ -149,6 +163,7 @@ namespace pxsim.lights {
     //% help=lights/list-lights weight=45
     //% block="array of lights"
     //% block.loc.sl="seznam lučk"
+    //% jsdoc.loc.sl="Vrni seznam lučk"
     export function getLights (): number[] {
         return toRefCollection(Object.keys(positions).map(Number))
     }
@@ -160,6 +175,7 @@ namespace pxsim.lights {
     //% help=lights/count-lights weight=44
     //% block="number of lights"
     //% block.loc.sl="število lučk"
+    //% jsdoc.loc.sl="Vrni število lučk"
     export function countLights (): number {
         return Object.keys(positions).length
     }
@@ -171,6 +187,7 @@ namespace pxsim.lights {
     //% help=lights/random-light weight=43
     //% block="random light"
     //% block.loc.sl="naključna lučka"
+    //% jsdoc.loc.sl="Vrni naključno lučko"
     //% blockGap=40
     export function randomLight (): number {
         const lights = Object.keys(positions)
@@ -188,6 +205,11 @@ namespace pxsim.lights {
     //% help=lights/lights-where weight=35
     //% block="lights where $axis $relation $value from $lights"
     //% block.loc.sl="lučke kjer je $axis $relation $value iz $lights"
+    //% jsdoc.loc.sl="Najdi lučke, kjer je vrednost osi v določenem razmerju"
+    //% axis.loc.sl="os, ki jo želimo preveriti"
+    //% relation.loc.sl="razmerje, ki ga želimo preveriti"
+    //% value.loc.sl="vrednost, ki jo želimo preveriti"
+    //% lights.loc.sl="seznam lučk, ki jih želimo preveriti"
     //% inlineInputMode="inline"
     //% lights.shadow="lights-list" lights.defl="lights-list"
     //% blockGap=40

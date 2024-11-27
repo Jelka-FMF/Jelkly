@@ -20,6 +20,11 @@ namespace pxsim.shapes {
     //% help=shapes/ball weight=50
     //% block="ball with center | x: $x0 | y: $y0 | z: $z0 | and radius $r"
     //% block.loc.sl="krogla s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo s kroglo"
+    //% x0.loc.sl="x koordinata središča krogle"
+    //% y0.loc.sl="y koordinata središča krogle"
+    //% z0.loc.sl="z koordinata središča krogle"
+    //% r.loc.sl="polmer krogle"
     //% inlineInputMode=external
     //% r.min=0
     export function ball (x0: number, y0: number, z0: number, r: number): number[] {
@@ -46,6 +51,12 @@ namespace pxsim.shapes {
     //% help=shapes/sphere weight=50
     //% block="sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r | and thickness $d"
     //% block.loc.sl="sfera s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r | in debelino $d"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo s sfero"
+    //% x0.loc.sl="x koordinata središča sfere"
+    //% y0.loc.sl="y koordinata središča sfere"
+    //% z0.loc.sl="z koordinata središča sfere"
+    //% r.loc.sl="polmer sfere"
+    //% d.loc.sl="debelina sfere"
     //% inlineInputMode=external
     //% r.min=0
     //% d.min=0
@@ -79,6 +90,14 @@ namespace pxsim.shapes {
     //% help=shapes/cilinder weight=50
     //% block="cilinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h"
     //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | polmerom $r | in višino $h"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z valjem"
+    //% x0.loc.sl="x koordinata središča valja"
+    //% y0.loc.sl="y koordinata središča valja"
+    //% z0.loc.sl="z koordinata središča valja"
+    //% psi.loc.sl="prva rotacija valja (v stopinjah)"
+    //% ksi.loc.sl="druga rotacija valja (v stopinjah)"
+    //% r.loc.sl="polmer valja"
+    //% h.loc.sl="višina valja"
     //% inlineInputMode=external
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
@@ -135,6 +154,13 @@ namespace pxsim.shapes {
     //% help=shapes/plane weight=50
     //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | and thickness $d"
     //% block.loc.sl="ravnina s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | in debelino $d"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z ravnino"
+    //% x0.loc.sl="x koordinata točke na ravnini"
+    //% y0.loc.sl="y koordinata točke na ravnini"
+    //% z0.loc.sl="z koordinata točke na ravnini"
+    //% psi.loc.sl="prva rotacija ravnine (v stopinjah)"
+    //% ksi.loc.sl="druga rotacija ravnine (v stopinjah)"
+    //% d.loc.sl="debelina ravnine"
     //% inlineInputMode=external
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
@@ -173,6 +199,13 @@ namespace pxsim.shapes {
     //% help=shapes/plane-relation weight=50
     //% block="$relation than plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi"
     //% block.loc.sl="$relation od ravnine s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi"
+    //% jsdoc.loc.sl="Vrni seznam lučk, ki so v razmerju z ravnino"
+    //% relation.loc.sl="razmerje, ki ga želimo preveriti"
+    //% x0.loc.sl="x koordinata točke na ravnini"
+    //% y0.loc.sl="y koordinata točke na ravnini"
+    //% z0.loc.sl="z koordinata točke na ravnini"
+    //% psi.loc.sl="prva rotacija ravnine (v stopinjah)"
+    //% ksi.loc.sl="druga rotacija ravnine (v stopinjah)"
     //% inlineInputMode=external
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
