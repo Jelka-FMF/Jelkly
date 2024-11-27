@@ -8,8 +8,6 @@ declare const enum Axis {
 }
 
 declare const enum Relation {
-    //% block="="
-    Equal,
     //% block=">"
     Greater,
     //% block="<"

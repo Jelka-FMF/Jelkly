@@ -30,7 +30,7 @@ declare namespace colors {
      * Generate a random color
      */
     //% blockId=colors-random
-    //% help=colors/random-color weight=50
+    //% help=colors/random-color weight=55
     //% block="random color"
     //% block.loc.sl="naključna barva"
     //% blockGap=40
@@ -39,12 +39,12 @@ declare namespace colors {
 
     /**
      * Create an RGB color
-     * @param red The intensity of red (0-255)
-     * @param green The intensity of green (0-255)
-     * @param blue The intensity of blue (0-255)
+     * @param red the intensity of red (0-255)
+     * @param green the intensity of green (0-255)
+     * @param blue the intensity of blue (0-255)
      */
     //% blockId=colors-rgb
-    //% help=colors/rgb-color weight=49
+    //% help=colors/rgb-color weight=45
     //% block="red $red | green $green | blue $blue"
     //% block.loc.sl="rdeča $red | zelena $green | modra $blue"
     //% inlineInputMode=external
@@ -56,12 +56,12 @@ declare namespace colors {
 
     /**
      * Create an HSL color
-     * @param hue The hue of the color (0-360)
-     * @param saturation The saturation of the color (0-100)
-     * @param lightness The lightness of the color (0-100)
+     * @param hue the hue of the color (0-360)
+     * @param saturation the saturation of the color (0-100)
+     * @param lightness the lightness of the color (0-100)
      */
     //% blockId=colors-hsl
-    //% help=colors/hsl-color weight=48
+    //% help=colors/hsl-color weight=44
     //% block="hue $hue | saturation $saturation | lightness $lightness"
     //% block.loc.sl="odtenek $hue | nasičenost $saturation | svetlost $lightness"
     //% inlineInputMode=external
@@ -73,12 +73,12 @@ declare namespace colors {
 
     /**
      * Create an HSV color
-     * @param hue The hue of the color (0-360)
-     * @param saturation The saturation of the color (0-100)
-     * @param value The value of the color (0-100)
+     * @param hue the hue of the color (0-360)
+     * @param saturation the saturation of the color (0-100)
+     * @param value the value of the color (0-100)
      */
     //% blockId=colors-hsv
-    //% help=colors/hsv-color weight=47
+    //% help=colors/hsv-color weight=43
     //% block="hue $hue | saturation $saturation | value $value"
     //% block.loc.sl="odtenek $hue | nasičenost $saturation | vrednost $value"
     //% inlineInputMode=external
@@ -90,13 +90,13 @@ declare namespace colors {
 
     /**
      * Create a CMYK color
-     * @param cyan The intensity of cyan (0-100)
-     * @param magenta The intensity of magenta (0-100)
-     * @param yellow The intensity of yellow (0-100)
-     * @param key The intensity of black (0-100)
+     * @param cyan the intensity of cyan (0-100)
+     * @param magenta the intensity of magenta (0-100)
+     * @param yellow the intensity of yellow (0-100)
+     * @param key the intensity of black (0-100)
      */
     //% blockId=colors-cmyk
-    //% help=colors/cmyk-color weight=46
+    //% help=colors/cmyk-color weight=42
     //% block="cyan $cyan | magenta $magenta | yellow $yellow | key $key"
     //% block.loc.sl="cian $cyan | magenta $magenta | rumena $yellow | črna $key"
     //% inlineInputMode=external
@@ -110,11 +110,11 @@ declare namespace colors {
 
     /**
      * Get an RGB component of a color
-     * @param component The RGB component to get
-     * @param color The color to get the component from
+     * @param component the RGB component to get
+     * @param color the color to get the component from
      */
     //% blockId=colors-rgb-component
-    //% help=colors/rgb-component weight=45
+    //% help=colors/rgb-component weight=35
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
     //% shim=colors::rgbComponent
@@ -122,11 +122,11 @@ declare namespace colors {
 
     /**
      * Get an HSL component of a color
-     * @param component The HSL component to get
-     * @param color The color to get the component from
+     * @param component the HSL component to get
+     * @param color the color to get the component from
      */
     //% blockId=colors-hsl-component
-    //% help=colors/hsl-component weight=44
+    //% help=colors/hsl-component weight=34
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
     //% shim=colors::hslComponent
@@ -134,11 +134,11 @@ declare namespace colors {
 
     /**
      * Get an HSV component of a color
-     * @param component The HSV component to get
-     * @param color The color to get the component from
+     * @param component the HSV component to get
+     * @param color the color to get the component from
      */
     //% blockId=colors-hsv-component
-    //% help=colors/hsv-component weight=43
+    //% help=colors/hsv-component weight=33
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
     //% shim=colors::hsvComponent
@@ -146,11 +146,11 @@ declare namespace colors {
 
     /**
      * Get a CMYK component of a color
-     * @param component The CMYK component to get
-     * @param color The color to get the component from
+     * @param component the CMYK component to get
+     * @param color the color to get the component from
      */
     //% blockId=colors-cmyk-component
-    //% help=colors/cmyk-component weight=42
+    //% help=colors/cmyk-component weight=32
     //% block="component $component of $color"
     //% block.loc.sl="komponenta $component od $color"
     //% shim=colors::cmykComponent
@@ -160,7 +160,7 @@ declare namespace colors {
 declare namespace lights {
     /**
      * Set lights to the specified color
-     * @param lights a single light or an array of lights AAA
+     * @param lights a single light or an array of lights
      * @param color the RGB color of the lights to set
      */
     //% blockId=lights-set
@@ -174,7 +174,7 @@ declare namespace lights {
      * Turn off all lights
      */
     //% blockId=lights-reset
-    //% help=lights/reset-lights weight=50
+    //% help=lights/reset-lights weight=54
     //% block="reset lights"
     //% block.loc.sl="ponastavi lučke"
     //% blockGap=40
@@ -186,7 +186,7 @@ declare namespace lights {
      * @param lights the lights to get the colors of
      */
     //% blockId=lights-get-colors
-    //% help=lights/get-colors weight=45
+    //% help=lights/get-colors weight=25
     //% block="colors of lights $lights"
     //% block.loc.sl="barve lučk $lights"
     //% shim=lights::getColors
@@ -197,7 +197,7 @@ declare namespace lights {
      * @param light the light to get the color of
      */
     //% blockId=lights-get-color
-    //% help=lights/get-color weight=40
+    //% help=lights/get-color weight=24
     //% block="color of light $light"
     //% block.loc.sl="barva lučke $light"
     //% blockGap=40
@@ -210,7 +210,7 @@ declare namespace lights {
      * @param lights the lights to get the coordinate of
      */
     //% blockId=lights-get-coordinates
-    //% help=lights/get-coordinates weight=35
+    //% help=lights/get-coordinates weight=15
     //% block="coordinates $axis of lights $lights"
     //% block.loc.sl="koordinate $axis lučk $lights"
     //% shim=lights::getCoordinates
@@ -222,7 +222,7 @@ declare namespace lights {
      * @param light the light to get the coordinate of
      */
     //% blockId=lights-get-coordinate
-    //% help=lights/get-coordinate weight=30
+    //% help=lights/get-coordinate weight=14
     //% block="coordinate $axis of light $light"
     //% block.loc.sl="koordinata $axis lučke $light"
     //% blockGap=40
@@ -233,7 +233,7 @@ declare namespace lights {
      * Get a list of lights
      */
     //% blockId=lights-list
-    //% help=lights/list-lights weight=25
+    //% help=lights/list-lights weight=45
     //% block="array of lights"
     //% block.loc.sl="seznam lučk"
     //% shim=lights::getLights
@@ -243,7 +243,7 @@ declare namespace lights {
      * Get a number of lights
      */
     //% blockId=lights-count
-    //% help=lights/count-lights weight=20
+    //% help=lights/count-lights weight=44
     //% block="number of lights"
     //% block.loc.sl="število lučk"
     //% shim=lights::countLights
@@ -253,16 +253,27 @@ declare namespace lights {
      * Get a random light
      */
     //% blockId=lights-random
-    //% help=lights/random-light weight=15
+    //% help=lights/random-light weight=43
     //% block="random light"
     //% block.loc.sl="naključna lučka"
+    //% blockGap=40
     //% shim=lights::randomLight
     function randomLight(): number;
 
+    /**
+     * Find lights where the specified axis value meets the specified relation
+     * @param axis the axis to check
+     * @param relation the relation to check
+     * @param value the value to compare against
+     * @param lights the list of lights to check
+     */
     //% blockId=lights-where
-    //% help=lights/lights-where weight=10
-    //% block="lights where axis $axis $relation $value of $lights"
-    //% block.loc.sl="lučke kjer je $axis $relation $value od $lights"
+    //% help=lights/lights-where weight=35
+    //% block="lights where $axis $relation $value from $lights"
+    //% block.loc.sl="lučke kjer je $axis $relation $value iz $lights"
+    //% inlineInputMode="inline"
+    //% lights.shadow="lights-list" lights.defl="lights-list"
+    //% blockGap=40
     //% shim=lights::lightsWhere
     function lightsWhere(axis: Axis, relation: Relation, value: number, lights: number[]): number[];
 
@@ -273,60 +284,64 @@ declare namespace shapes {
      * @param x0 the x coordinate of the ball center
      * @param y0 the y coordinate of the ball center
      * @param z0 the z coordinate of the ball center
-     * @param r0 the radius of the ball
+     * @param r the radius of the ball
      */
     //% blockId=shapes-ball
     //% help=shapes/ball weight=50
-    //% block="ball with center | x: $x0 | y: $y0 | z: $z0 | and radius $r0"
-    //% block.loc.sl="krogla s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r0"
+    //% block="ball with center | x: $x0 | y: $y0 | z: $z0 | and radius $r"
+    //% block.loc.sl="krogla s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r"
     //% inlineInputMode=external
-    //% r0.min=0
+    //% r.min=0
     //% shim=shapes::ball
-    function ball(x0: number, y0: number, z0: number, r0: number): number[];
+    function ball(x0: number, y0: number, z0: number, r: number): number[];
 
     /**
      * Get a list of lights intersecting with the sphere
      * @param x0 the x coordinate of the sphere center
      * @param y0 the y coordinate of the sphere center
      * @param z0 the z coordinate of the sphere center
-     * @param r0 the radius of the sphere
+     * @param r the radius of the sphere
      * @param d the thickness of the sphere
      */
     //% blockId=shapes-sphere
     //% help=shapes/sphere weight=50
-    //% block="sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | and thickness $d"
-    //% block.loc.sl="sfera s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r0 | in debelino $d"
+    //% block="sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r | and thickness $d"
+    //% block.loc.sl="sfera s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r | in debelino $d"
     //% inlineInputMode=external
-    //% r0.min=0
+    //% r.min=0
+    //% d.min=0
     //% shim=shapes::sphere
-    function sphere(x0: number, y0: number, z0: number, r0: number, d: number): number[];
+    function sphere(x0: number, y0: number, z0: number, r: number, d: number): number[];
 
     /**
      * Get a list of lights intersecting with the cilinder
      * @param x0 the x coordinate of the cilinder center
      * @param y0 the y coordinate of the cilinder center
      * @param z0 the z coordinate of the cilinder center
+     * @param psi the first rotation of the cilinder (in degrees)
+     * @param ksi the second rotation of the cilinder (in degrees)
      * @param r the radius of the cilinder
-     * @param h the hight of the cilinder
-     * @param phi the first rotation of the cilinder
-     * @param ksi the second rotation of the cilinder
+     * @param h the height of the cilinder
      */
     //% blockId=shapes-cilinder
     //% help=shapes/cilinder weight=50
-    //% block="cilinder with center | x: $x0 | y: $y0 | z: $z0 | radius $r0 | hight $h0 | rotation $ksi  and rotation $phi"
-    //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r0 | višino $h0 | rotacijo $ksi | in rotacijo $phi"
+    //% block="cilinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h"
+    //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | polmerom $r | in višino $h"
     //% inlineInputMode=external
-    //% r0.min=0
+    //% psi.min=0 psi.max=360
+    //% ksi.min=0 ksi.max=360
+    //% r.min=0
+    //% h.min=0
     //% shim=shapes::cilinder
-    function cilinder(x0: number, y0: number, z0: number, r0: number, h0: number, psi: number, ksi: number): number[];
+    function cilinder(x0: number, y0: number, z0: number, psi: number, ksi: number, r: number, h: number): number[];
 
     /**
-     * Get a list of lights intersecting with the ball
-     * @param x0 the x coordinate of the point in plane
-     * @param y0 the y coordinate of the point in plane
-     * @param z0 the z coordinate of the point in plane
-     * @param psi the first rotation of the plane
-     * @param ksi the second rotation of the plane
+     * Get a list of lights intersecting with the plane
+     * @param x0 the x coordinate of the point in the plane
+     * @param y0 the y coordinate of the point in the plane
+     * @param z0 the z coordinate of the point in the plane
+     * @param psi the first rotation of the plane (in degrees)
+     * @param ksi the second rotation of the plane (in degrees)
      * @param d the thickness of the plane
      */
     //% blockId=shapes-plane
@@ -334,24 +349,30 @@ declare namespace shapes {
     //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | and thickness $d"
     //% block.loc.sl="ravnina s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | in debelino $d"
     //% inlineInputMode=external
+    //% psi.min=0 psi.max=360
+    //% ksi.min=0 ksi.max=360
+    //% d.min=0
     //% shim=shapes::plane
     function plane(x0: number, y0: number, z0: number, psi: number, ksi: number, d: number): number[];
 
     /**
-     * Get a list of in relation to the plane
+     * Get a list of lights in relation to the plane
+     * @param relation the relation to compare against
      * @param x0 the x coordinate of the point in plane
      * @param y0 the y coordinate of the point in plane
      * @param z0 the z coordinate of the point in plane
-     * @param psi the first rotation of the plane
-     * @param ksi the second rotation of the plane
+     * @param psi the first rotation of the plane (in degrees)
+     * @param ksi the second rotation of the plane (in degrees)
      */
-    //% blockId=shapes-greaterPlane
-    //% help=shapes/greaterPlane weight=50
-    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi"
-    //% block.loc.sl="večje od ravnine s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi"
+    //% blockId=shapes-plane-relation
+    //% help=shapes/plane-relation weight=50
+    //% block="$relation than plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi"
+    //% block.loc.sl="$relation od ravnine s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi"
     //% inlineInputMode=external
-    //% shim=shapes::greaterPlane
-    function greaterPlane(x0: number, y0: number, z0: number, psi: number, ksi: number): number[];
+    //% psi.min=0 psi.max=360
+    //% ksi.min=0 ksi.max=360
+    //% shim=shapes::planeRelation
+    function planeRelation(x0: number, y0: number, z0: number, psi: number, ksi: number, relation: Relation): number[];
 
 }
 

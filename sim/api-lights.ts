@@ -7,7 +7,7 @@
 namespace pxsim.lights {
     /**
      * Set lights to the specified color
-     * @param lights a single light or an array of lights AAA
+     * @param lights a single light or an array of lights
      * @param color the RGB color of the lights to set
      */
     //% blockId=lights-set
@@ -15,6 +15,7 @@ namespace pxsim.lights {
     //% block="set lights $lights to color $color"
     //% block.loc.sl="nastavi lučke $lights na barvo $color"
     export function setLights (lights: number | number[], color: Color): void {
+        // Check for null values
         pxtrt.nullCheck(lights)
         pxtrt.nullCheck(color)
 
@@ -34,7 +35,7 @@ namespace pxsim.lights {
      * Turn off all lights
      */
     //% blockId=lights-reset
-    //% help=lights/reset-lights weight=50
+    //% help=lights/reset-lights weight=54
     //% block="reset lights"
     //% block.loc.sl="ponastavi lučke"
     //% blockGap=40
@@ -47,10 +48,11 @@ namespace pxsim.lights {
      * @param lights the lights to get the colors of
      */
     //% blockId=lights-get-colors
-    //% help=lights/get-colors weight=45
+    //% help=lights/get-colors weight=25
     //% block="colors of lights $lights"
     //% block.loc.sl="barve lučk $lights"
     export function getColors (lights: number | number[]): Color[] {
+        // Check for null values
         pxtrt.nullCheck(lights)
 
         // Convert from RefCollection type
@@ -59,6 +61,7 @@ namespace pxsim.lights {
         // Handle a single light case
         if (typeof lights === "number") lights = [lights]
 
+        // Get colors of the lights
         const colors = lights.map(light => board().colorStates[light] || { red: 0, green: 0, blue: 0 })
         return toRefCollection(colors)
     }
@@ -68,13 +71,15 @@ namespace pxsim.lights {
      * @param light the light to get the color of
      */
     //% blockId=lights-get-color
-    //% help=lights/get-color weight=40
+    //% help=lights/get-color weight=24
     //% block="color of light $light"
     //% block.loc.sl="barva lučke $light"
     //% blockGap=40
     export function getColor (light: number): Color {
+        // Check for null values
         pxtrt.nullCheck(light)
 
+        // Get color of the light
         return board().colorStates[light] || { red: 0, green: 0, blue: 0 }
     }
 
@@ -84,10 +89,11 @@ namespace pxsim.lights {
      * @param lights the lights to get the coordinate of
      */
     //% blockId=lights-get-coordinates
-    //% help=lights/get-coordinates weight=35
+    //% help=lights/get-coordinates weight=15
     //% block="coordinates $axis of lights $lights"
     //% block.loc.sl="koordinate $axis lučk $lights"
     export function getCoordinates (axis: Axis, lights: number | number[]): number[] {
+        // Check for null values
         pxtrt.nullCheck(axis)
         pxtrt.nullCheck(lights)
 
@@ -117,11 +123,12 @@ namespace pxsim.lights {
      * @param light the light to get the coordinate of
      */
     //% blockId=lights-get-coordinate
-    //% help=lights/get-coordinate weight=30
+    //% help=lights/get-coordinate weight=14
     //% block="coordinate $axis of light $light"
     //% block.loc.sl="koordinata $axis lučke $light"
     //% blockGap=40
     export function getCoordinate (axis: Axis, light: number): number {
+        // Check for null values
         pxtrt.nullCheck(axis)
         pxtrt.nullCheck(light)
 
@@ -139,7 +146,7 @@ namespace pxsim.lights {
      * Get a list of lights
      */
     //% blockId=lights-list
-    //% help=lights/list-lights weight=25
+    //% help=lights/list-lights weight=45
     //% block="array of lights"
     //% block.loc.sl="seznam lučk"
     export function getLights (): number[] {
@@ -150,7 +157,7 @@ namespace pxsim.lights {
      * Get a number of lights
      */
     //% blockId=lights-count
-    //% help=lights/count-lights weight=20
+    //% help=lights/count-lights weight=44
     //% block="number of lights"
     //% block.loc.sl="število lučk"
     export function countLights (): number {
@@ -161,19 +168,31 @@ namespace pxsim.lights {
      * Get a random light
      */
     //% blockId=lights-random
-    //% help=lights/random-light weight=15
+    //% help=lights/random-light weight=43
     //% block="random light"
     //% block.loc.sl="naključna lučka"
+    //% blockGap=40
     export function randomLight (): number {
         const lights = Object.keys(positions)
         return Math.floor(Math.random() * lights.length)
     }
 
+    /**
+     * Find lights where the specified axis value meets the specified relation
+     * @param axis the axis to check
+     * @param relation the relation to check
+     * @param value the value to compare against
+     * @param lights the list of lights to check
+     */
     //% blockId=lights-where
-    //% help=lights/lights-where weight=10
-    //% block="lights where axis $axis $relation $value of $lights"
-    //% block.loc.sl="lučke kjer je $axis $relation $value od $lights"
-    export function lightsWhere (axis:Axis, relation: Relation, value:number, lights: number[]) {
+    //% help=lights/lights-where weight=35
+    //% block="lights where $axis $relation $value from $lights"
+    //% block.loc.sl="lučke kjer je $axis $relation $value iz $lights"
+    //% inlineInputMode="inline"
+    //% lights.shadow="lights-list" lights.defl="lights-list"
+    //% blockGap=40
+    export function lightsWhere (axis: Axis, relation: Relation, value: number, lights: number[]) {
+        // Check for null values
         pxtrt.nullCheck(axis)
         pxtrt.nullCheck(relation)
         pxtrt.nullCheck(value)
@@ -182,35 +201,23 @@ namespace pxsim.lights {
         // Convert from RefCollection type
         lights = fromRefCollection(lights)
 
+        const compare = (first: number, second: number) => {
+            switch (relation) {
+                case Relation.Greater:
+                    return first > second
+                case Relation.Less:
+                    return first < second
+            }
+        }
+
         const result = lights.filter(light => {
             switch (axis) {
                 case Axis.X:
-                    switch (relation) {
-                        case Relation.Equal:
-                            return positions[light]?.x == value
-                        case Relation.Greater:
-                            return positions[light]?.x > value
-                        case Relation.Less:
-                            return positions[light]?.x < value
-                    }
+                    return compare(positions[light]?.x, value)
                 case Axis.Y:
-                    switch (relation) {
-                        case Relation.Equal:
-                            return positions[light]?.y == value
-                        case Relation.Greater:
-                            return positions[light]?.y > value
-                        case Relation.Less:
-                            return positions[light]?.y < value
-                    }
+                    return compare(positions[light]?.y, value)
                 case Axis.Z:
-                    switch (relation) {
-                        case Relation.Equal:
-                            return positions[light]?.z == value
-                        case Relation.Greater:
-                            return positions[light]?.z > value
-                        case Relation.Less:
-                            return positions[light]?.z < value
-                    }
+                    return compare(positions[light]?.z, value)
             }
         })
 

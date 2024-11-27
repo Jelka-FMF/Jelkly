@@ -17,13 +17,13 @@ const enum SimulationMode {
     "3D",
 }
 
-let simulationMode: SimulationMode = SimulationMode["3D"]
+let simulationMode = SimulationMode["3D"] as SimulationMode
 
 const mode2dButton = document.getElementById("mode-2d")
 const mode3dButton = document.getElementById("mode-3d")
 
+if (simulationMode === SimulationMode["2D"]) mode2dButton.classList.add("active")
 if (simulationMode === SimulationMode["3D"]) mode3dButton.classList.add("active")
-else if (simulationMode === SimulationMode["2D"]) mode2dButton.classList.add("active")
 
 mode2dButton.addEventListener("click", () => {
     simulationMode = SimulationMode["2D"]
@@ -84,7 +84,7 @@ namespace pxsim {
             return Promise.resolve()
         }
 
-        screenshotAsync(width?: number): Promise<ImageData> {
+        screenshotAsync (width?: number): Promise<ImageData> {
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
             return Promise.resolve(imageData)
         }
