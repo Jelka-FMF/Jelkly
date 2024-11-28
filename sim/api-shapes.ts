@@ -30,7 +30,7 @@ namespace pxsim.shapes {
     export function ball (x0: number, y0: number, z0: number, r: number): number[] {
         const lights = []
 
-        for (const [index, { x, y, z }] of Object.entries(positions)) {
+        for (const [index, { x, y, z }] of Object.entries(normalizedPositions)) {
             if (Math.pow(x - x0, 2) + Math.pow(y - y0, 2) + Math.pow(z - z0, 2) <= Math.pow(r, 2)) {
                 lights.push(parseInt(index))
             }
@@ -63,7 +63,7 @@ namespace pxsim.shapes {
     export function sphere (x0: number, y0: number, z0: number, r: number, d: number): number[] {
         const lights = []
 
-        for (const [index, { x, y, z }] of Object.entries(positions)) {
+        for (const [index, { x, y, z }] of Object.entries(normalizedPositions)) {
             if (
                 Math.pow(x - x0, 2) + Math.pow(y - y0, 2) + Math.pow(z - z0, 2) <= Math.pow(r, 2)
                 && Math.pow(x - x0, 2) + Math.pow(y - y0, 2) + Math.pow(z - z0, 2) >= Math.pow(r - d, 2)
@@ -113,7 +113,7 @@ namespace pxsim.shapes {
 
         const lights = []
 
-        for (const [index, { x, y, z }] of Object.entries(positions)) {
+        for (const [index, { x, y, z }] of Object.entries(normalizedPositions)) {
             let pointVector = { x: x - x0, y: y - y0, z: z - z0 }
 
             // Distance between point and line
@@ -175,7 +175,7 @@ namespace pxsim.shapes {
 
         const lights = []
 
-        for (const [index, { x, y, z }] of Object.entries(positions)) {
+        for (const [index, { x, y, z }] of Object.entries(normalizedPositions)) {
             let distance = Math.abs((a * (x - x0) + b * (y - y0) + c * (z - z0)) / Math.sqrt(a * a + b * b + c * c))
 
             if (distance <= d / 2) {
@@ -221,7 +221,7 @@ namespace pxsim.shapes {
 
         const lights = []
 
-        for (const [index, { x, y, z }] of Object.entries(positions)) {
+        for (const [index, { x, y, z }] of Object.entries(normalizedPositions)) {
             switch (relation) {
                 case Relation.Greater:
                     if (a * x + b * y + c * z > d) lights.push(parseInt(index))

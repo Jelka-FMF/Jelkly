@@ -117,11 +117,11 @@ namespace pxsim.lights {
         const coordinates = lights.map(light => {
             switch (axis) {
                 case Axis.X:
-                    return positions[light]?.x
+                    return normalizedPositions[light]?.x
                 case Axis.Y:
-                    return positions[light]?.y
+                    return normalizedPositions[light]?.y
                 case Axis.Z:
-                    return positions[light]?.z
+                    return normalizedPositions[light]?.z
             }
         })
 
@@ -148,11 +148,11 @@ namespace pxsim.lights {
 
         switch (axis) {
             case Axis.X:
-                return positions[light]?.x
+                return normalizedPositions[light]?.x
             case Axis.Y:
-                return positions[light]?.y
+                return normalizedPositions[light]?.y
             case Axis.Z:
-                return positions[light]?.z
+                return normalizedPositions[light]?.z
         }
     }
 
@@ -235,11 +235,11 @@ namespace pxsim.lights {
         const result = lights.filter(light => {
             switch (axis) {
                 case Axis.X:
-                    return compare(positions[light]?.x, value)
+                    return compare(normalizedPositions[light]?.x, value)
                 case Axis.Y:
-                    return compare(positions[light]?.y, value)
+                    return compare(normalizedPositions[light]?.y, value)
                 case Axis.Z:
-                    return compare(positions[light]?.z, value)
+                    return compare(normalizedPositions[light]?.z, value)
             }
         })
 
