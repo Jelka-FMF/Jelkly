@@ -114,18 +114,18 @@ namespace pxsim.shapes {
         const lights = []
 
         for (const [index, { x, y, z }] of Object.entries(normalizedPositions)) {
-            let pointVector = { x: x - x0, y: y - y0, z: z - z0 }
 
             // Distance between point and line
-            let delta = (
-                Math.pow(b * z - y * c, 2) +
-                Math.pow(c * x - z * a, 2) +
-                Math.pow(a * y - x * b, 2)
-            ) / Math.sqrt(
+            let deltaKvadrat = (
+                Math.pow(b * (z-x0) - (y-y0) * c, 2) +
+                Math.pow(c * (x-x0) - (z-z0) * a, 2) +
+                Math.pow(a * (y-y0) - (x-x0) * b, 2)
+            ) / (
                 Math.pow(a, 2) +
                 Math.pow(b, 2) +
-                Math.pow(c, 2),
+                Math.pow(c, 2)
             )
+    
 
             // Remove lights that are too high or too low using plains
             let d1 = (a * h + x0) * a + (b * h + y0) * b + (c * h + z0) * c
@@ -133,7 +133,7 @@ namespace pxsim.shapes {
 
             let d = (a * a + b * b + c * c)
 
-            if (delta <= r && d1 >= d && d2 <= d) {
+            if (deltaKvadrat <= r * r && d1 >= d && d2 <= d) {
                 lights.push(parseInt(index))
             }
         }
