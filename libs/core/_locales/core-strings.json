@@ -76,7 +76,7 @@
   "parseInt|block": "parse to integer %text",
   "randint|block": "pick random %min|to %limit",
   "shapes.ball|block": "ball with center | x: $x0 | y: $y0 | z: $z0 | and radius $r",
-  "shapes.cilinder|block": "cilinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h",
+  "shapes.cylinder|block": "cylinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h",
   "shapes.planeRelation|block": "$relation than plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi",
   "shapes.plane|block": "plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | and thickness $d",
   "shapes.sphere|block": "sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r | and thickness $d",

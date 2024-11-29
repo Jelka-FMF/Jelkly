@@ -385,18 +385,18 @@ declare namespace shapes {
     function sphere(x0: number, y0: number, z0: number, r: number, d: number): number[];
 
     /**
-     * Get a list of lights intersecting with the cilinder
-     * @param x0 the x coordinate of the cilinder center
-     * @param y0 the y coordinate of the cilinder center
-     * @param z0 the z coordinate of the cilinder center
-     * @param psi the first rotation of the cilinder (in degrees)
-     * @param ksi the second rotation of the cilinder (in degrees)
-     * @param r the radius of the cilinder
-     * @param h the height of the cilinder
+     * Get a list of lights intersecting with the cylinder
+     * @param x0 the x coordinate of the cylinder center
+     * @param y0 the y coordinate of the cylinder center
+     * @param z0 the z coordinate of the cylinder center
+     * @param psi the first rotation of the cylinder (in degrees)
+     * @param ksi the second rotation of the cylinder (in degrees)
+     * @param r the radius of the cylinder
+     * @param h the height of the cylinder
      */
-    //% blockId=shapes-cilinder
-    //% help=shapes/cilinder weight=50
-    //% block="cilinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h"
+    //% blockId=shapes-cylinder
+    //% help=shapes/cylinder weight=50
+    //% block="cylinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h"
     //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | polmerom $r | in višino $h"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z valjem"
     //% x0.loc.sl="x koordinata središča valja"
@@ -411,8 +411,8 @@ declare namespace shapes {
     //% ksi.min=0 ksi.max=360
     //% r.min=0
     //% h.min=0
-    //% shim=shapes::cilinder
-    function cilinder(x0: number, y0: number, z0: number, psi: number, ksi: number, r: number, h: number): number[];
+    //% shim=shapes::cylinder
+    function cylinder(x0: number, y0: number, z0: number, psi: number, ksi: number, r: number, h: number): number[];
 
     /**
      * Get a list of lights intersecting with the plane

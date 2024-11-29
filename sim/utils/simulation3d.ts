@@ -69,7 +69,7 @@ function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, 
     // Rotation matrix
     let newx = Math.cos(alpha) * Math.cos(beta) * x - Math.sin(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
     let newy = Math.sin(alpha) * Math.cos(beta) * x + Math.cos(alpha) * y - Math.sin(alpha) * Math.sin(beta) * z
-    let newz = Math.sin(beta) * x + Math.cos(beta) * z 
+    let newz =                   Math.sin(beta) * x +                                         Math.cos(beta) * z 
 
     return { x: newx, y: newy, z: newz }
 }

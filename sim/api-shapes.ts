@@ -77,18 +77,18 @@ namespace pxsim.shapes {
     }
 
     /**
-     * Get a list of lights intersecting with the cilinder
-     * @param x0 the x coordinate of the cilinder center
-     * @param y0 the y coordinate of the cilinder center
-     * @param z0 the z coordinate of the cilinder center
-     * @param psi the first rotation of the cilinder (in degrees)
-     * @param ksi the second rotation of the cilinder (in degrees)
-     * @param r the radius of the cilinder
-     * @param h the height of the cilinder
+     * Get a list of lights intersecting with the cylinder
+     * @param x0 the x coordinate of the cylinder center
+     * @param y0 the y coordinate of the cylinder center
+     * @param z0 the z coordinate of the cylinder center
+     * @param psi the first rotation of the cylinder (in degrees)
+     * @param ksi the second rotation of the cylinder (in degrees)
+     * @param r the radius of the cylinder
+     * @param h the height of the cylinder
      */
-    //% blockId=shapes-cilinder
-    //% help=shapes/cilinder weight=50
-    //% block="cilinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h"
+    //% blockId=shapes-cylinder
+    //% help=shapes/cylinder weight=50
+    //% block="cylinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h"
     //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | polmerom $r | in višino $h"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z valjem"
     //% x0.loc.sl="x koordinata središča valja"
@@ -103,13 +103,21 @@ namespace pxsim.shapes {
     //% ksi.min=0 ksi.max=360
     //% r.min=0
     //% h.min=0
-    export function cilinder (x0: number, y0: number, z0: number, psi: number, ksi: number, r: number, h: number): number[] {
+    export function cylinder (x0: number, y0: number, z0: number, psi: number, ksi: number, r: number, h: number): number[] {
         psi = degToRad(psi)
         ksi = degToRad(ksi)
 
-        const a = Math.cos(psi) * Math.cos(ksi)
-        const b = Math.sin(psi) * Math.cos(ksi)
-        const c = Math.sin(ksi)
+        // const a = Math.cos(psi) * Math.cos(ksi)
+        // const b = Math.sin(psi) * Math.cos(ksi)
+        // const c = Math.sin(ksi)
+
+        let coordinates = getRotatedCoordinates(0, 0, 1, psi, ksi)
+        const a = coordinates.x
+        const b = coordinates.y
+        const c = coordinates.z
+        // const directionVectorLenght = Math.sqrt(a*a + b*b + c*c)
+
+        // const normalizeDirectionVector = {x: a / directionVectorLenght, y:b / directionVectorLenght, z: c/directionVectorLenght}
 
         const lights = []
 
@@ -117,7 +125,7 @@ namespace pxsim.shapes {
 
             // Distance between point and line
             let deltaKvadrat = (
-                Math.pow(b * (z-x0) - (y-y0) * c, 2) +
+                Math.pow(b * (z-z0) - (y-y0) * c, 2) +
                 Math.pow(c * (x-x0) - (z-z0) * a, 2) +
                 Math.pow(a * (y-y0) - (x-x0) * b, 2)
             ) / (
@@ -128,12 +136,16 @@ namespace pxsim.shapes {
     
 
             // Remove lights that are too high or too low using plains
-            let d1 = (a * h + x0) * a + (b * h + y0) * b + (c * h + z0) * c
-            let d2 = (a * -h + x0) * a + (b * -h + y0) * b + (c * -h + z0) * c
+            // let d1 = (a * h + x0) * a + (b * h + y0) * b + (c * h + z0) * c
+            // let d2 = (a * (-h) + x0) * a + (b * (-h) + y0) * b + (c * (-h) + z0) * c
 
-            let d = (a * a + b * b + c * c)
+            // let d = (a * x + b * y + c * z)
 
-            if (deltaKvadrat <= r * r && d1 >= d && d2 <= d) {
+            let delta1 = (a*(x-h*a) + b*(y - h*b) + c*(z - h*c))
+            let delta2 = (a*(x+h*a) + b*(y + h*b) + c*(z + h*c))
+
+
+            if (deltaKvadrat <= r * r && delta1 + delta2 <= h) {
                 lights.push(parseInt(index))
             }
         }
