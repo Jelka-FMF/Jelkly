@@ -8,7 +8,7 @@ Na [Fakulteti za matematiko in fiziko Univerze v Ljubljani](https://www.fmf.uni-
 smo v okviru [Programerskega kluba FMF](https://programerski-klub-fmf.github.io/)
 postavili jelko z lučkami, ki jih lahko programiramo.
 
-Več informacij o Jelki FMF lahko najdete na [spletni strani projekta](https://jelka.fmf.uni-lj.si/).
+Več informacij o Jelki FMF lahko najdete na [spletni strani projekta](https://jelka.fmf.uni-lj.si/about/).
 
 ## Kaj je urejevalnik Jelkly?
 
