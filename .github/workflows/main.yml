@@ -28,8 +28,8 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      - name: Prepare the icon
-        run: cp docs/static/icons/favicon.ico built/packaged/favicon.ico
+      - name: Patch the project
+        run: bash .github/scripts/patch.sh
 
       - name: Create the artifact
         run: cd built/packaged && zip -r ../packaged.zip .

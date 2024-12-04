@@ -1,6 +1,6 @@
 # Podpora
 
-### @description Podpora za uporabnike urejevalnika Jelkly.
+### @description Podpora za uporabnike urejevalnika Jelkly
 
 Če imate težave z uporabo urejevalnika Jelkly ali vprašanja glede projekta Jelka FMF,
 lahko preverite seznam [pogosto zastavljenih vprašanj](/faq). Če težave ne morete rešiti

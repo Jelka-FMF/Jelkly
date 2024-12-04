@@ -1,6 +1,6 @@
 # Pogosto zastavljena vprašanja
 
-### @description Pogosto zastavljena vprašanja in odgovori o projektu Jelka FMF.
+### @description Pogosto zastavljena vprašanja in odgovori o projektu Jelka FMF
 
 ## Kaj je projekt Jelka FMF?
 

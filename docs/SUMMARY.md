@@ -7,6 +7,16 @@
 * [Podpora](/support)
 * [FAQ](/faq)
 
+## Referenca #reference
+
+* [Referenca](/reference)
+    * [Osnovno](/reference/basic)
+        * [na začetku](/blocks/on-start)
+        * [na sličici](/reference/basic/on-frame)
+        * [nastavi število sličic na sekundo](/reference/basic/set-frame-rate)
+    * [Lučke](/reference/lights)
+        * TODO
+
 ## Bloki #blocks
 
 * [Bloki](/blocks)
@@ -20,9 +30,9 @@
         * [if](/blocks/logic/if)
         * [Boolean](/blocks/logic/boolean)
     * [Variables](/blocks/variables)
-        * [assign](/blocks/variables/assign)
-        * [change var](/blocks/variables/change)
-        * [var](/blocks/variables/var)
+        * [variables](/blocks/variables/var)
+        * [assign variable](/blocks/variables/assign)
+        * [change variable](/blocks/variables/change)
     * [Math](/blocks/math)
     * [JavaScript Blocks](/blocks/javascript-blocks)
     * [Custom Blocks](/blocks/custom)
@@ -76,5 +86,5 @@
 
 * Razvijalci
     * [Command Line Interface](/cli)
-    * [Visual Studio Code support](/code)
+    * [Visual Studio Code Support](/code)
     * [Blocks Embed](/blocks-embed)
