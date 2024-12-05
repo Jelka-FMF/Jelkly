@@ -53,22 +53,24 @@
         "logoUrl": "https://jelkly.fmf.uni-lj.si/",
         "embedUrl": "https://jelkly.fmf.uni-lj.si/",
         "shareUrl": "https://jelkly.fmf.uni-lj.si/",
-        "contactUrl": "https://jelka.fmf.uni-lj.si/contact",
-        "feedbackUrl": "https://jelka.fmf.uni-lj.si/contact",
+        "contactUrl": "https://jelkly.fmf.uni-lj.si/docs/contact.html",
+        "feedbackUrl": "https://jelkly.fmf.uni-lj.si/docs/contact.html",
         "githubUrl": "https://github.com/Jelka-FMF/Jelkly",
 
         "crowdinProject": "makecode",
 
         "docMenu": [
             {
-                "name": "About",
-                "path": "/about"
-            },
-            {
                 "name": "Docs",
                 "path": "/index"
+            },
+            {
+                "name": "About",
+                "path": "/about"
             }
         ],
+
+        "homeScreenHeroGallery": "/banner",
 
         "boardName": "Jelka",
         "boardNickname": "Jelka",

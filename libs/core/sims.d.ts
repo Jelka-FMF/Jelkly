@@ -348,8 +348,8 @@ declare namespace shapes {
      */
     //% blockId=shapes-ball
     //% help=shapes/ball weight=50
-    //% block="ball with center | x: $x0 | y: $y0 | z: $z0 | and radius $r"
-    //% block.loc.sl="krogla s središčem | x: $x0 | y: $y0 | z: $z0 | in polmerom $r"
+    //% block="ball with center | x: $x0 | y: $y0 | z: $z0 | radius $r"
+    //% block.loc.sl="krogla s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo s kroglo"
     //% x0.loc.sl="x koordinata središča krogle"
     //% y0.loc.sl="y koordinata središča krogle"
@@ -370,8 +370,8 @@ declare namespace shapes {
      */
     //% blockId=shapes-sphere
     //% help=shapes/sphere weight=50
-    //% block="sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r | and thickness $d"
-    //% block.loc.sl="sfera s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r | in debelino $d"
+    //% block="sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r | thickness $d"
+    //% block.loc.sl="sfera s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r | debelino $d"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo s sfero"
     //% x0.loc.sl="x koordinata središča sfere"
     //% y0.loc.sl="y koordinata središča sfere"
@@ -396,8 +396,8 @@ declare namespace shapes {
      */
     //% blockId=shapes-cylinder
     //% help=shapes/cylinder weight=50
-    //% block="cylinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | and height $h"
-    //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | polmerom $r | in višino $h"
+    //% block="cylinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | height $h"
+    //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | polmerom $r | višino $h"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z valjem"
     //% x0.loc.sl="x koordinata središča valja"
     //% y0.loc.sl="y koordinata središča valja"
@@ -425,8 +425,8 @@ declare namespace shapes {
      */
     //% blockId=shapes-plane
     //% help=shapes/plane weight=50
-    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | and thickness $d"
-    //% block.loc.sl="ravnina s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | in debelino $d"
+    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | thickness $d"
+    //% block.loc.sl="ravnina s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | debelino $d"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z ravnino"
     //% x0.loc.sl="x koordinata točke na ravnini"
     //% y0.loc.sl="y koordinata točke na ravnini"
