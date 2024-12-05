@@ -106,7 +106,7 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: 
     // const relativeHeight = Math.max(...Object.values(positions).map(pos => pos.y)) - Math.min(...Object.values(positions).map(pos => pos.y))
     // const lowestPoint = Math.max(...Object.values(positions).map(pos => pos.y))
 
-    for (const [index, color] of Object.entries(pxsim.board().colorStates)) {
+    for (const [index, color] of Object.entries(positions)) {
         const position = positions[parseInt(index)]
 
         if (!position) {
@@ -114,18 +114,23 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: 
             continue
         }
 
+        const color = pxsim.board().colorStates[parseInt(index)] || { red: 0, green: 0, blue: 0 }
+        
         let y = origin.y + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).y
         let z = origin.z - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).z)
 
         if (color.green == 0 && color.red == 0 && color.blue == 0) {
-            // Skip turned off lights
-            // To se nikoli ne zgodi
-            continue
+            ctx.beginPath()
+            ctx.strokeStyle = "#800808"
+            ctx.arc(y, z, 15, 0, 2 * Math.PI)
+            ctx.stroke()
         }
 
-        ctx.beginPath()
-        ctx.fillStyle = `rgb(${color.red}, ${color.green}, ${color.blue})`
-        ctx.arc(y, z, 15, 0, 2 * Math.PI)
-        ctx.fill()
+        else {
+            ctx.beginPath()
+            ctx.fillStyle = `rgb(${color.red}, ${color.green}, ${color.blue})`
+            ctx.arc(y, z, 15, 0, 2 * Math.PI)
+            ctx.fill()
+        }
     }
 }
