@@ -88,12 +88,14 @@ function drawCoordinateSystem (ctx: CanvasRenderingContext2D, origin: Position ,
     ctx.stroke();
 
     // Draw y axis
+    ctx.beginPath();
     ctx.moveTo(origin.y, origin.z);
     ctx.lineTo(yaxis.y * scale + origin.y, yaxis.z * scale + origin.z);
     ctx.strokeStyle = "green";
     ctx.stroke();
 
     // Draw z axis
+    ctx.beginPath();
     ctx.moveTo(origin.y, origin.z);
     ctx.lineTo( - zaxis.y * scale + origin.y, - zaxis.z * scale + origin.z);
     ctx.strokeStyle = "blue";
