@@ -62,4 +62,13 @@ Vrne izbrano koordinato (x, y ali z) te lučke.
     lights.getCoordinate(Axis.X, 5)
 ```
 
+### Kombiniranje pogojev za koordinate
+Če želite izbrati lučke, ki imajo npr. koordinato `x < 0` in koordinato `y > 25` lahko uporabite gnezdenje blokov.
+```block
+    lights.setLights(lights.lightsWhere(Axis.X, Relation.Greater, 0, lights.lightsWhere(Axis.Y, Relation.Greater, 0, lights.getLights())), colors.rgbColor(
+    0,
+    0,
+    0
+    ))
+```
 
