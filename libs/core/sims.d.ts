@@ -251,37 +251,6 @@ declare namespace lights {
     function getColor(light: number): Color;
 
     /**
-     * Get the coordinates of the specified lights
-     * @param axis the coordinate axis to get the value of
-     * @param lights the lights to get the coordinates of
-     */
-    //% blockId=lights-get-coordinates
-    //% help=lights/get-coordinates weight=15
-    //% block="coordinates $axis of lights $lights"
-    //% block.loc.sl="koordinate $axis lučk $lights"
-    //% jsdoc.loc.sl="Vrni koordinate izbranih lučk"
-    //% axis.loc.sl="os, za katero želimo koordinate"
-    //% lights.loc.sl="lučke, za katere želimo koordinate"
-    //% shim=lights::getCoordinates
-    function getCoordinates(axis: Axis, lights: number | number[]): number[];
-
-    /**
-     * Get the coordinate of the specified light
-     * @param axis the coordinate axis to get the value of
-     * @param light the light to get the coordinate of
-     */
-    //% blockId=lights-get-coordinate
-    //% help=lights/get-coordinate weight=14
-    //% block="coordinate $axis of light $light"
-    //% block.loc.sl="koordinata $axis lučke $light"
-    //% jsdoc.loc.sl="Vrni koordinato izbrane lučke"
-    //% axis.loc.sl="os, za katero želimo koordinato"
-    //% light.loc.sl="lučka, za katero želimo koordinato"
-    //% blockGap=40
-    //% shim=lights::getCoordinate
-    function getCoordinate(axis: Axis, light: number): number;
-
-    /**
      * Get a list of lights
      */
     //% blockId=lights-list
