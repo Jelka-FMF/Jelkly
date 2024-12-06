@@ -1,9 +1,9 @@
 # Povzetek
 
-* [Dokumentacija](/index)
-* [Urejevalnik](https://jelkly.fmf.uni-lj.si/)
+* [O urejevalniku Jelkly](/index)
+* [Ustvari svoj vzorec](https://jelkly.fmf.uni-lj.si/)
 * [O projektu Jelka FMF](https://jelka.fmf.uni-lj.si/about/)
-* [O urejevalniku Jelkly](https://jelkly.fmf.uni-lj.si/docs/about.html)
+* [Dokumentacija](https://jelkly.fmf.uni-lj.si/docs/about.html)
 * [Podpora](/support)
 * [FAQ](/faq)
 

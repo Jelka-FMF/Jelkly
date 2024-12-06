@@ -1,5 +1,5 @@
-# Informacije
+# Dokumentacija
 
-### @description Osnovne informacije o urejevalniku Jelkly
+### @description Glavna stran za dokumentacijo
 
-TODO: O urejevalniku Jelkly
+TODO: Napiši dokumentacijo.
