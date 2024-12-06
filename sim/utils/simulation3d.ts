@@ -121,7 +121,7 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: 
 
         if (color.green == 0 && color.red == 0 && color.blue == 0) {
             ctx.beginPath()
-            ctx.strokeStyle = " "
+            ctx.strokeStyle = "#D3D3D3"
             ctx.arc(y, z, 15, 0, 2 * Math.PI)
             ctx.stroke()
         }

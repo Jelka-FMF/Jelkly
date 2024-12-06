@@ -141,8 +141,8 @@ namespace pxsim.shapes {
 
             // let d = (a * x + b * y + c * z)
 
-            let delta1 = (a*(x-h*a) + b*(y - h*b) + c*(z - h*c))
-            let delta2 = (a*(x+h*a) + b*(y + h*b) + c*(z + h*c))
+            let delta1 = Math.abs(a*(x-x0 - h*a/2) + b*(y-y0 - h*b/2) + c*(z-z0 - h*c/2))
+            let delta2 = Math.abs(a*(x-x0 + h*a/2) + b*(y-y0 + h*b/2) + c*(z-z0 + h*c/2))
 
 
             if (deltaKvadrat <= r * r && delta1 + delta2 <= h) {
