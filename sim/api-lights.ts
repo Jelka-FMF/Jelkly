@@ -162,7 +162,7 @@ namespace pxsim.lights {
     //% blockId=lights-list
     //% help=lights/list-lights weight=45
     //% block="array of lights"
-    //% block.loc.sl="seznam lučk"
+    //% block.loc.sl="vse  lučke"
     //% jsdoc.loc.sl="Vrni seznam lučk"
     export function getLights (): number[] {
         return toRefCollection(Object.keys(positions).map(Number))

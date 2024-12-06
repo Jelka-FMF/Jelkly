@@ -287,7 +287,7 @@ declare namespace lights {
     //% blockId=lights-list
     //% help=lights/list-lights weight=45
     //% block="array of lights"
-    //% block.loc.sl="seznam lučk"
+    //% block.loc.sl="vse  lučke"
     //% jsdoc.loc.sl="Vrni seznam lučk"
     //% shim=lights::getLights
     function getLights(): number[];
