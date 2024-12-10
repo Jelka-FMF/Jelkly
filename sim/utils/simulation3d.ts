@@ -69,7 +69,7 @@ function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, 
     // Rotation matrix
     let newx = Math.cos(alpha) * Math.cos(beta) * x - Math.sin(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
     let newy = Math.sin(alpha) * Math.cos(beta) * x + Math.cos(alpha) * y - Math.sin(alpha) * Math.sin(beta) * z
-    let newz =                   Math.sin(beta) * x +                                         Math.cos(beta) * z 
+    let newz =                   Math.sin(beta) * x +                                         Math.cos(beta) * z
 
     return { x: newx, y: newy, z: newz }
 }
@@ -101,7 +101,7 @@ function drawCoordinateSystem (ctx: CanvasRenderingContext2D, origin: Position ,
     ctx.strokeStyle = "blue";
     ctx.stroke();
 
-    ctx.closePath();    
+    ctx.closePath();
 }
 
 function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: number) {
@@ -117,7 +117,7 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: 
         }
 
         const color = pxsim.board().colorStates[parseInt(index)] || { red: 0, green: 0, blue: 0 }
-        
+
         let y = origin.y + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).y
         let z = origin.z - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).z)
 
