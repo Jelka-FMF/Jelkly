@@ -225,7 +225,7 @@
   "lights.lightsWhere|param|relation": "the relation to check",
   "lights.lightsWhere|param|value": "the value to compare against",
   "lights.randomLight": "Get a random light",
-  "lights.resetLights": "Turn off all lights",
+  "lights.resetLights": "Turn off specified lights",
   "lights.setLights": "Set lights to the specified color",
   "lights.setLights|param|color": "the RGB color of the lights to set",
   "lights.setLights|param|lights": "a single light or an array of lights",

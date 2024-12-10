@@ -35,16 +35,27 @@ namespace pxsim.lights {
     }
 
     /**
-     * Turn off all lights
+     * Turn off specified lights
      */
     //% blockId=lights-reset
     //% help=lights/reset-lights weight=54
-    //% block="reset lights"
-    //% block.loc.sl="ponastavi lučke"
-    //% jsdoc.loc.sl="Izklopi vse lučke"
+    //% block="reset lights $lights"
+    //% block.loc.sl="ponastavi lučke $lights"
+    //% jsdoc.loc.sl="Izklopi izbrane lučke"
+    //% lights.shadow="lights-list" lights.defl="lights-list"
     //% blockGap=40
-    export function resetLights (): void {
-        board().colorStates = {}
+    export function resetLights (lights?: number | number[]): void {
+        // Default to all lights
+        if (lights === undefined) lights = Object.keys(positions).map(Number)
+
+        // Convert from RefCollection type
+        lights = fromRefCollection(lights)
+
+        // Handle a single light case
+        if (typeof lights === "number") lights = [lights]
+
+        // Turn off the specified lights
+        for (const light of lights) delete board().colorStates[light]
     }
 
     /**
@@ -162,7 +173,7 @@ namespace pxsim.lights {
     //% blockId=lights-list
     //% help=lights/list-lights weight=45
     //% block="array of lights"
-    //% block.loc.sl="vse  lučke"
+    //% block.loc.sl="vse lučke"
     //% jsdoc.loc.sl="Vrni seznam lučk"
     export function getLights (): number[] {
         return toRefCollection(Object.keys(positions).map(Number))

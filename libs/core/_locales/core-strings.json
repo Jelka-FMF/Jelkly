@@ -69,7 +69,7 @@
   "lights.getLights|block": "array of lights",
   "lights.lightsWhere|block": "lights where $axis $relation $value from $lights",
   "lights.randomLight|block": "random light",
-  "lights.resetLights|block": "reset lights",
+  "lights.resetLights|block": "reset lights $lights",
   "lights.setLights|block": "set lights $lights to color $color",
   "lights|block": "Lights",
   "parseFloat|block": "parse to number %text",

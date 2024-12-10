@@ -212,16 +212,17 @@ declare namespace lights {
     function setLights(lights: number | number[], color: Color): void;
 
     /**
-     * Turn off all lights
+     * Turn off specified lights
      */
     //% blockId=lights-reset
     //% help=lights/reset-lights weight=54
-    //% block="reset lights"
-    //% block.loc.sl="ponastavi lučke"
-    //% jsdoc.loc.sl="Izklopi vse lučke"
+    //% block="reset lights $lights"
+    //% block.loc.sl="ponastavi lučke $lights"
+    //% jsdoc.loc.sl="Izklopi izbrane lučke"
+    //% lights.shadow="lights-list" lights.defl="lights-list"
     //% blockGap=40
     //% shim=lights::resetLights
-    function resetLights(): void;
+    function resetLights(lights?: number | number[]): void;
 
     /**
      * Get the colors of the specified lights
@@ -287,7 +288,7 @@ declare namespace lights {
     //% blockId=lights-list
     //% help=lights/list-lights weight=45
     //% block="array of lights"
-    //% block.loc.sl="vse  lučke"
+    //% block.loc.sl="vse lučke"
     //% jsdoc.loc.sl="Vrni seznam lučk"
     //% shim=lights::getLights
     function getLights(): number[];
