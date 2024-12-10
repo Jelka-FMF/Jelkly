@@ -5,6 +5,9 @@ let lastMouseY = 0
 let rotationScale = 0.01
 let sizeScale = 5
 
+let initialDistance = 0
+let initialScale = sizeScale
+
 let alpha = 0
 let beta = 0
 
@@ -14,17 +17,20 @@ canvas.addEventListener("mousemove", onMouseMove)
 canvas.addEventListener("mouseup", onMouseUp)
 canvas.addEventListener("mouseleave", onMouseUp)
 canvas.addEventListener("wheel", onWheel)
+canvas.addEventListener("touchstart", onTouchStart)
+canvas.addEventListener("touchmove", onTouchMove)
+canvas.addEventListener("touchend", onTouchEnd)
 
 function renderView3D () {
     canvas.setAttribute("width", (canvas.getBoundingClientRect().width * 5).toString())
     canvas.setAttribute("height", (canvas.getBoundingClientRect().height * 5).toString())
 
-    const origin = { x: canvas.width / 2, y: canvas.width / 2 , z: 3 * canvas.height / 4 } // kje na canvasu je izhodišče jelke
+    // Get the origin of the drawing
+    const origin = { x: canvas.width / 2, y: canvas.width / 2 , z: 3 * canvas.height / 4 }
 
+    // Draw the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-
     drawLights3D(ctx, origin, sizeScale)
-
     drawCoordinateSystem(ctx, origin, sizeScale)
 }
 
@@ -35,6 +41,23 @@ function onMouseDown (event: MouseEvent) {
 }
 
 function onMouseUp (event: MouseEvent) {
+    isMouseDown = false
+}
+
+function onTouchStart (event: TouchEvent) {
+    if (event.touches.length === 2) {
+        // Handle pinch to zoom
+        initialDistance = getDistance(event.touches[0], event.touches[1])
+        initialScale = sizeScale
+    } else {
+        // Handle touch rotation
+        isMouseDown = true
+        lastMouseX = event.touches[0].clientX
+        lastMouseY = event.touches[0].clientY
+    }
+}
+
+function onTouchEnd (event: TouchEvent) {
     isMouseDown = false
 }
 
@@ -64,6 +87,38 @@ function onMouseMove (event: MouseEvent) {
     pxsim.board().updateView()
 }
 
+function onTouchMove (event: TouchEvent) {
+    if (event.touches.length === 2) {
+        // Handle pinch to zoom
+        const currentDistance = getDistance(event.touches[0], event.touches[1])
+        sizeScale = initialScale * (currentDistance / initialDistance)
+
+        // Re-render the view
+        pxsim.board().updateView()
+
+    } else if (isMouseDown) {
+        // Handle touch rotation
+        const deltaX = event.touches[0].clientX - lastMouseX
+        const deltaY = event.touches[0].clientY - lastMouseY
+
+        lastMouseX = event.touches[0].clientX
+        lastMouseY = event.touches[0].clientY
+
+        // Update the view based on touch movements
+        alpha = alpha + deltaX * rotationScale
+        beta = beta - deltaY * rotationScale
+
+        // Re-render the view
+        pxsim.board().updateView()
+    }
+}
+
+function getDistance (touch1: Touch, touch2: Touch): number {
+    const dx = touch1.clientX - touch2.clientX
+    const dy = touch1.clientY - touch2.clientY
+    return Math.sqrt(dx * dx + dy * dy)
+}
+
 // function drawing canvas rotatet for alpha, beta
 function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, beta: number) {
     // Rotation matrix
@@ -75,7 +130,6 @@ function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, 
 }
 
 function drawCoordinateSystem (ctx: CanvasRenderingContext2D, origin: Position , scale: number) {
-
     let xaxis = getRotatedCoordinates(100, 0, 0,  alpha, - beta)
     let yaxis = getRotatedCoordinates(0, 100, 0,  alpha, - beta)
     let zaxis = getRotatedCoordinates(0, 0, 100,  alpha, - beta)
