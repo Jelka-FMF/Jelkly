@@ -1,44 +1,44 @@
-function findFixedOffset (positions: Position[], offsetY: number, offsetZ: number) {
+function findFixedOffset (positions: Position[], offsetX: number, offsetZ: number) {
     // Calculate center of the positions
-    let sumY = 0
+    let sumX = 0
     let sumZ = 0
     for (const light of positions) {
-        sumY += light.y
+        sumX += light.x
         sumZ += light.z
     }
-    const centerY = sumY / positions.length
+    const centerX = sumX / positions.length
 
     // Mirror over the symmetrical axis and find the smallest y coordinate
     // We use this as the bottom left corner of the tree triangle
-    const lefty = Math.min(...positions.map(pos => centerY - Math.abs(centerY - pos.y))) - offsetY
-    const leftz = Math.min(...positions.map(light => light.y)) - offsetZ
+    const lefty = Math.min(...positions.map(light => centerX - Math.abs(centerX - light.x))) - offsetX
+    const leftz = Math.min(...positions.map(light => light.x)) - offsetZ
 
     // Find the largest coefficient of the line
-    const largestCoefficient = Math.max(...positions.map(pos => (pos.y - lefty) / (pos.z - leftz)))
+    const largestCoefficient = Math.max(...positions.map(light => (light.x - lefty) / (light.z - leftz)))
 
     return {
-        y: centerY, // Approximate symmetry axis
-        z: largestCoefficient * centerY, // Triangle top
-        ly: lefty, // Left corner of the triangle
+        x: centerX, // Approximate symmetry axis
+        z: largestCoefficient * centerX, // Triangle top
+        lx: lefty, // Left corner of the triangle
         lz: leftz, // Left corner of the triangle
     }
 }
 
-function findOrigin (positions: Position[], maxOffsetY: number, maxOffsetZ: number) {
+function findOrigin (positions: Position[], maxOffsetX: number, maxOffsetZ: number) {
     // Generate possible shifts
-    const offsetsY = Array.from(Array(100).keys()).map(i => maxOffsetY / (i + 1))
-    const offsetsZ = Array.from(Array(100).keys()).map(i => maxOffsetZ / (i + 1))
+    const offsetsX = Array.from(Array(10000).keys()).map(i => maxOffsetX / (i + 1))
+    const offsetsZ = Array.from(Array(1).keys()).map(i => maxOffsetZ / (i + 1))
 
     const possibleOffsets = []
-    for (const zamiky of offsetsY) {
+    for (const zamikx of offsetsX) {
         for (const zamikz of offsetsZ) {
-            possibleOffsets.push({ y: zamiky, z: zamikz }) // Origins
+            possibleOffsets.push({ x: zamikx, z: zamikz }) // Origins
         }
     }
-    const lowestArea = Math.min(...possibleOffsets.map(zamik => findFixedOffset(positions, zamik.y, zamik.z).y * findFixedOffset(positions, zamik.y, zamik.z).z))
+    const lowestArea = Math.min(...possibleOffsets.map(zamik => findFixedOffset(positions, zamik.x, zamik.z).x * findFixedOffset(positions, zamik.x, zamik.z).z))
     // console.debug("Triangle area", lowestArea)
 
     // Return the origin with the smallest area
-    const offsets = possibleOffsets.find(zamik => findFixedOffset(positions, zamik.y, zamik.z).y * findFixedOffset(positions, zamik.y, zamik.z).z === lowestArea)
-    return findFixedOffset(positions, offsets.y, offsets.z)
+    const offsets = possibleOffsets.find(zamik => findFixedOffset(positions, zamik.x, zamik.z).x * findFixedOffset(positions, zamik.x, zamik.z).z === lowestArea)
+    return findFixedOffset(positions, offsets.x, offsets.z)
 }
