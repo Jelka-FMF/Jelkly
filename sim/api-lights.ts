@@ -35,16 +35,27 @@ namespace pxsim.lights {
     }
 
     /**
-     * Turn off all lights
+     * Turn off specified lights
      */
     //% blockId=lights-reset
     //% help=lights/reset-lights weight=54
-    //% block="reset lights"
-    //% block.loc.sl="ponastavi lučke"
-    //% jsdoc.loc.sl="Izklopi vse lučke"
+    //% block="reset lights $lights"
+    //% block.loc.sl="ponastavi lučke $lights"
+    //% jsdoc.loc.sl="Izklopi izbrane lučke"
+    //% lights.shadow="lights-list" lights.defl="lights-list"
     //% blockGap=40
-    export function resetLights (): void {
-        board().colorStates = {}
+    export function resetLights (lights?: number | number[]): void {
+        // Default to all lights
+        if (lights === undefined) lights = Object.keys(positions).map(Number)
+
+        // Convert from RefCollection type
+        lights = fromRefCollection(lights)
+
+        // Handle a single light case
+        if (typeof lights === "number") lights = [lights]
+
+        // Turn off the specified lights
+        for (const light of lights) delete board().colorStates[light]
     }
 
     /**
@@ -91,6 +102,70 @@ namespace pxsim.lights {
         return board().colorStates[light] || { red: 0, green: 0, blue: 0 }
     }
 
+    /**
+     * Get the coordinates of the specified lights
+     * @param axis the coordinate axis to get the value of
+     * @param lights the lights to get the coordinates of
+     */
+    //% blockId=lights-get-coordinates
+    //% help=lights/get-coordinates weight=15
+    //% block="coordinates $axis of lights $lights"
+    //% block.loc.sl="koordinate $axis lučk $lights"
+    //% jsdoc.loc.sl="Vrni koordinate izbranih lučk"
+    //% axis.loc.sl="os, za katero želimo koordinate"
+    //% lights.loc.sl="lučke, za katere želimo koordinate"
+    export function getCoordinates (axis: Axis, lights: number | number[]): number[] {
+        // Check for null values
+        pxtrt.nullCheck(axis)
+        pxtrt.nullCheck(lights)
+
+        // Convert from RefCollection type
+        lights = fromRefCollection(lights)
+
+        // Handle a single light case
+        if (typeof lights === "number") lights = [lights]
+
+        const coordinates = lights.map(light => {
+            switch (axis) {
+                case Axis.X:
+                    return normalizedPositions[light]?.x
+                case Axis.Y:
+                    return normalizedPositions[light]?.y
+                case Axis.Z:
+                    return normalizedPositions[light]?.z
+            }
+        })
+
+        return toRefCollection(coordinates)
+    }
+
+    /**
+     * Get the coordinate of the specified light
+     * @param axis the coordinate axis to get the value of
+     * @param light the light to get the coordinate of
+     */
+    //% blockId=lights-get-coordinate
+    //% help=lights/get-coordinate weight=14
+    //% block="coordinate $axis of light $light"
+    //% block.loc.sl="koordinata $axis lučke $light"
+    //% jsdoc.loc.sl="Vrni koordinato izbrane lučke"
+    //% axis.loc.sl="os, za katero želimo koordinato"
+    //% light.loc.sl="lučka, za katero želimo koordinato"
+    //% blockGap=40
+    export function getCoordinate (axis: Axis, light: number): number {
+        // Check for null values
+        pxtrt.nullCheck(axis)
+        pxtrt.nullCheck(light)
+
+        switch (axis) {
+            case Axis.X:
+                return normalizedPositions[light]?.x
+            case Axis.Y:
+                return normalizedPositions[light]?.y
+            case Axis.Z:
+                return normalizedPositions[light]?.z
+        }
+    }
 
     /**
      * Get a list of lights
@@ -98,7 +173,7 @@ namespace pxsim.lights {
     //% blockId=lights-list
     //% help=lights/list-lights weight=45
     //% block="array of lights"
-    //% block.loc.sl="vse  lučke"
+    //% block.loc.sl="vse lučke"
     //% jsdoc.loc.sl="Vrni seznam lučk"
     export function getLights (): number[] {
         return toRefCollection(Object.keys(positions).map(Number))
