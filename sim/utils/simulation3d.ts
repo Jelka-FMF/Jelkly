@@ -5,8 +5,9 @@ let lastMouseY = 0
 let rotationScale = 0.01
 let sizeScale = 5
 
-let alpha = 0
-let beta = 0
+let alpha = 0;
+let beta = 0;
+let gama = 0;
 
 // Add event listeners for mouse events
 canvas.addEventListener("mousedown", onMouseDown)
@@ -58,27 +59,38 @@ function onMouseMove (event: MouseEvent) {
     // Update the view based on mouse movements
     // console.log(`Mouse moved: deltaX=${deltaX}, deltaY=${deltaY}`)
     alpha = alpha + deltaX * rotationScale
-    beta = beta - deltaY * rotationScale
+    gama = gama + deltaY * rotationScale
 
     // Re-render the view
     pxsim.board().updateView()
 }
 
 // function drawing canvas rotatet for alpha, beta
-function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, beta: number) {
+function getRotatedCoordinates1 (x: number, y: number, z: number, alpha: number, beta: number, gama: number) { //TODO
     // Rotation matrix
-    let newx = Math.cos(alpha) * Math.cos(beta) * x - Math.sin(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
-    let newy = Math.sin(alpha) * Math.cos(beta) * x + Math.cos(alpha) * y - Math.sin(alpha) * Math.sin(beta) * z
+    let newx = Math.sin(alpha) * Math.cos(beta) * x + Math.cos(alpha) * y - Math.sin(alpha) * Math.sin(beta) * z
+    let newy = Math.cos(alpha) * Math.cos(beta) * x - Math.sin(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
     let newz =                   Math.sin(beta) * x +                                         Math.cos(beta) * z 
 
     return { x: newx, y: newy, z: newz }
 }
 
-function drawCoordinateSystem (ctx: CanvasRenderingContext2D, origin: Position , scale: number) {
+// function drawing canvas rotatet for alpha, beta
+function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, beta: number, gama: number) { //TODO
+    // Rotation matrix
+    let newx = Math.sin(alpha) * Math.cos(beta) * x +   (Math.cos(alpha) * Math.cos(gama) - Math.sin(alpha) * Math.sin(beta) * Math.sin(gama)) * y + ( - Math.cos(alpha) * Math.sin(gama) - Math.sin(alpha) * Math.sin(beta) * Math.cos(gama)) * z
+    let newy = Math.cos(alpha) * Math.cos(beta) * x + (- Math.sin(alpha) * Math.cos(gama) - Math.cos(alpha) * Math.sin(beta) * Math.sin(gama)) * y + (Math.sin(alpha) * Math.sin(gama) - Math.cos(alpha) * Math.sin(beta) * Math.cos(gama)) * z
+    let newz =                   Math.sin(beta) * x +  Math.cos(beta) * Math.sin(gama) * y                                                          + Math.cos(beta) * Math.cos(gama) * z 
 
-    let xaxis = getRotatedCoordinates(100, 0, 0,  alpha, - beta)
-    let yaxis = getRotatedCoordinates(0, 100, 0,  alpha, - beta)
-    let zaxis = getRotatedCoordinates(0, 0, 100,  alpha, - beta)
+    return { x: newx, y: newy, z: newz }
+}
+
+
+function drawCoordinateSystem (ctx: CanvasRenderingContext2D, origin: Position , scale: number) {
+   
+    let xaxis = getRotatedCoordinates(100, 0, 0,  alpha, - beta, - gama)
+    let yaxis = getRotatedCoordinates(0, 100, 0,  alpha, - beta, - gama)
+    let zaxis = getRotatedCoordinates(0, 0, 100,  alpha, - beta, - gama)
 
     // Draw x axis
     ctx.beginPath();
@@ -118,8 +130,8 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: 
 
         const color = pxsim.board().colorStates[parseInt(index)] || { red: 0, green: 0, blue: 0 }
         
-        let y = origin.y + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).y
-        let z = origin.z - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta).z)
+        let y = origin.y + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta, gama).y
+        let z = origin.z - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta, gama).z)
 
         if (color.green == 0 && color.red == 0 && color.blue == 0) {
             ctx.beginPath()

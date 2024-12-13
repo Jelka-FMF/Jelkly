@@ -107,15 +107,15 @@ namespace pxsim.shapes {
         psi = degToRad(psi)
         ksi = degToRad(ksi)
 
-        // const a = Math.cos(psi) * Math.cos(ksi)
-        // const b = Math.sin(psi) * Math.cos(ksi)
-        // const c = Math.sin(ksi)
+        const a = Math.cos(psi) * Math.cos(ksi)
+        const b = Math.sin(psi) * Math.cos(ksi)
+        const c = Math.sin(ksi)
 
-        let coordinates = getRotatedCoordinates(0, 0, 1, psi, ksi)
-        const a = coordinates.x
-        const b = coordinates.y
-        const c = coordinates.z
-        // const directionVectorLenght = Math.sqrt(a*a + b*b + c*c)
+        // let coordinates = getRotatedCoordinates(0, 0, 1, psi, 0, ksi)
+        // const a = coordinates.x
+        // const b = coordinates.y
+        // const c = coordinates.z
+
 
         // const normalizeDirectionVector = {x: a / directionVectorLenght, y:b / directionVectorLenght, z: c/directionVectorLenght}
 
