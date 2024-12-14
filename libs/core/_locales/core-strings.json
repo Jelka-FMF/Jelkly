@@ -48,6 +48,7 @@
   "String.substr|block": "substring of %this=text|from %start|of length %length",
   "String|block": "String",
   "_py|block": "_py",
+  "basic.getFrameRate|block": "get frame rate",
   "basic.onFrame|block": "on frame $frameNumber $timeSinceStart",
   "basic.setFrameRate|block": "set frame rate to $frameRate",
   "basic|block": "Basic",
