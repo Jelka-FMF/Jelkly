@@ -107,7 +107,7 @@ function onTouchMove (event: TouchEvent) {
 
         // Update the view based on touch movements
         alpha = alpha + deltaX * rotationScale
-        beta = beta - deltaY * rotationScale
+        gama = gama + deltaY * rotationScale
 
         // Re-render the view
         pxsim.board().updateView()
@@ -120,18 +120,9 @@ function getDistance (touch1: Touch, touch2: Touch): number {
     return Math.sqrt(dx * dx + dy * dy)
 }
 
-// function drawing canvas rotatet for alpha, beta
-function getRotatedCoordinates1 (x: number, y: number, z: number, alpha: number, beta: number, gama: number) { //TODO
-    // Rotation matrix
-    let newx = Math.sin(alpha) * Math.cos(beta) * x + Math.cos(alpha) * y - Math.sin(alpha) * Math.sin(beta) * z
-    let newy = Math.cos(alpha) * Math.cos(beta) * x - Math.sin(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
-    let newz =                   Math.sin(beta) * x +                                         Math.cos(beta) * z 
 
-    return { x: newx, y: newy, z: newz }
-}
-
-// function drawing canvas rotatet for alpha, beta
-function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, beta: number, gama: number) { //TODO
+// function drawing canvas rotatet for alpha, beta, gama
+function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, beta: number, gama: number) {
     // Rotation matrix
     let newx = Math.sin(alpha) * Math.cos(beta) * x +   (Math.cos(alpha) * Math.cos(gama) - Math.sin(alpha) * Math.sin(beta) * Math.sin(gama)) * y + ( - Math.cos(alpha) * Math.sin(gama) - Math.sin(alpha) * Math.sin(beta) * Math.cos(gama)) * z
     let newy = Math.cos(alpha) * Math.cos(beta) * x + (- Math.sin(alpha) * Math.cos(gama) - Math.cos(alpha) * Math.sin(beta) * Math.sin(gama)) * y + (Math.sin(alpha) * Math.sin(gama) - Math.cos(alpha) * Math.sin(beta) * Math.cos(gama)) * z
