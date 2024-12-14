@@ -171,6 +171,7 @@
   "_py.slice": "Returns a section of an array according to python's extended slice syntax",
   "_py.stringSlice": "Returns a section of a string according to python's extended slice syntax",
   "basic": "Provides access to basic control functionality.",
+  "basic.getFrameRate": "Get the pattern frame rate",
   "basic.onFrame": "Repeat the code for each frame\n\n@param handler.frameNumber the current frame number\n@param handler.timeSinceStart the time since start in milliseconds",
   "basic.onFrame|param|handler": "the code to execute",
   "basic.setFrameRate": "Set the pattern frame rate",

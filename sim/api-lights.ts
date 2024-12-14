@@ -188,7 +188,7 @@ namespace pxsim.lights {
     //% block.loc.sl="število lučk"
     //% jsdoc.loc.sl="Vrni število lučk"
     export function countLights (): number {
-        return Object.keys(positions).length
+        return Math.max(...Object.keys(positions).map(Number)) + 1
     }
 
     /**

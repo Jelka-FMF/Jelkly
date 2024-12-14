@@ -22,6 +22,18 @@ namespace pxsim.basic {
     }
 
     /**
+     * Get the pattern frame rate
+     */
+    //% blockId=pxt-get-frame-rate
+    //% help=basic/get-frame-rate weight=45
+    //% block="get frame rate"
+    //% block.loc.sl="pridobi število sličic na sekundo"
+    //% jsdoc.loc.sl="Pridobi število sličic na sekundo"
+    export function getFrameRate (): number {
+        return board().frameRate
+    }
+
+    /**
      * Repeat the code for each frame
      * @param handler the code to execute
      * @param handler.frameNumber the current frame number
