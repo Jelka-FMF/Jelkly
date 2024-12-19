@@ -13,10 +13,13 @@ Projekt smo ustvarili člani [programerskega kluba](https://programerski-klub-fm
 ## Tipi blokov
 Podrobnejša navodila za uporabo posameznih blokov. Za več podrobnosti izberite relevantno kategorijo.
 ```namespaces
-for (let i = 0;i<5;++i) {};
 lights.setLights();
 colors.randomColor();
 shapes.ball();
+for (let i = 0;i<5;++i) {};
+basic.onFrame(function (frameNumber, timeSinceStart) {});
+if (true) {	};
+
 ```
 
 

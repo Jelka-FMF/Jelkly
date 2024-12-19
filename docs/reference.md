@@ -3,10 +3,10 @@
 ### @description Seznam funkcij, ki jih lahko uporabljate v urejevalniku Jelkly
 
 ```namespaces
-for (let i = 0;i<5;++i) {};
 lights.setLights();
 colors.randomColor();
 shapes.ball();
+for (let i = 0;i<5;++i) {};
+basic.onFrame(function (frameNumber, timeSinceStart) {});
+if (true) {	};
 ```
-
-neki neki
