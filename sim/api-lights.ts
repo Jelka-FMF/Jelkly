@@ -227,7 +227,6 @@ namespace pxsim.lights {
     //% lights.loc.sl="seznam lučk, ki jih želimo preveriti"
     //% inlineInputMode="inline"
     //% lights.shadow="lights-list" lights.defl="lights-list"
-    //% blockGap=40
     export function lightsWhere (axis: Axis, relation: Relation, value: number, lights: number[]) {
         // Check for null values
         pxtrt.nullCheck(axis)
@@ -259,5 +258,50 @@ namespace pxsim.lights {
         })
 
         return toRefCollection(result)
+    }
+
+    /**
+     * Get the minimum/maximum value of the specified axis
+     * @param axis the axis to get the value of
+     * @param bound whether to get the minimum or maximum value
+     * @param lights the list of lights to get the value of
+     */
+    //% blockId=lights-bound
+    //% help=lights/lights-bound weight=34
+    //% block="$bound value of $axis from $lights"
+    //% block.loc.sl="$bound vrednost $axis iz $lights"
+    //% jsdoc.loc.sl="Vrni najmanjšo ali največjo vrednost osi"
+    //% axis.loc.sl="os, za katero želimo vrednost"
+    //% bound.loc.sl="ali želimo najmanjšo ali največjo vrednost"
+    //% lights.loc.sl="seznam lučk, za katere želimo vrednost"
+    //% inlineInputMode="inline"
+    //% lights.shadow="lights-list" lights.defl="lights-list"
+    //% blockGap=40
+    export function lightsBound (axis: Axis, bound: Bound, lights: number[]): number {
+        // Check for null values
+        pxtrt.nullCheck(axis)
+        pxtrt.nullCheck(bound)
+        pxtrt.nullCheck(lights)
+
+        // Convert from RefCollection type
+        lights = fromRefCollection(lights)
+
+        const values = lights.map(light => {
+            switch (axis) {
+                case Axis.X:
+                    return normalizedPositions[light]?.x
+                case Axis.Y:
+                    return normalizedPositions[light]?.y
+                case Axis.Z:
+                    return normalizedPositions[light]?.z
+            }
+        })
+
+        switch (bound) {
+            case Bound.Min:
+                return Math.min(...values)
+            case Bound.Max:
+                return Math.max(...values)
+        }
     }
 }

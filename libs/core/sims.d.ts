@@ -354,9 +354,28 @@ declare namespace lights {
     //% lights.loc.sl="seznam lučk, ki jih želimo preveriti"
     //% inlineInputMode="inline"
     //% lights.shadow="lights-list" lights.defl="lights-list"
-    //% blockGap=40
     //% shim=lights::lightsWhere
     function lightsWhere(axis: Axis, relation: Relation, value: number, lights: number[]): number[];
+
+    /**
+     * Get the minimum/maximum value of the specified axis
+     * @param axis the axis to get the value of
+     * @param bound whether to get the minimum or maximum value
+     * @param lights the list of lights to get the value of
+     */
+    //% blockId=lights-bound
+    //% help=lights/lights-bound weight=34
+    //% block="$bound value of $axis from $lights"
+    //% block.loc.sl="$bound vrednost $axis iz $lights"
+    //% jsdoc.loc.sl="Vrni najmanjšo ali največjo vrednost osi"
+    //% axis.loc.sl="os, za katero želimo vrednost"
+    //% bound.loc.sl="ali želimo najmanjšo ali največjo vrednost"
+    //% lights.loc.sl="seznam lučk, za katere želimo vrednost"
+    //% inlineInputMode="inline"
+    //% lights.shadow="lights-list" lights.defl="lights-list"
+    //% blockGap=40
+    //% shim=lights::lightsBound
+    function lightsBound(axis: Axis, bound: Bound, lights: number[]): number;
 
 }
 declare namespace shapes {

@@ -14,6 +14,15 @@ declare const enum Relation {
     Less,
 }
 
+declare const enum Bound {
+    //% block="minimal"
+    //% block.loc.sl="najmanjša"
+    Min,
+    //% block="maximal"
+    //% block.loc.sl="največja"
+    Max,
+}
+
 declare const enum RgbComponent {
     //% block="red"
     //% block.loc.sl="rdeča"
