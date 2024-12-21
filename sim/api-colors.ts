@@ -133,6 +133,7 @@ namespace pxsim.colors {
     //% jsdoc.loc.sl="Vrne vrednost RGB komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
     export function rgbComponent (component: RgbComponent, color: Color): number {
         switch (component) {
             case RgbComponent.Red:
@@ -156,6 +157,7 @@ namespace pxsim.colors {
     //% jsdoc.loc.sl="Vrne vrednost HSL komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
     export function hslComponent (component: HslComponent, color: Color): number {
         const { hue, saturation, lightness } = rgbToHsl(color)
         switch (component) {
@@ -180,6 +182,7 @@ namespace pxsim.colors {
     //% jsdoc.loc.sl="Vrne vrednost HSV komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
     export function hsvComponent (component: HsvComponent, color: Color): number {
         const { hue, saturation, value } = rgbToHsv(color)
         switch (component) {
@@ -204,6 +207,8 @@ namespace pxsim.colors {
     //% jsdoc.loc.sl="Vrne vrednost CMYK komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
+    //% blockGap=40
     export function cmykComponent (component: CmykComponent, color: Color): number {
         const { cyan, magenta, yellow, key } = rgbToCmyk(color)
         switch (component) {

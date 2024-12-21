@@ -68,6 +68,7 @@ namespace pxsim.lights {
     //% block.loc.sl="barve lučk $lights"
     //% jsdoc.loc.sl="Vrni barve izbranih lučk"
     //% lights.loc.sl="lučke, za katere želimo barve"
+    //% advanced=true
     export function getColors (lights: number | number[]): Color[] {
         // Check for null values
         pxtrt.nullCheck(lights)
@@ -93,6 +94,7 @@ namespace pxsim.lights {
     //% block.loc.sl="barva lučke $light"
     //% jsdoc.loc.sl="Vrni barvo izbrane lučke"
     //% light.loc.sl="lučka, za katero želimo barvo"
+    //% advanced=true
     //% blockGap=40
     export function getColor (light: number): Color {
         // Check for null values
@@ -114,6 +116,7 @@ namespace pxsim.lights {
     //% jsdoc.loc.sl="Vrni koordinate izbranih lučk"
     //% axis.loc.sl="os, za katero želimo koordinate"
     //% lights.loc.sl="lučke, za katere želimo koordinate"
+    //% advanced=true
     export function getCoordinates (axis: Axis, lights: number | number[]): number[] {
         // Check for null values
         pxtrt.nullCheck(axis)
@@ -151,6 +154,7 @@ namespace pxsim.lights {
     //% jsdoc.loc.sl="Vrni koordinato izbrane lučke"
     //% axis.loc.sl="os, za katero želimo koordinato"
     //% light.loc.sl="lučka, za katero želimo koordinato"
+    //% advanced=true
     //% blockGap=40
     export function getCoordinate (axis: Axis, light: number): number {
         // Check for null values

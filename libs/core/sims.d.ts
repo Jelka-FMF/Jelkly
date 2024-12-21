@@ -157,6 +157,7 @@ declare namespace colors {
     //% jsdoc.loc.sl="Vrne vrednost RGB komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
     //% shim=colors::rgbComponent
     function rgbComponent(component: RgbComponent, color: Color): number;
 
@@ -172,6 +173,7 @@ declare namespace colors {
     //% jsdoc.loc.sl="Vrne vrednost HSL komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
     //% shim=colors::hslComponent
     function hslComponent(component: HslComponent, color: Color): number;
 
@@ -187,6 +189,7 @@ declare namespace colors {
     //% jsdoc.loc.sl="Vrne vrednost HSV komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
     //% shim=colors::hsvComponent
     function hsvComponent(component: HsvComponent, color: Color): number;
 
@@ -202,6 +205,8 @@ declare namespace colors {
     //% jsdoc.loc.sl="Vrne vrednost CMYK komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
+    //% blockGap=40
     //% shim=colors::cmykComponent
     function cmykComponent(component: CmykComponent, color: Color): number;
 
@@ -245,6 +250,7 @@ declare namespace lights {
     //% block.loc.sl="barve lučk $lights"
     //% jsdoc.loc.sl="Vrni barve izbranih lučk"
     //% lights.loc.sl="lučke, za katere želimo barve"
+    //% advanced=true
     //% shim=lights::getColors
     function getColors(lights: number | number[]): Color[];
 
@@ -258,6 +264,7 @@ declare namespace lights {
     //% block.loc.sl="barva lučke $light"
     //% jsdoc.loc.sl="Vrni barvo izbrane lučke"
     //% light.loc.sl="lučka, za katero želimo barvo"
+    //% advanced=true
     //% blockGap=40
     //% shim=lights::getColor
     function getColor(light: number): Color;
@@ -274,6 +281,7 @@ declare namespace lights {
     //% jsdoc.loc.sl="Vrni koordinate izbranih lučk"
     //% axis.loc.sl="os, za katero želimo koordinate"
     //% lights.loc.sl="lučke, za katere želimo koordinate"
+    //% advanced=true
     //% shim=lights::getCoordinates
     function getCoordinates(axis: Axis, lights: number | number[]): number[];
 
@@ -289,6 +297,7 @@ declare namespace lights {
     //% jsdoc.loc.sl="Vrni koordinato izbrane lučke"
     //% axis.loc.sl="os, za katero želimo koordinato"
     //% light.loc.sl="lučka, za katero želimo koordinato"
+    //% advanced=true
     //% blockGap=40
     //% shim=lights::getCoordinate
     function getCoordinate(axis: Axis, light: number): number;
