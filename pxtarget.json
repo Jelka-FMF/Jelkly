@@ -73,12 +73,10 @@
         "homeScreenHero": {
             "name": "Dokumentacija",
             "description": "Preberite si dokumentacijo urejevalnika Jelkly",
-            "imageUrl": "/static/banner/documentation.png",
+            "imageUrl": "/static/banner/lights.png",
             "url": "https://jelkly.fmf.uni-lj.si/docs/",
             "cardType": "link"
         },
-
-        "homeScreenHeroGallery": "/banner",
 
         "boardName": "Jelka",
         "boardNickname": "Jelka",
