@@ -11,34 +11,34 @@ Dogodek [na začetku](/blocks/on-start) se izvede prvi. V njem lahko nastavite z
 vrednosti in ostale stvari, ki jih želite, da se izvedejo le enkrat. V njem ne morete
 prižigati ali ugašati lučk.
 
-Blok [na sličici](/reference/on-frame) se izvede za vsako sličico. Privzeto se prikaže
-50 sličic na sekundo. Število sličic na sekundo lahko spremenite z blokom [nastavi
-število sličic na sekundo](/reference/set-frame-rate). Znotraj vsake sličice lahko
-poljubno prižigate in ugašate lučke. Vse spremembe se prikažejo ob koncu posamezne
-sličice.
+Blok [na sličici](/reference/basic/on-frame) se izvede za vsako sličico. Privzeto se
+prikaže 50 sličic na sekundo. Število sličic na sekundo lahko spremenite z blokom
+[nastavi število sličic na sekundo](/reference/basic/set-frame-rate). Znotraj vsake
+sličice lahko poljubno prižigate in ugašate lučke. Vse spremembe se prikažejo ob
+koncu posamezne sličice.
 
 ## Bloki
 
 ```namespaces
-for (let i = 0;i<5;++i) {};
-if (true){};
-let x = 0;
+for (let i = 0; i < 5; ++i) {}
+if (true) {}
+let x = 0
 ```
 
 ## Vgrajeni objekti
 
 ```namespaces
-Math.randomRange(0,5);
-"".compare("");
-[0].push(0);
+Math.randomRange(0,5)
+"".compare("")
+[0].push(0)
 ```
 
 ## Funkcionalnosti
 
 ```namespaces
-lights.setLights();
-colors.randomColor();
-shapes.ball();
+lights.setLights()
+colors.randomColor()
+shapes.ball()
 ```
 
 ## Poglejte tudi

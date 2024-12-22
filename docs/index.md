@@ -1,25 +1,53 @@
-# Informacije o urejevalniku Jelkly
+![Naslovna slika](https://jelkly.fmf.uni-lj.si/docs/static/banner/baubles.png)
 
-### @description Osnovne informacije o urejevalniku Jelkly
+# Dokumentacija
 
-## Kaj je Jelkly?
+### @description Glavna stran dokumentacije urejevalnika Jelkly
 
+Urejevalnik Jelkly je spletni urejevalnik, ki ga lahko uporabite za programiranje vzorcev
+za [Jelko FMF](https://jelka.fmf.uni-lj.si/). Omogoča vizualno programiranje z bloki, ki
+jih lahko povežete in sestavite v program. Svoje vzorce lahko nato delite z drugimi ali
+pa jih oddate za prikaz na novoletni jelki. Uporaba je preprosta tudi za začetnike in
+ljudi brez znanja programiranja.
 
-Jelkly je urejevalnik za programiranje vzorcev lučk na [FMF jelki](https://jelka.fmf.uni-lj.si). Vsak vzorec bo preverjen in nato prikazan na božični jelki, ki stoji pred [Fakulteto za matematiko in fiziko](https://www.fmf.uni-lj.si/sl/). Če želite programirati vzorce v kakšnem drugem programskem jeziku, si oglejte github repozitorij [Storži](https://github.com/Jelka-FMF/Storzi).
+Če želite ustvariti svoj vzorec, odprite [urejevalnik](https://jelkly.fmf.uni-lj.si/) ter
+ustvarite nov projekt. Za več informacij o urejevalniku lahko obiščite [stran z informacijami](/about)
+ali pa si ogledate [pogosto zastavljena vprašanja](/faq).
 
-Projekt smo ustvarili člani [programerskega kluba](https://programerski-klub-fmf.github.io/) Fakultete za matematiko in fiziko. Če želite izvedeti več o postavljanju serverjev, internetnih protokolih, programiranju 3D simulacij in postavljanju spletnih strani se pridružite našemu [discordu](https://discord.gg/E9jtSSVY) ali pa nam pošljite [email](mailto:katja.bercic@fmf.uni-lj.si). Vsa koda je dostopna na [Githubu](https://github.com/Jelka-FMF).
+## ~button OPEN-EDITOR-URL
 
+Ustvarite svoj vzorec
 
-## Tipi blokov
-Podrobnejša navodila za uporabo posameznih blokov. Za več podrobnosti izberite relevantno kategorijo.
+## ~
+
+## Uporabne povezave
+
+### Splošno
+
+* [Dokumentacija](/index)
+* [Urejevalnik](https://jelkly.fmf.uni-lj.si/)
+* [O projektu Jelka FMF](https://jelka.fmf.uni-lj.si/about/)
+* [O urejevalniku Jelkly](https://jelkly.fmf.uni-lj.si/docs/about.html)
+* [Podpora](/support)
+* [FAQ](/faq)
+
+### Uporaba
+
+* [Referenca](/reference)
+* [Bloki](/blocks)
+* [Python](/python)
+* [JavaScript](/javascript)
+* [Tipi](/types)
+
+## Vrste blokov
+
+Podrobnejša navodila za uporabo glavnih vrst blokov. Za več podrobnosti izberite relevantno kategorijo.
+
 ```namespaces
-lights.setLights();
-colors.randomColor();
-shapes.ball();
-for (let i = 0;i<5;++i) {};
-basic.onFrame(function (frameNumber, timeSinceStart) {});
-if (true) {	};
-
+basic.onFrame(function (frameNumber, timeSinceStart) {})
+lights.setLights()
+colors.randomColor()
+shapes.ball()
+for (let i = 0; i < 5; ++i) {}
+if (true) {}
 ```
-
-

@@ -1,4 +1,4 @@
-# LUČKE
+# Lučke
 
 ## Osnovno upravljanje z lučkami
 ### Nastavi seznam lučk na barvo
@@ -41,7 +41,7 @@ Vrne naključno število, ki je indeks ene izmed lučk na jelki.
 ## Koordinate v prostoru & lučke
 
 ### Izbira lučk glede na njihove koordinate
-Vrne nov seznam lučk, ki so bile v originalnem seznamu in ki imajo x, y ali z koordinato večjo oz. manjšo od nekega celega števila. 
+Vrne nov seznam lučk, ki so bile v originalnem seznamu in ki imajo x, y ali z koordinato večjo oz. manjšo od nekega celega števila.
 ```block
     lights.setLights(lights.lightsWhere(Axis.X, Relation.Greater, 0, lights.getLights()), colors.rgbColor(
     0,

@@ -1,9 +1,9 @@
 # Povzetek
 
-* [O urejevalniku Jelkly](/index)
-* [Ustvari svoj vzorec](https://jelkly.fmf.uni-lj.si/)
+* [Dokumentacija](/index)
+* [Urejevalnik](https://jelkly.fmf.uni-lj.si/)
 * [O projektu Jelka FMF](https://jelka.fmf.uni-lj.si/about/)
-* [Dokumentacija](https://jelkly.fmf.uni-lj.si/docs/about.html)
+* [O urejevalniku Jelkly](https://jelkly.fmf.uni-lj.si/docs/about.html)
 * [Podpora](/support)
 * [FAQ](/faq)
 
@@ -14,6 +14,7 @@
         * [na začetku](/blocks/on-start)
         * [na sličici](/reference/basic/on-frame)
         * [nastavi število sličic na sekundo](/reference/basic/set-frame-rate)
+        * [pridobi število sličic na sekundo](/reference/basic/get-frame-rate)
     * [Lučke](/reference/lights)
         * TODO
 
@@ -74,7 +75,7 @@
 ## Razno #misc
 
 * Razno
-    * [Informacije](/about)
+    * [Informacije](/index)
     * [Podpora](/support)
     * [Kontakt](/contact)
     * [Prevajanje](/translate)
