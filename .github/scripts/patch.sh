@@ -6,6 +6,9 @@ BASE_URL="https://jelkly.fmf.uni-lj.si"
 # Manually copy the favicon to the root directory
 cp docs/static/icons/favicon.ico built/packaged/favicon.ico
 
+# Manually copy static files to the root directory
+cp -r built/packaged/docs/static/ built/packaged/static/
+
 find built/packaged -name '*.html' | while read -r filename; do
     # Remove the lang attribute from HTML files as it is wrong
     sed -i 's/lang="en"\s*//g' "$filename"

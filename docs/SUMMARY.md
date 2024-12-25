@@ -17,6 +17,18 @@
         * [pridobi število sličic na sekundo](/reference/basic/get-frame-rate)
     * [Lučke](/reference/lights)
         * TODO
+    * [Barve](/reference/colors)
+        * [naključna barva](/reference/colors/random-color)
+        * [barva RGB](/reference/colors/rgb-color)
+        * [barva HSL](/reference/colors/hsl-color)
+        * [barva HSV](/reference/colors/hsv-color)
+        * [barva CMYK](/reference/colors/cmyk-color)
+        * [komponenta RGB](/reference/colors/rgb-component)
+        * [komponenta HSL](/reference/colors/hsl-component)
+        * [komponenta HSV](/reference/colors/hsv-component)
+        * [komponenta CMYK](/reference/colors/cmyk-component)
+    * [Oblike](/reference/shapes)
+        * TODO
 
 ## Bloki #blocks
 

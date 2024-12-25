@@ -1,4 +1,4 @@
-![Naslovna slika](https://jelkly.fmf.uni-lj.si/docs/static/banner/baubles.png)
+![Naslovna slika](/docs/static/banners/baubles.png)
 
 # Dokumentacija
 
@@ -14,11 +14,11 @@ ljudi brez znanja programiranja.
 ustvarite nov projekt. Za več informacij o urejevalniku lahko obiščite [stran z informacijami](/about)
 ali pa si ogledate [pogosto zastavljena vprašanja](/faq).
 
-## ~button OPEN-EDITOR-URL
+### ~button OPEN-EDITOR-URL
 
 Ustvarite svoj vzorec
 
-## ~
+### ~
 
 ## Uporabne povezave
 
