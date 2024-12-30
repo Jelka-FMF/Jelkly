@@ -28,9 +28,9 @@ let x = 0
 ## Vgrajeni objekti
 
 ```namespaces
-Math.randomRange(0,5)
-"".compare("")
-[0].push(0)
+Math.randomRange(0,5);
+"".compare("");
+[0].push(0);
 ```
 
 ## Funkcionalnosti
