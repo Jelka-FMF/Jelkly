@@ -16,7 +16,17 @@
         * [Nastavi število sličic na sekundo](/reference/basic/set-frame-rate)
         * [Pridobi število sličic na sekundo](/reference/basic/get-frame-rate)
     * [Lučke](/reference/lights)
-        * TODO
+        * [Nastavi lučke na barvo](/reference/lights/set-lights)
+        * [Ponastavi lučke](/reference/lights/reset-lights)
+        * [Vse lučke](/reference/lights/get-lights)
+        * [Število lučk](/reference/lights/count-lights)
+        * [Naključna lučka](/reference/lights/random-light)
+        * [Lučke glede na koordinate](/reference/lights/lights-where)
+        * [Robne koordinate lučk](/reference/lights/lights-bound)
+        * [Pridobi barve lučk](/reference/lights/get-colors)
+        * [Pridobi barvo lučke](/reference/lights/get-color)
+        * [Pridobi koordinate lučke](/reference/lights/get-coordinates)
+        * [Pridobi koordinato lučke](/reference/lights/get-coordinate)
     * [Barve](/reference/colors)
         * [Naključna barva](/reference/colors/random-color)
         * [Barva RGB](/reference/colors/rgb-color)
@@ -33,6 +43,7 @@
         * [Valj](/reference/shapes/cylinder)
         * [Ravnina](/reference/shapes/plane)
         * [Primerjava z ravnino](/reference/shapes/plane-relation)
+    * [Koordinatni sistem](/reference/coordinates)
 
 ## Bloki #blocks
 

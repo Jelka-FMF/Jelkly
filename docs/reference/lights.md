@@ -1,74 +1,104 @@
 # Lučke
 
 ## Osnovno upravljanje z lučkami
-### Nastavi seznam lučk na barvo
-V seznamu so cela števila od 0 do 500 (kolikor je lučk), barva pa je podana v RGB. Tukaj si lahko preberete več o barvah.
+
+### Nastavi lučke na barvo
+
+Z blokom [nastavi lučke na barvo](/reference/lights/set-lights) lahko nastavite
+barvo izbranih lučk na jelki.
+
 ```block
-        lights.setLights(lights.getLights(), colors.rgbColor(
-    0,
-    0,
-    0
-    ))
+lights.setLights(lights.getLights(), colors.rgbColor(255, 0, 0))
 ```
 
 ### Ponastavi lučke
-Izklopi vse lučke na jelki, vse lučke imajo vrednost 0.
+
+Z blokom [ponastavi lučke](/reference/lights/reset-lights) lahko izklopite
+izbrane lučke na jelki. To je ekvivalentno temu, da izbrane lučke nastavite
+na črno barvo.
+
 ```block
-    lights.resetLights()
+lights.resetLights(lights.getLights())
 ```
 
 ### Vse lučke
-Vrne seznam indeksov, ki predstavljajo vse lučke na jelki
+
+Z blokom [vse lučke](/reference/lights/get-lights) lahko dobite seznam
+indeksov vseh lučk na jelki.
+
 ```block
-    lights.getLights()
+lights.getLights()
 ```
 
 ### Število lučk
-Prešteje koliko lučk je v seznamu in vrne število.
+
+Z blokom [število lučk](/reference/lights/count-lights) lahko dobite število
+vseh lučk na jelki.
+
 ```block
-    lights.countLights()
+lights.countLights()
 ```
 
 ### Naključna lučka
-Vrne naključno število, ki je indeks ene izmed lučk na jelki.
-```block
-    lights.setLights(lights.randomLight(), colors.rgbColor(
-        0,
-        0,
-        0
-        ))
-```
-## Koordinate v prostoru & lučke
 
-### Izbira lučk glede na njihove koordinate
-Vrne nov seznam lučk, ki so bile v originalnem seznamu in ki imajo x, y ali z koordinato večjo oz. manjšo od nekega celega števila.
+Z blokom [naključna lučka](/reference/lights/random-light) lahko dobite naključno
+število, ki predstavlja indeks ene izmed lučk na jelki.
+
 ```block
-    lights.setLights(lights.lightsWhere(Axis.X, Relation.Greater, 0, lights.getLights()), colors.rgbColor(
-    0,
-    0,
-    0
-    ))
+lights.randomLight()
 ```
 
-### Izbira x koordinate lučk iz seznama
-Vrne seznam, ki vsebuje koordinate lučk iz seznama. To so števila od -100 do 100 in so lahko decimalna. Podobno lahko izberete y koordinate lučk (od -100 do 100) in z koordinate lučk (od 0 do 100).
+## Koordinate v prostoru in pozicije lučk
+
+Več o koordinatnem sistemu in pozicijah lučk si lahko preberete [v dokumentaciji
+koordinatnega sistema](/reference/coordinates).
+
+Uporabljate lahko tudi bloke za [oblike](/reference/shapes), ki vam omogočajo
+enostavno izbiro lučk, ki ustrezajo osnovnim oblikam.
+
+### Izberi lučke glede na njihove koordinate
+
+Z blokom [lučke kjer](/reference/lights/lights-where) lahko dobite seznam lučk,
+ki imajo posamezno koordinato večjo ali manjšo od določene vrednosti.
+
 ```block
-    lights.getCoordinates(Axis.X, seznam)
+lights.lightsWhere(Axis.X, Relation.Greater, 0, lights.getLights())
 ```
 
-### Izbira x koordinate določene lučke
-Vrne izbrano koordinato (x, y ali z) te lučke.
+### Pridobi robne koordinate lučk
+
+Z blokom [najmanjša/največja vrednost osi](/reference/lights/lights-bound)
+lahko dobite najmanjšo ali največjo vrednost izbrane osi izmed izbranih lučk.
+
 ```block
-    lights.getCoordinate(Axis.X, 5)
+lights.lightsBound(Axis.X, Bound.Min, lights.getLights())
 ```
 
-### Kombiniranje pogojev za koordinate
-Če želite izbrati lučke, ki imajo npr. koordinato `x < 0` in koordinato `y > 25` lahko uporabite gnezdenje blokov.
+## Druge funkcionalnosti z lučkami
+
+### Pridobi barve lučk
+
+Z blokoma [barve lučk](/reference/lights/get-colors) in [barva lučke](/reference/lights/get-color)
+lahko dobite barve izbranih lučk na jelki.
+
 ```block
-    lights.setLights(lights.lightsWhere(Axis.X, Relation.Greater, 0, lights.lightsWhere(Axis.Y, Relation.Greater, 0, lights.getLights())), colors.rgbColor(
-    0,
-    0,
-    0
-    ))
+lights.getColors(lights.getLights())
 ```
 
+```block
+lights.getColor(lights.randomLight())
+```
+
+### Pridobi koordinate lučk
+
+Z blokoma [koordinate lučk](/reference/lights/get-coordinates) in [koordinata
+lučke](/reference/lights/get-coordinate) lahko dobite koordinate izbranih lučk
+na jelki.
+
+```block
+lights.getCoordinates(Axis.X, lights.getLights())
+```
+
+```block
+lights.getCoordinate(Axis.X, lights.randomLight())
+```

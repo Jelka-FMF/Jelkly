@@ -14,7 +14,7 @@ shapes.planeRelation(0, 0, 50, 0, 0, Relation.Greater)
 * **z0**: Z-koordinata središča ravnine.
 * **psi (prva rotacija)**: Rotacija ravnine okoli `z` osi (v stopinjah).
 * **ksi (druga rotacija)**: Rotacija ravnine okoli `xy` ravnine (v stopinjah).
-* **relation**: Razmerje, ki ga želimo preveriti.
+* **relation**: Razmerje, ki ga želite preveriti.
 
 Rotacije ter ostali parametri delujejo enako, kot pri bloku [ravnina](/reference/shapes/plane).
 

@@ -17,6 +17,9 @@ prikaže 50 sličic na sekundo. Število sličic na sekundo lahko spremenite z b
 sličice lahko poljubno prižigate in ugašate lučke. Vse spremembe se prikažejo ob
 koncu posamezne sličice.
 
+Več o koordinatnem sistemu in pozicijah lučk si lahko preberete [v dokumentaciji
+koordinatnega sistema](/reference/coordinates).
+
 ## Bloki
 
 ```namespaces
@@ -54,6 +57,8 @@ shapes.ball()
 [lučke](/reference/lights),
 [barve](/reference/colors),
 [oblike](/reference/shapes)
+
+[koordiantni sistem](/reference/coordinates)
 
 [javascript bloki](/blocks/javascript-blocks),
 [bloki po meri](/blocks/custom)

@@ -13,7 +13,8 @@ basic.onFrame(function (frameNumber, timeSinceStart) {
 })
 ```
 
-TODO: Koordinatni sistem
+Več o koordinatnem sistemu in pozicijah lučk, ki jih uporabljajo oblike, si
+lahko preberete [v dokumentaciji koordinatnega sistema](/reference/coordinates).
 
 ## Krogla
 
