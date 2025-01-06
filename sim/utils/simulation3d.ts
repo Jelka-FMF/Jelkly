@@ -166,6 +166,8 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: 
     // const relativeHeight = Math.max(...Object.values(positions).map(pos => pos.y)) - Math.min(...Object.values(positions).map(pos => pos.y))
     // const lowestPoint = Math.max(...Object.values(positions).map(pos => pos.y))
 
+    const lowestLight = Object.values(positions).reduce((prev, current) => prev.z < current.z ? prev : current)
+
     for (const [index, color] of Object.entries(positions)) {
         const position = positions[parseInt(index)]
 
@@ -177,7 +179,7 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: 
         const color = pxsim.board().colorStates[parseInt(index)] || { red: 0, green: 0, blue: 0 }
         
         let y = origin.y + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta, gama).y
-        let z = origin.z - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta, gama).z)
+        let z = origin.z - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta, gama).z - lowestLight.z)
 
         if (color.green == 0 && color.red == 0 && color.blue == 0) {
             ctx.beginPath()
