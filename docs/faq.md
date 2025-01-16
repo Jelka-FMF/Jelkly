@@ -20,7 +20,7 @@ na novoletni jelki.
 Uporaba je preprosta tudi za začetnike in ljudi brez znanja programiranja, bolj
 izkušeni uporabniki pa lahko svoje vzorce napišejo tudi v JavaScriptu ali Pythonu.
 
-Več informacij o urejevalniku Jelkly lahko najdete na [strani z informacijami](/about).
+Več informacij o urejevalniku Jelkly lahko najdete na [strani z informacijami](/index).
 
 ## Kako lahko oddam svoj vzorec za prikaz na jelki?
 

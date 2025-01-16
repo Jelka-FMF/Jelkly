@@ -1,48 +1,85 @@
 # Barve
 
-### Naključna barva
-Ustvari naključno barvo.
+## Naključna barva
+
+Z blokom [naključna barva](/reference/colors/random-color) lahko ustvarite naključno barvo.
+
 ```block
-    lights.setLights(lights.getLights(), colors.randomColor())
+colors.randomColor()
 ```
 
-## Načini podajanja barve
-### RGB barva
-Izberi barvo tako da določi koliko rdeče (R), zelene (G) in modre (B) naj ima izbrana barva.
+## Podajanje barve
+
+### Barva RGB
+
+Z blokom [RGB](/reference/colors/rgb-color) lahko določite barvo glede na vrednosti
+rdeče (R), zelene (G) in modre (B) komponente.
+
 ```block
-    lights.setLights(lights.randomLight(), colors.rgbColor(
-        0,
-        0,
-        0
-        ))
-```
-### HSL barva
-Izberi barvo tako da določi njen odtenek (H), nasičenost (S) in svetlost (L).
-```block
-    lights.setLights(lights.randomLight(), colors.hslColor(
-    0,
-    100,
-    50
-    ))
+colors.rgbColor(255, 0, 255)
 ```
 
+### Barva HSL
 
-### HSV barva
-Izberi barvo tako da določi njen odtenek (H), nasičenost (S) in vrednost (V).
+Z blokom [HSL](/reference/colors/hsl-color) lahko določite barvo glede na njen
+odtenek (H), nasičenost (S) in svetlost (L).
+
 ```block
-    lights.setLights(lights.randomLight(), colors.hsvColor(
-    0,
-    100,
-    100
-    ))
+colors.hslColor(0, 100, 50)
 ```
 
-### CMYK barva
+### Barva HSV
+
+Z blokom [HSV](/reference/colors/hsv-color) lahko določite barvo glede na njen
+odtenek (H), nasičenost (S) in vrednost (V).
+
 ```block
-    lights.setLights(lights.randomLight(), colors.cmykColor(
-    0,
-    35,
-    34,
-    0
-    ))
+colors.hsvColor(0, 100, 100)
+```
+
+### Barva CMYK
+
+Z blokom [CMYK](/reference/colors/cmyk-color) lahko določite barvo glede na vrednosti
+cian (C), magenta (M), rumene (Y) in črne (K) komponente.
+
+```block
+colors.cmykColor(0, 100, 100, 0)
+```
+
+## Komponente barve
+
+### Komponenta RGB
+
+Z blokom [komponenta RGB](/reference/colors/rgb-component) lahko pridobite vrednost
+rdeče (R), zelene (G) ali modre (B) komponente iz barve.
+
+```block
+colors.rgbComponent(RgbComponent.Red, colors.rgbColor(255, 0, 255))
+```
+
+### Komponenta HSL
+
+Z blokom [komponenta HSL](/reference/colors/hsl-component) lahko pridobite vrednost
+komponente odtenka (H), nasičenosti (S) ali svetlosti (L) iz barve.
+
+```block
+colors.hslComponent(HslComponent.Hue, colors.rgbColor(255, 0, 255))
+```
+
+### Komponenta HSV
+
+Z blokom [komponenta HSV](/reference/colors/hsv-component) lahko pridobite vrednost
+komponente odtenka (H), nasičenosti (S) ali vrednosti (V) iz barve.
+
+```block
+colors.hsvComponent(HsvComponent.Hue, colors.rgbColor(255, 0, 255))
+```
+
+### Komponenta CMYK
+
+Z blokom [komponenta CMYK](/reference/colors/cmyk-component) lahko pridobite vrednost
+cian (C), magenta (M), rumena (Y) ali črne (K) komponente iz barve.
+
+```block
+colors.cmykComponent(CmykComponent.Cyan, colors.rgbColor(255, 0, 255))
 ```

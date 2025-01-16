@@ -6,12 +6,18 @@ BASE_URL="https://jelkly.fmf.uni-lj.si"
 # Manually copy the favicon to the root directory
 cp docs/static/icons/favicon.ico built/packaged/favicon.ico
 
+# Manually copy static files to the root directory
+cp -r built/packaged/docs/static/ built/packaged/static/
+
 find built/packaged -name '*.html' | while read -r filename; do
     # Remove the lang attribute from HTML files as it is wrong
     sed -i 's/lang="en"\s*//g' "$filename"
 
     # Remove the nofollow attribute from HTML files to allow indexing
     sed -i 's/rel="nofollow noopener"\s*//g' "$filename"
+
+    # Fix the editor link in the documentation buttons
+    sed -i 's/href="OPEN-EDITOR-URL"/href="\/"/g' "$filename"
 done
 
 # Properly set the title tag for the documentation

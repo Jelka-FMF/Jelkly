@@ -68,6 +68,9 @@ function onWheel (event: WheelEvent) {
 
     // Re-render the view
     pxsim.board().updateView()
+
+    // Prevent zooming or scrolling
+    event.preventDefault()
 }
 
 function onMouseMove (event: MouseEvent) {
@@ -76,6 +79,7 @@ function onMouseMove (event: MouseEvent) {
     const deltaX = event.clientX - lastMouseX
     const deltaY = event.clientY - lastMouseY
 
+    // Update the last position
     lastMouseX = event.clientX
     lastMouseY = event.clientY
 
@@ -86,6 +90,9 @@ function onMouseMove (event: MouseEvent) {
 
     // Re-render the view
     pxsim.board().updateView()
+
+    // Prevent zooming or scrolling
+    event.preventDefault()
 }
 
 function onTouchMove (event: TouchEvent) {
@@ -94,24 +101,25 @@ function onTouchMove (event: TouchEvent) {
         const currentDistance = getDistance(event.touches[0], event.touches[1])
         sizeScale = initialScale * (currentDistance / initialDistance)
 
-        // Re-render the view
-        pxsim.board().updateView()
-
     } else if (isMouseDown) {
         // Handle touch rotation
         const deltaX = event.touches[0].clientX - lastMouseX
         const deltaY = event.touches[0].clientY - lastMouseY
 
+        // Update the last position
         lastMouseX = event.touches[0].clientX
         lastMouseY = event.touches[0].clientY
 
         // Update the view based on touch movements
         alpha = alpha + deltaX * rotationScale
         gama = gama + deltaY * rotationScale
-
-        // Re-render the view
-        pxsim.board().updateView()
     }
+
+    // Re-render the view
+    pxsim.board().updateView()
+
+    // Prevent zooming or scrolling
+    event.preventDefault()
 }
 
 function getDistance (touch1: Touch, touch2: Touch): number {
@@ -126,14 +134,13 @@ function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, 
     // Rotation matrix
     let newx = Math.sin(alpha) * Math.cos(beta) * x +   (Math.cos(alpha) * Math.cos(gama) - Math.sin(alpha) * Math.sin(beta) * Math.sin(gama)) * y + ( - Math.cos(alpha) * Math.sin(gama) - Math.sin(alpha) * Math.sin(beta) * Math.cos(gama)) * z
     let newy = Math.cos(alpha) * Math.cos(beta) * x + (- Math.sin(alpha) * Math.cos(gama) - Math.cos(alpha) * Math.sin(beta) * Math.sin(gama)) * y + (Math.sin(alpha) * Math.sin(gama) - Math.cos(alpha) * Math.sin(beta) * Math.cos(gama)) * z
-    let newz =                   Math.sin(beta) * x +  Math.cos(beta) * Math.sin(gama) * y                                                          + Math.cos(beta) * Math.cos(gama) * z 
+    let newz =                   Math.sin(beta) * x +  Math.cos(beta) * Math.sin(gama) * y                                                          + Math.cos(beta) * Math.cos(gama) * z
 
     return { x: newx, y: newy, z: newz }
 }
 
 
 function drawCoordinateSystem (ctx: CanvasRenderingContext2D, origin: Position , scale: number) {
-   
     let xaxis = getRotatedCoordinates(100, 0, 0,  alpha, - beta, - gama)
     let yaxis = getRotatedCoordinates(0, 100, 0,  alpha, - beta, - gama)
     let zaxis = getRotatedCoordinates(0, 0, 100,  alpha, - beta, - gama)
@@ -177,7 +184,7 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: 
         }
 
         const color = pxsim.board().colorStates[parseInt(index)] || { red: 0, green: 0, blue: 0 }
-        
+
         let y = origin.y + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta, gama).y
         let z = origin.z - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta, gama).z - lowestLight.z)
 

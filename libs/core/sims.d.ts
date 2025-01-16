@@ -157,6 +157,7 @@ declare namespace colors {
     //% jsdoc.loc.sl="Vrne vrednost RGB komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
     //% shim=colors::rgbComponent
     function rgbComponent(component: RgbComponent, color: Color): number;
 
@@ -172,6 +173,7 @@ declare namespace colors {
     //% jsdoc.loc.sl="Vrne vrednost HSL komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
     //% shim=colors::hslComponent
     function hslComponent(component: HslComponent, color: Color): number;
 
@@ -187,6 +189,7 @@ declare namespace colors {
     //% jsdoc.loc.sl="Vrne vrednost HSV komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
     //% shim=colors::hsvComponent
     function hsvComponent(component: HsvComponent, color: Color): number;
 
@@ -202,6 +205,8 @@ declare namespace colors {
     //% jsdoc.loc.sl="Vrne vrednost CMYK komponente barve"
     //% component.loc.sl="komponenta barve"
     //% color.loc.sl="želena barva"
+    //% advanced=true
+    //% blockGap=40
     //% shim=colors::cmykComponent
     function cmykComponent(component: CmykComponent, color: Color): number;
 
@@ -245,6 +250,7 @@ declare namespace lights {
     //% block.loc.sl="barve lučk $lights"
     //% jsdoc.loc.sl="Vrni barve izbranih lučk"
     //% lights.loc.sl="lučke, za katere želimo barve"
+    //% advanced=true
     //% shim=lights::getColors
     function getColors(lights: number | number[]): Color[];
 
@@ -258,6 +264,7 @@ declare namespace lights {
     //% block.loc.sl="barva lučke $light"
     //% jsdoc.loc.sl="Vrni barvo izbrane lučke"
     //% light.loc.sl="lučka, za katero želimo barvo"
+    //% advanced=true
     //% blockGap=40
     //% shim=lights::getColor
     function getColor(light: number): Color;
@@ -274,6 +281,7 @@ declare namespace lights {
     //% jsdoc.loc.sl="Vrni koordinate izbranih lučk"
     //% axis.loc.sl="os, za katero želimo koordinate"
     //% lights.loc.sl="lučke, za katere želimo koordinate"
+    //% advanced=true
     //% shim=lights::getCoordinates
     function getCoordinates(axis: Axis, lights: number | number[]): number[];
 
@@ -289,6 +297,7 @@ declare namespace lights {
     //% jsdoc.loc.sl="Vrni koordinato izbrane lučke"
     //% axis.loc.sl="os, za katero želimo koordinato"
     //% light.loc.sl="lučka, za katero želimo koordinato"
+    //% advanced=true
     //% blockGap=40
     //% shim=lights::getCoordinate
     function getCoordinate(axis: Axis, light: number): number;
@@ -345,9 +354,28 @@ declare namespace lights {
     //% lights.loc.sl="seznam lučk, ki jih želimo preveriti"
     //% inlineInputMode="inline"
     //% lights.shadow="lights-list" lights.defl="lights-list"
-    //% blockGap=40
     //% shim=lights::lightsWhere
     function lightsWhere(axis: Axis, relation: Relation, value: number, lights: number[]): number[];
+
+    /**
+     * Get the minimum/maximum value of the specified axis
+     * @param axis the axis to get the value of
+     * @param bound whether to get the minimum or maximum value
+     * @param lights the list of lights to get the value of
+     */
+    //% blockId=lights-bound
+    //% help=lights/lights-bound weight=34
+    //% block="$bound value of $axis from $lights"
+    //% block.loc.sl="$bound vrednost $axis iz $lights"
+    //% jsdoc.loc.sl="Vrni najmanjšo ali največjo vrednost osi"
+    //% axis.loc.sl="os, za katero želimo vrednost"
+    //% bound.loc.sl="ali želimo najmanjšo ali največjo vrednost"
+    //% lights.loc.sl="seznam lučk, za katere želimo vrednost"
+    //% inlineInputMode="inline"
+    //% lights.shadow="lights-list" lights.defl="lights-list"
+    //% blockGap=40
+    //% shim=lights::lightsBound
+    function lightsBound(axis: Axis, bound: Bound, lights: number[]): number;
 
 }
 declare namespace shapes {
@@ -368,7 +396,8 @@ declare namespace shapes {
     //% z0.loc.sl="z koordinata središča krogle"
     //% r.loc.sl="polmer krogle"
     //% inlineInputMode=external
-    //% r.min=0
+    //% z0.defl=50
+    //% r.min=0 r.defl=20
     //% shim=shapes::ball
     function ball(x0: number, y0: number, z0: number, r: number): number[];
 
@@ -391,8 +420,9 @@ declare namespace shapes {
     //% r.loc.sl="polmer sfere"
     //% d.loc.sl="debelina sfere"
     //% inlineInputMode=external
-    //% r.min=0
-    //% d.min=0
+    //% z0.defl=50
+    //% r.min=0 r.defl=20
+    //% d.min=0 d.defl=5
     //% shim=shapes::sphere
     function sphere(x0: number, y0: number, z0: number, r: number, d: number): number[];
 
@@ -419,10 +449,11 @@ declare namespace shapes {
     //% r.loc.sl="polmer valja"
     //% h.loc.sl="višina valja"
     //% inlineInputMode=external
+    //% z0.defl=50
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
-    //% r.min=0
-    //% h.min=0
+    //% r.min=0 r.defl=20
+    //% h.min=0 h.defl=10
     //% shim=shapes::cylinder
     function cylinder(x0: number, y0: number, z0: number, psi: number, ksi: number, r: number, h: number): number[];
 
@@ -447,9 +478,10 @@ declare namespace shapes {
     //% ksi.loc.sl="druga rotacija ravnine (v stopinjah)"
     //% d.loc.sl="debelina ravnine"
     //% inlineInputMode=external
+    //% z0.defl=50
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
-    //% d.min=0
+    //% d.min=0 d.defl=10
     //% shim=shapes::plane
     function plane(x0: number, y0: number, z0: number, psi: number, ksi: number, d: number): number[];
 
@@ -474,6 +506,7 @@ declare namespace shapes {
     //% psi.loc.sl="prva rotacija ravnine (v stopinjah)"
     //% ksi.loc.sl="druga rotacija ravnine (v stopinjah)"
     //% inlineInputMode=external
+    //% z0.defl=50
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
     //% shim=shapes::planeRelation

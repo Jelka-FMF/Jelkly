@@ -11,18 +11,21 @@ Dogodek [na začetku](/blocks/on-start) se izvede prvi. V njem lahko nastavite z
 vrednosti in ostale stvari, ki jih želite, da se izvedejo le enkrat. V njem ne morete
 prižigati ali ugašati lučk.
 
-Blok [na sličici](/reference/on-frame) se izvede za vsako sličico. Privzeto se prikaže
-50 sličic na sekundo. Število sličic na sekundo lahko spremenite z blokom [nastavi
-število sličic na sekundo](/reference/set-frame-rate). Znotraj vsake sličice lahko
-poljubno prižigate in ugašate lučke. Vse spremembe se prikažejo ob koncu posamezne
-sličice.
+Blok [na sličici](/reference/basic/on-frame) se izvede za vsako sličico. Privzeto se
+prikaže 50 sličic na sekundo. Število sličic na sekundo lahko spremenite z blokom
+[nastavi število sličic na sekundo](/reference/basic/set-frame-rate). Znotraj vsake
+sličice lahko poljubno prižigate in ugašate lučke. Vse spremembe se prikažejo ob
+koncu posamezne sličice.
+
+Več o koordinatnem sistemu in pozicijah lučk si lahko preberete [v dokumentaciji
+koordinatnega sistema](/reference/coordinates).
 
 ## Bloki
 
 ```namespaces
-for (let i = 0;i<5;++i) {};
-if (true){};
-let x = 0;
+for (let i = 0; i < 5; ++i) {}
+if (true) {}
+let x = 0
 ```
 
 ## Vgrajeni objekti
@@ -36,9 +39,9 @@ Math.randomRange(0,5);
 ## Funkcionalnosti
 
 ```namespaces
-lights.setLights();
-colors.randomColor();
-shapes.ball();
+lights.setLights()
+colors.randomColor()
+shapes.ball()
 ```
 
 ## Poglejte tudi
@@ -54,6 +57,8 @@ shapes.ball();
 [lučke](/reference/lights),
 [barve](/reference/colors),
 [oblike](/reference/shapes)
+
+[koordiantni sistem](/reference/coordinates)
 
 [javascript bloki](/blocks/javascript-blocks),
 [bloki po meri](/blocks/custom)

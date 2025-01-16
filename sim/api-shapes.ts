@@ -26,7 +26,8 @@ namespace pxsim.shapes {
     //% z0.loc.sl="z koordinata središča krogle"
     //% r.loc.sl="polmer krogle"
     //% inlineInputMode=external
-    //% r.min=0
+    //% z0.defl=50
+    //% r.min=0 r.defl=20
     export function ball (x0: number, y0: number, z0: number, r: number): number[] {
         const lights = []
 
@@ -58,8 +59,9 @@ namespace pxsim.shapes {
     //% r.loc.sl="polmer sfere"
     //% d.loc.sl="debelina sfere"
     //% inlineInputMode=external
-    //% r.min=0
-    //% d.min=0
+    //% z0.defl=50
+    //% r.min=0 r.defl=20
+    //% d.min=0 d.defl=5
     export function sphere (x0: number, y0: number, z0: number, r: number, d: number): number[] {
         const lights = []
 
@@ -99,10 +101,11 @@ namespace pxsim.shapes {
     //% r.loc.sl="polmer valja"
     //% h.loc.sl="višina valja"
     //% inlineInputMode=external
+    //% z0.defl=50
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
-    //% r.min=0
-    //% h.min=0
+    //% r.min=0 r.defl=20
+    //% h.min=0 h.defl=10
     export function cylinder (x0: number, y0: number, z0: number, psi: number, ksi: number, r: number, h: number): number[] {
         psi = degToRad(psi)
         ksi = degToRad(ksi)
@@ -174,9 +177,10 @@ namespace pxsim.shapes {
     //% ksi.loc.sl="druga rotacija ravnine (v stopinjah)"
     //% d.loc.sl="debelina ravnine"
     //% inlineInputMode=external
+    //% z0.defl=50
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
-    //% d.min=0
+    //% d.min=0 d.defl=10
     export function plane (x0: number, y0: number, z0: number, psi: number, ksi: number, d: number): number[] {
         psi = degToRad(psi)
         ksi = degToRad(ksi)
@@ -219,6 +223,7 @@ namespace pxsim.shapes {
     //% psi.loc.sl="prva rotacija ravnine (v stopinjah)"
     //% ksi.loc.sl="druga rotacija ravnine (v stopinjah)"
     //% inlineInputMode=external
+    //% z0.defl=50
     //% psi.min=0 psi.max=360
     //% ksi.min=0 ksi.max=360
     export function planeRelation (x0: number, y0: number, z0: number, psi: number, ksi: number, relation: Relation): number[] {

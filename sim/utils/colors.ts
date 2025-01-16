@@ -24,7 +24,7 @@ interface CmykColor {
 }
 
 /**
- * Converts a HSL color to an RGB color.
+ * Converts an HSL color to an RGB color.
  *
  * @param color The HSL color to convert
  * @param color.hue The hue of the color (0-360)
@@ -34,8 +34,8 @@ interface CmykColor {
  * @returns The RGB color
  */
 function hslToRgb ({ hue, saturation, lightness }: HslColor): RgbColor {
-    saturation /= 100
-    lightness /= 100
+    saturation = Math.max(0, Math.min(100, saturation)) / 100
+    lightness = Math.max(0, Math.min(100, lightness)) / 100
 
     const a = saturation * Math.min(lightness, 1 - lightness)
     const k = (n: number) => (n + hue / 30) % 12
@@ -49,7 +49,7 @@ function hslToRgb ({ hue, saturation, lightness }: HslColor): RgbColor {
 }
 
 /**
- * Converts an RGB color to a HSL color.
+ * Converts an RGB color to an HSL color.
  *
  * @param color The RGB color to convert
  * @param color.red The intensity of red (0-255)
@@ -59,10 +59,14 @@ function hslToRgb ({ hue, saturation, lightness }: HslColor): RgbColor {
  * @returns The HSL color
  */
 function rgbToHsl ({ red, green, blue }: RgbColor): HslColor {
+    red = Math.max(0, Math.min(255, red))
+    green = Math.max(0, Math.min(255, green))
+    blue = Math.max(0, Math.min(255, blue))
+
     const a = Math.max(red, green, blue)
     const n = a - Math.min(red, green, blue)
-    const f = (1 - Math.abs(2 * a - n - 1))
-    const h = n && ((a == red) ? (green - blue) / n : ((a == green) ? 2 + (blue - red) / n : 4 + (red - green) / n))
+    const f = 1 - Math.abs(2 * a - n - 1)
+    const h = n && (a === red ? (green - blue) / n : a === green ? 2 + (blue - red) / n : 4 + (red - green) / n)
 
     return {
         hue: 60 * (h < 0 ? h + 6 : h),
@@ -82,8 +86,8 @@ function rgbToHsl ({ red, green, blue }: RgbColor): HslColor {
  * @returns The RGB color
  */
 function hsvToRgb ({ hue, saturation, value }: HsvColor): RgbColor {
-    saturation /= 100
-    value /= 100
+    saturation = Math.max(0, Math.min(100, saturation)) / 100
+    value = Math.max(0, Math.min(100, value)) / 100
 
     const a = saturation * value
     const k = (n: number) => (n + hue / 60) % 6
@@ -107,9 +111,13 @@ function hsvToRgb ({ hue, saturation, value }: HsvColor): RgbColor {
  * @returns The HSV color
  */
 function rgbToHsv ({ red, green, blue }: RgbColor): HsvColor {
+    red = Math.max(0, Math.min(255, red))
+    green = Math.max(0, Math.min(255, green))
+    blue = Math.max(0, Math.min(255, blue))
+
     const a = Math.max(red, green, blue)
     const n = a - Math.min(red, green, blue)
-    const h = n && ((a == red) ? (green - blue) / n : ((a == green) ? 2 + (blue - red) / n : 4 + (red - green) / n))
+    const h = n && (a === red ? (green - blue) / n : a === green ? 2 + (blue - red) / n : 4 + (red - green) / n)
 
     return {
         hue: 60 * (h < 0 ? h + 6 : h),
@@ -130,9 +138,14 @@ function rgbToHsv ({ red, green, blue }: RgbColor): HsvColor {
  * @returns The RGB color
  */
 function cmykToRgb ({ cyan, magenta, yellow, key }: CmykColor): RgbColor {
-    const r = 255 * (1 - cyan / 100) * (1 - key / 100)
-    const g = 255 * (1 - magenta / 100) * (1 - key / 100)
-    const b = 255 * (1 - yellow / 100) * (1 - key / 100)
+    cyan = Math.max(0, Math.min(100, cyan)) / 100
+    magenta = Math.max(0, Math.min(100, magenta)) / 100
+    yellow = Math.max(0, Math.min(100, yellow)) / 100
+    key = Math.max(0, Math.min(100, key)) / 100
+
+    const r = 255 * (1 - cyan) * (1 - key)
+    const g = 255 * (1 - magenta) * (1 - key)
+    const b = 255 * (1 - yellow) * (1 - key)
 
     return {
         red: Math.round(r),
@@ -144,7 +157,7 @@ function cmykToRgb ({ cyan, magenta, yellow, key }: CmykColor): RgbColor {
 /**
  * Converts an RGB color to a CMYK color.
  *
- * @param color The RGB color to convert
+ * @param color The RGB color to convert.
  * @param color.red The intensity of red (0-255)
  * @param color.green The intensity of green (0-255)
  * @param color.blue The intensity of blue (0-255)
@@ -152,9 +165,9 @@ function cmykToRgb ({ cyan, magenta, yellow, key }: CmykColor): RgbColor {
  * @returns The CMYK color
  */
 function rgbToCmyk ({ red, green, blue }: RgbColor): CmykColor {
-    red /= 255
-    green /= 255
-    blue /= 255
+    red = Math.max(0, Math.min(255, red)) / 255
+    green = Math.max(0, Math.min(255, green)) / 255
+    blue = Math.max(0, Math.min(255, blue)) / 255
 
     const k = 1 - Math.max(red, green, blue)
     const c = (1 - red - k) / (1 - k) || 0
