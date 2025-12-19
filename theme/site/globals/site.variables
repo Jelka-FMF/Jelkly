@@ -26,15 +26,6 @@
 *******************************/
 
 /*-------------------
-   Icons
---------------------*/
-
-@blocksIconUrl: "../docs/static/icons/blocks.svg";
-@pyIconUrl: "../docs/static/icons/py.svg";
-@jsIconUrl: "../docs/static/icons/js.svg";
-@tsIconUrl: "../docs/static/icons/ts.svg";
-
-/*-------------------
    Menu
 --------------------*/
 
