@@ -1,0 +1,51 @@
+/* Lots of specificity to override another !important rule */
+#simulator #editorSidebar .simtoolbar .ui.icon.tiny.buttons .ui.button.play-button.play .icon.play {
+    color: var(--pxt-colors-green-background) !important;
+}
+
+.theme-preview-microbit-light .theme-preview-sim-button {
+    background-color: var(--pxt-neutral-background2) !important;
+}
+
+/* Adjustments to match the original theme */
+
+path.blocklyFlyoutBackground {
+    fill: #4B4949 !important;
+}
+
+.monacoFlyout {
+    background: #4B4949 !important;
+}
+
+#simulator .editor-sidebar .filemenu {
+    background: var(--pxt-secondary-background);
+    color: var(--pxt-secondary-foreground);
+}
+
+#simulator .editor-sidebar .filemenu .item:hover, #simulator .editor-sidebar .filemenu .link.item:hover {
+    background: var(--pxt-secondary-background-hover) !important;
+    color: var(--pxt-secondary-foreground-hover) !important;
+}
+
+#simulator .ui.button.play-button .icon.play {
+    color: var(--pxt-colors-green-background) !important;
+}
+
+.simtoolbar .ui.button.icon {
+    background-color: #E0E1E2;
+    color: rgba(0, 0, 0, .6);
+}
+
+.simtoolbar .ui.button.icon:hover {
+    filter: none;
+    background-color: #E0E1E2;
+}
+
+#serialPreview .label {
+    border-color: var(--pxt-primary-background);
+}
+
+.ui.dimmer {
+    /* Matches color specified in dimmer.variables, but with partial transparency */
+    background-color: rgba(52, 84, 209, 0.4) !important;
+}

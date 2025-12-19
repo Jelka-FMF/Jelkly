@@ -116,6 +116,9 @@
         "extendEditor": true,
         "extendFieldEditors": false,
 
+        "defaultColorTheme": "jelkly-light",
+        "highContrastColorTheme": "pxt-high-contrast",
+
         "errorList": true,
         "blocksErrorList": true,
         "ignoreDocsErrors": false,
