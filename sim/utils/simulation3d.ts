@@ -185,16 +185,17 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position, scale: n
         let y = origin.y + sizeScale * getRotatedCoordinates(position.x, position.y, position.z, alpha, beta, gama).y
         let z = origin.z - sizeScale * (getRotatedCoordinates(position.x, position.y, position.z, alpha, beta, gama).z - lowestLight.z)
 
-        if (color.green == 0 && color.red == 0 && color.blue == 0) {
-            ctx.beginPath()
+        const maxAlpha = Math.max(color.red, color.green, color.blue) / 120
+        const alphaChannel = Math.min(1, Math.max(0, maxAlpha))
+
+        ctx.beginPath()
+        ctx.fillStyle = `rgba(${color.red}, ${color.green}, ${color.blue}, ${alphaChannel})`
+        ctx.arc(y, z, 15, 0, 2 * Math.PI)
+        ctx.fill()
+
+        if (alphaChannel < 0.05) {
             ctx.strokeStyle = "#D3D3D3"
-            ctx.arc(y, z, 15, 0, 2 * Math.PI)
             ctx.stroke()
-        } else {
-            ctx.beginPath()
-            ctx.fillStyle = `rgb(${color.red}, ${color.green}, ${color.blue})`
-            ctx.arc(y, z, 15, 0, 2 * Math.PI)
-            ctx.fill()
         }
     }
 }

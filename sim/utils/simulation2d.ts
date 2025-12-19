@@ -14,6 +14,7 @@ for (const [index, light] of Object.entries(normalizedPositions)) {
 }
 
 const triangleOrigin = findOrigin(Object.values(normalizedPositions), 100000, 0)
+
 // console.debug("Triangle origin", triangleOrigin)
 
 function renderView2D () {
@@ -45,7 +46,7 @@ function drawTriangles2D (ctx: CanvasRenderingContext2D, triangleWidth: number, 
     // const triangleTop = (paddingZ + canvasHeight - triangleHeight) / 2
 
     const triangleBottom = canvasHeight - paddingZ
-    const triangleTop =  (canvasHeight - paddingZ - triangleHeight) / 2 // Don't know why 2 is here. Figure it out latter
+    const triangleTop = (canvasHeight - paddingZ - triangleHeight) / 2 // Don't know why 2 is here. Figure it out latter
 
     // Draw the first triangle
     ctx.beginPath()
@@ -72,11 +73,6 @@ function drawLights2D (ctx: CanvasRenderingContext2D, triangleWidth: number, tri
     for (const [index, color] of Object.entries(pxsim.board().colorStates)) {
         const position = normalizedPositions[parseInt(index)]
 
-        if (color.green == 0 && color.red == 0 && color.blue == 0) {
-            // Skip turned off lights
-            continue
-        }
-
         if (!position) {
             // Skip lights with no position
             continue
@@ -91,8 +87,11 @@ function drawLights2D (ctx: CanvasRenderingContext2D, triangleWidth: number, tri
 
         // console.debug("Light", index, y, z, color)
 
+        const maxAlpha = Math.max(color.red, color.green, color.blue) / 120
+        const alphaChannel = Math.min(1, Math.max(0, maxAlpha))
+
         ctx.beginPath()
-        ctx.fillStyle = `rgb(${color.red}, ${color.green}, ${color.blue})`
+        ctx.fillStyle = `rgba(${color.red}, ${color.green}, ${color.blue}, ${alphaChannel})`
         ctx.arc(x, z, triangleWidth / 72, 0, 2 * Math.PI)
         ctx.fill()
     }
