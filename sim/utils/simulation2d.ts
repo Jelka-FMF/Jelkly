@@ -8,12 +8,12 @@ const paddingX = 100
 const paddingZ = 200
 
 // Split the lights into front and back
-for (const [index, light] of Object.entries(positions)) {
+for (const [index, light] of Object.entries(normalizedPositions)) {
     if ((light.y) > 0) lightsFront.push(parseInt(index))
     else lightsBack.push(parseInt(index))
 }
 
-const triangleOrigin = findOrigin(Object.values(positions), 100000, 0)
+const triangleOrigin = findOrigin(Object.values(normalizedPositions), 100000, 0)
 // console.debug("Triangle origin", triangleOrigin)
 
 function renderView2D () {
@@ -70,7 +70,7 @@ function drawLights2D (ctx: CanvasRenderingContext2D, triangleWidth: number, tri
     const triangleBottom = canvasHeight - paddingZ
 
     for (const [index, color] of Object.entries(pxsim.board().colorStates)) {
-        const position = positions[parseInt(index)]
+        const position = normalizedPositions[parseInt(index)]
 
         if (color.green == 0 && color.red == 0 && color.blue == 0) {
             // Skip turned off lights
@@ -82,10 +82,7 @@ function drawLights2D (ctx: CanvasRenderingContext2D, triangleWidth: number, tri
             continue
         }
 
-        // let x = paddingY + triangleWidth * (position.x - triangleOrigin.lx) / (triangleOrigin.x - triangleOrigin.lx) - triangleWidth / 2
-        // let z = triangleTop + 2 * triangleHeight - (position.x - triangleOrigin.lx) / (triangleOrigin.z - triangleOrigin.lz) * triangleHeight
         let x = paddingX + (position.x - triangleOrigin.lx) / (triangleOrigin.x - triangleOrigin.lx) * triangleWidth / 2
-        // let z = triangleTop + triangleHeight + (position.z - triangleOrigin.z) / (triangleOrigin.lz - triangleOrigin.z) * triangleHeight / 2 
         let z = triangleBottom + (position.z - triangleOrigin.z) / (triangleOrigin.lz - triangleOrigin.z) * triangleHeight / 2
 
         if (lightsBack.includes(parseInt(index))) {

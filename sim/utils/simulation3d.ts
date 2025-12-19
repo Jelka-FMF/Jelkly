@@ -3,7 +3,9 @@ let lastMouseX = 0
 let lastMouseY = 0
 
 let rotationScale = 0.01
-let sizeScale = 5
+let sizeScale = 10
+
+let axisLength = 50
 
 let initialDistance = 0
 let initialScale = sizeScale
@@ -27,12 +29,12 @@ function renderView3D () {
     canvas.setAttribute("height", (canvas.getBoundingClientRect().height * 5).toString())
 
     // Get the origin of the drawing
-    const origin = { x: canvas.width / 2, y: canvas.width / 2 , z: 3 * canvas.height / 4 }
+    const origin = { x: canvas.width / 2, y: canvas.width / 2, z: 3 * canvas.height / 4 }
 
     // Draw the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     drawLights3D(ctx, origin, sizeScale)
-    drawCoordinateSystem(ctx, origin, sizeScale)
+    drawCoordinateSystem(ctx, origin, sizeScale, axisLength)
 }
 
 function onMouseDown (event: MouseEvent) {
@@ -128,55 +130,50 @@ function getDistance (touch1: Touch, touch2: Touch): number {
     return Math.sqrt(dx * dx + dy * dy)
 }
 
-
 // function drawing canvas rotatet for alpha, beta, gama
 function getRotatedCoordinates (x: number, y: number, z: number, alpha: number, beta: number, gama: number) {
     // Rotation matrix
-    let newx = Math.sin(alpha) * Math.cos(beta) * x +   (Math.cos(alpha) * Math.cos(gama) - Math.sin(alpha) * Math.sin(beta) * Math.sin(gama)) * y + ( - Math.cos(alpha) * Math.sin(gama) - Math.sin(alpha) * Math.sin(beta) * Math.cos(gama)) * z
-    let newy = Math.cos(alpha) * Math.cos(beta) * x + (- Math.sin(alpha) * Math.cos(gama) - Math.cos(alpha) * Math.sin(beta) * Math.sin(gama)) * y + (Math.sin(alpha) * Math.sin(gama) - Math.cos(alpha) * Math.sin(beta) * Math.cos(gama)) * z
-    let newz =                   Math.sin(beta) * x +  Math.cos(beta) * Math.sin(gama) * y                                                          + Math.cos(beta) * Math.cos(gama) * z
+    let newx = Math.sin(alpha) * Math.cos(beta) * x + (Math.cos(alpha) * Math.cos(gama) - Math.sin(alpha) * Math.sin(beta) * Math.sin(gama)) * y + (-Math.cos(alpha) * Math.sin(gama) - Math.sin(alpha) * Math.sin(beta) * Math.cos(gama)) * z
+    let newy = Math.cos(alpha) * Math.cos(beta) * x + (-Math.sin(alpha) * Math.cos(gama) - Math.cos(alpha) * Math.sin(beta) * Math.sin(gama)) * y + (Math.sin(alpha) * Math.sin(gama) - Math.cos(alpha) * Math.sin(beta) * Math.cos(gama)) * z
+    let newz = Math.sin(beta) * x + Math.cos(beta) * Math.sin(gama) * y + Math.cos(beta) * Math.cos(gama) * z
 
     return { x: newx, y: newy, z: newz }
 }
 
-
-function drawCoordinateSystem (ctx: CanvasRenderingContext2D, origin: Position , scale: number) {
-    let xaxis = getRotatedCoordinates(100, 0, 0,  alpha, - beta, - gama)
-    let yaxis = getRotatedCoordinates(0, 100, 0,  alpha, - beta, - gama)
-    let zaxis = getRotatedCoordinates(0, 0, 100,  alpha, - beta, - gama)
+function drawCoordinateSystem (ctx: CanvasRenderingContext2D, origin: Position, scale: number, length: number) {
+    let xaxis = getRotatedCoordinates(length, 0, 0, alpha, -beta, -gama)
+    let yaxis = getRotatedCoordinates(0, length, 0, alpha, -beta, -gama)
+    let zaxis = getRotatedCoordinates(0, 0, length, alpha, -beta, -gama)
 
     // Draw x axis
-    ctx.beginPath();
-    ctx.moveTo(origin.y, origin.z);
-    ctx.lineTo(xaxis.y * scale + origin.y, xaxis.z * scale + origin.z);
-    ctx.strokeStyle = "red";
-    ctx.stroke();
+    ctx.beginPath()
+    ctx.moveTo(origin.y, origin.z)
+    ctx.lineTo(xaxis.y * scale + origin.y, xaxis.z * scale + origin.z)
+    ctx.strokeStyle = "red"
+    ctx.stroke()
 
     // Draw y axis
-    ctx.beginPath();
-    ctx.moveTo(origin.y, origin.z);
-    ctx.lineTo(yaxis.y * scale + origin.y, yaxis.z * scale + origin.z);
-    ctx.strokeStyle = "green";
-    ctx.stroke();
+    ctx.beginPath()
+    ctx.moveTo(origin.y, origin.z)
+    ctx.lineTo(yaxis.y * scale + origin.y, yaxis.z * scale + origin.z)
+    ctx.strokeStyle = "green"
+    ctx.stroke()
 
     // Draw z axis
-    ctx.beginPath();
-    ctx.moveTo(origin.y, origin.z);
-    ctx.lineTo( - zaxis.y * scale + origin.y, - zaxis.z * scale + origin.z);
-    ctx.strokeStyle = "blue";
-    ctx.stroke();
+    ctx.beginPath()
+    ctx.moveTo(origin.y, origin.z)
+    ctx.lineTo(-zaxis.y * scale + origin.y, -zaxis.z * scale + origin.z)
+    ctx.strokeStyle = "blue"
+    ctx.stroke()
 
-    ctx.closePath();
+    ctx.closePath()
 }
 
-function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: number) {
-    // const relativeHeight = Math.max(...Object.values(positions).map(pos => pos.y)) - Math.min(...Object.values(positions).map(pos => pos.y))
-    // const lowestPoint = Math.max(...Object.values(positions).map(pos => pos.y))
+function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position, scale: number) {
+    const lowestLight = Object.values(normalizedPositions).reduce((prev, current) => prev.z < current.z ? prev : current)
 
-    const lowestLight = Object.values(positions).reduce((prev, current) => prev.z < current.z ? prev : current)
-
-    for (const [index, color] of Object.entries(positions)) {
-        const position = positions[parseInt(index)]
+    for (const [index, color] of Object.entries(normalizedPositions)) {
+        const position = normalizedPositions[parseInt(index)]
 
         if (!position) {
             // Skip lights with no position
@@ -193,9 +190,7 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position,  scale: 
             ctx.strokeStyle = "#D3D3D3"
             ctx.arc(y, z, 15, 0, 2 * Math.PI)
             ctx.stroke()
-        }
-
-        else {
+        } else {
             ctx.beginPath()
             ctx.fillStyle = `rgb(${color.red}, ${color.green}, ${color.blue})`
             ctx.arc(y, z, 15, 0, 2 * Math.PI)
