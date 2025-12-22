@@ -3,7 +3,7 @@ let lastMouseX = 0
 let lastMouseY = 0
 
 let rotationScale = 0.01
-let sizeScale = 10
+let sizeScale = 12
 
 let axisLength = 50
 
@@ -16,9 +16,9 @@ let gama = 0
 
 // Add event listeners for mouse events
 canvas.addEventListener("mousedown", onMouseDown)
-canvas.addEventListener("mousemove", onMouseMove)
-canvas.addEventListener("mouseup", onMouseUp)
-canvas.addEventListener("mouseleave", onMouseUp)
+document.addEventListener("mousemove", onMouseMove)
+document.addEventListener("mouseup", onMouseUp)
+document.addEventListener("mouseleave", onMouseUp)
 canvas.addEventListener("wheel", onWheel)
 canvas.addEventListener("touchstart", onTouchStart)
 canvas.addEventListener("touchmove", onTouchMove)
@@ -31,6 +31,9 @@ function renderView3D () {
     // Get the origin of the drawing
     const origin = { x: canvas.width / 2, y: canvas.width / 2, z: 3 * canvas.height / 4 }
 
+    // Move the origin up to adjust for controls
+    ctx.translate(0, -300)
+
     // Draw the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     drawLights3D(ctx, origin, sizeScale)
@@ -41,6 +44,8 @@ function onMouseDown (event: MouseEvent) {
     isMouseDown = true
     lastMouseX = event.clientX
     lastMouseY = event.clientY
+
+    event.preventDefault()
 }
 
 function onMouseUp (event: MouseEvent) {

@@ -36,3 +36,12 @@ declare namespace colors {
 //% block.loc.sl="Oblike"
 declare namespace shapes {
 }
+
+/**
+ * Provides access to sensors.
+ */
+//% color=#2E6F40 weight=116 icon="\uf14e"
+//% block="Sensors"
+//% block.loc.sl="Senzorji"
+declare namespace sensors {
+}

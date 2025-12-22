@@ -378,6 +378,30 @@ declare namespace lights {
     function lightsBound(axis: Axis, bound: Bound, lights: number[]): number;
 
 }
+declare namespace sensors {
+    /**
+     * Get the distance value from the joystick
+     */
+    //% blockId=sensors-joystick-distance
+    //% help=sensors/joystick-distance weight=55
+    //% block="joystick distance"
+    //% block.loc.sl="razdalja igralne palice"
+    //% jsdoc.loc.sl="Pridobi vrednost razdalje igralne palice"
+    //% shim=sensors::joystickDistance
+    function joystickDistance(): number;
+
+    /**
+     * Get the angle value from the joystick
+     */
+    //% blockId=sensors-joystick-angle
+    //% help=sensors/joystick-angle weight=45
+    //% block="joystick angle"
+    //% block.loc.sl="kot igralne palice"
+    //% jsdoc.loc.sl="Pridobi vrednost kota igralne palice"
+    //% shim=sensors::joystickAngle
+    function joystickAngle(): number;
+
+}
 declare namespace shapes {
     /**
      * Get a list of lights intersecting with the ball

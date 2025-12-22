@@ -21,6 +21,9 @@ function renderView2D () {
     canvas.setAttribute("width", (canvas.getBoundingClientRect().width * 5).toString())
     canvas.setAttribute("height", (canvas.getBoundingClientRect().height * 5).toString())
 
+    // Move the origin up to adjust for controls
+    ctx.translate(0, -480)
+
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     const maxTriangleWidth = 0.4 * (canvas.width - 2 * paddingX)

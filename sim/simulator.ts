@@ -19,8 +19,8 @@ const enum SimulationMode {
 
 let simulationMode = SimulationMode["3D"] as SimulationMode
 
-const mode2dButton = document.getElementById("mode-2d")
-const mode3dButton = document.getElementById("mode-3d")
+const mode2dButton = document.getElementById("simulation-mode-2d")
+const mode3dButton = document.getElementById("simulation-mode-3d")
 
 if (simulationMode === SimulationMode["2D"]) mode2dButton.classList.add("active")
 if (simulationMode === SimulationMode["3D"]) mode3dButton.classList.add("active")
@@ -39,7 +39,7 @@ mode3dButton.addEventListener("click", () => {
     pxsim.board().updateView()
 })
 
-const canvas = document.getElementById("canvas") as HTMLCanvasElement
+const canvas = document.getElementById("simulation-canvas") as HTMLCanvasElement
 const ctx = canvas.getContext("2d")
 
 window.addEventListener("resize", () => {
@@ -68,6 +68,7 @@ namespace pxsim {
     export class Board extends pxsim.BaseBoard {
         public frameRate: number = DEFAULT_FRAME_RATE
         public colorStates: { [index: number]: Color } = {}
+        public joystickState: JoystickState
 
         constructor () {
             super()
@@ -77,6 +78,7 @@ namespace pxsim {
             // Reset the board state
             this.frameRate = DEFAULT_FRAME_RATE
             this.colorStates = {}
+            this.joystickState = new JoystickState()
 
             // Draw the initial view
             this.updateView()

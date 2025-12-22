@@ -2,15 +2,18 @@ body {
     background: unset !important;
 }
 
-.toolbar {
+/* Simulation */
+
+.simulation-toolbar {
     text-align: center;
     justify-content: center;
-    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     z-index: 999;
     position: relative;
 }
 
-.container {
+.simulation-container {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -18,4 +21,47 @@ body {
     width: 100%;
     height: 100%;
     top: 0;
+}
+
+.simulation-controls {
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    padding: 1rem;
+    bottom: 0;
+    z-index: 999;
+}
+
+/** Joystick **/
+
+.joystick {
+    width: 100px;
+    height: 100px;
+    background-color: #F8F9FA;
+    border-radius: 50%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+    user-select: none;
+    touch-action: none;
+}
+
+.joystick-knob {
+    width: 40px;
+    height: 40px;
+    background-color: #3454D1;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.05s ease, box-shadow 0.1s ease, scale 0.1s ease;
+}
+
+.joystick-knob.active {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    scale: 0.975;
 }

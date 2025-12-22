@@ -9,15 +9,21 @@
     </head>
 
     <body>
-        <div class="toolbar">
+        <div class="simulation-toolbar">
             <div class="ui tiny buttons">
-                <button class="ui button" id="mode-2d" tabindex="0">2D</button>
-                <button class="ui button" id="mode-3d" tabindex="0">3D</button>
+                <button class="ui button" id="simulation-mode-2d" tabindex="0">2D</button>
+                <button class="ui button" id="simulation-mode-3d" tabindex="0">3D</button>
             </div>
         </div>
 
-        <div class="container">
-            <canvas class="sim" id="canvas"></canvas>
+        <div class="simulation-container">
+            <canvas class="simulation-canvas" id="simulation-canvas"></canvas>
+        </div>
+
+        <div class="simulation-controls">
+            <div id="joystick" class="joystick">
+                <div id="joystick-knob" class="joystick-knob"></div>
+            </div>
         </div>
 
         <script src="/cdn/pxtsim.js"></script>
