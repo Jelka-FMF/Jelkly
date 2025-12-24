@@ -1,3 +1,5 @@
+type GlobalButton = Button;
+
 /**
  * Provides access to sensors.
  */
@@ -22,10 +24,24 @@ namespace pxsim.sensors {
      */
     //% blockId=sensors-joystick-angle
     //% help=sensors/joystick-angle weight=45
+    //% help=sensors/joystick-angle weight=54
     //% block="joystick angle"
     //% block.loc.sl="kot igralne palice"
     //% jsdoc.loc.sl="Pridobi vrednost kota igralne palice"
+    //% blockGap=40
     export function joystickAngle (): number {
         return pxsim.board().joystickState.angle
+    }
+
+    /**
+     * Get the state of a button
+     */
+    //% blockId=sensors-button-pressed
+    //% help=sensors/button-pressed weight=45
+    //% block="button %button pressed"
+    //% block.loc.sl="gumb %button pritisnjen"
+    //% jsdoc.loc.sl="Pridobi stanje gumba"
+    export function buttonPressed (button: GlobalButton): boolean {
+        return pxsim.board().buttonsState[button]
     }
 }

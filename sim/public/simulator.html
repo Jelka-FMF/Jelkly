@@ -20,9 +20,37 @@
             <canvas class="simulation-canvas" id="simulation-canvas"></canvas>
         </div>
 
-        <div class="simulation-controls">
-            <div id="joystick" class="joystick">
-                <div id="joystick-knob" class="joystick-knob"></div>
+        <div class="simulation-controls ui three column grid">
+            <div class="column">
+                <div>
+                    <div id="joystick" class="joystick">
+                        <div id="joystick-knob" class="joystick-knob"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="column middle aligned">
+                <div class="keyboard-grid">
+                    <div class="keyboard-row">
+                        <button id="button-arrow-up" class="ui button keyboard-btn" type="button">▲&#xFE0E;</button>
+                    </div>
+                    <div class="keyboard-row">
+                        <button id="button-arrow-left" class="ui button keyboard-btn" type="button">◀&#xFE0E;</button>
+                        <button id="button-arrow-down" class="ui button keyboard-btn" type="button">▼&#xFE0E;</button>
+                        <button id="button-arrow-right" class="ui button keyboard-btn" type="button">▶&#xFE0E;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="column middle aligned">
+                <div class="keyboard-grid">
+                    <div class="keyboard-row">
+                        <button id="button-letter-a" class="ui button keyboard-btn" type="button">A</button>
+                        <button id="button-letter-b" class="ui button keyboard-btn" type="button">B</button>
+                    </div>
+                    <div class="keyboard-row">
+                        <button id="button-letter-c" class="ui button keyboard-btn" type="button">C</button>
+                        <button id="button-letter-d" class="ui button keyboard-btn" type="button">D</button>
+                    </div>
+                </div>
             </div>
         </div>
 

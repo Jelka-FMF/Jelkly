@@ -1,6 +1,6 @@
 // But I wonder if I myself shall ever find joy. Ooooh, so edgy.
-const joystick = document.getElementById('joystick')
-const joystickKnob = document.getElementById('joystick-knob')
+const joystick = document.getElementById("joystick")
+const joystickKnob = document.getElementById("joystick-knob")
 
 class JoystickState {
     dragging: boolean = false
@@ -28,7 +28,7 @@ function updateKnobPosition (x: number, y: number) {
     const rect = joystick.getBoundingClientRect()
     const centerX = rect.width / 2
     const centerY = rect.height / 2
-    const maxRadius = rect.width / 2 - 20 // Account for the knob size
+    const maxRadius = rect.width / 2 - 15 // Account for the knob size
 
     // Calculate relative position
     const relX = x - rect.left - centerX
@@ -56,10 +56,10 @@ function updateKnobPosition (x: number, y: number) {
  */
 function resetKnobPosition () {
     // Mark knob as inactive
-    joystickKnob.classList.remove('active')
+    joystickKnob.classList.remove("active")
 
     // Reset knob to center
-    joystickKnob.style.transform = 'translate(-50%, -50%)'
+    joystickKnob.style.transform = "translate(-50%, -50%)"
 
     // Send the reset joystick state
     setJoystickState(0, 0)
@@ -74,12 +74,12 @@ function handleJoystickStart (event: PointerEvent) {
     event.preventDefault()
 
     // Register update handlers
-    document.addEventListener('pointermove', handleJoystickMove)
-    document.addEventListener('pointerup', handleJoystickEnd)
-    document.addEventListener('pointercancel', handleJoystickEnd)
+    document.addEventListener("pointermove", handleJoystickMove)
+    document.addEventListener("pointerup", handleJoystickEnd)
+    document.addEventListener("pointercancel", handleJoystickEnd)
 
     // Mark knob as active
-    joystickKnob.classList.add('active')
+    joystickKnob.classList.add("active")
 
     // Set the initial position
     updateKnobPosition(event.clientX, event.clientY)
@@ -104,12 +104,12 @@ function handleJoystickEnd (event: PointerEvent) {
     event.preventDefault()
 
     // Unregister update handlers
-    document.removeEventListener('pointermove', handleJoystickMove)
-    document.removeEventListener('pointerup', handleJoystickEnd)
-    document.removeEventListener('pointercancel', handleJoystickEnd)
+    document.removeEventListener("pointermove", handleJoystickMove)
+    document.removeEventListener("pointerup", handleJoystickEnd)
+    document.removeEventListener("pointercancel", handleJoystickEnd)
 
     // Reset knob position
     resetKnobPosition()
 }
 
-joystick.addEventListener('pointerdown', handleJoystickStart)
+joystick.addEventListener("pointerdown", handleJoystickStart)

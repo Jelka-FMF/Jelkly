@@ -398,8 +398,20 @@ declare namespace sensors {
     //% block="joystick angle"
     //% block.loc.sl="kot igralne palice"
     //% jsdoc.loc.sl="Pridobi vrednost kota igralne palice"
+    //% blockGap=40
     //% shim=sensors::joystickAngle
     function joystickAngle(): number;
+
+    /**
+     * Get the state of a button
+     */
+    //% blockId=sensors-button-pressed
+    //% help=sensors/button-pressed weight=45
+    //% block="button %button pressed"
+    //% block.loc.sl="gumb %button pritisnjen"
+    //% jsdoc.loc.sl="Pridobi stanje gumba"
+    //% shim=sensors::buttonPressed
+    function buttonPressed(button: Button): boolean;
 
 }
 declare namespace shapes {

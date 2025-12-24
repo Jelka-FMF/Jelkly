@@ -23,6 +23,29 @@ declare const enum Bound {
     Max,
 }
 
+declare const enum Button {
+    //% block="up arrow"
+    //% block.loc.sl="puščica gor"
+    ArrowUp,
+    //% block="down arrow"
+    //% block.loc.sl="puščica dol"
+    ArrowDown,
+    //% block="left arrow"
+    //% block.loc.sl="puščica levo"
+    ArrowLeft,
+    //% block="right arrow"
+    //% block.loc.sl="puščica desno"
+    ArrowRight,
+    //% block="A"
+    LetterA,
+    //% block="B"
+    LetterB,
+    //% block="C"
+    LetterC,
+    //% block="D"
+    LetterD,
+}
+
 declare const enum RgbComponent {
     //% block="red"
     //% block.loc.sl="rdeča"

@@ -44,8 +44,6 @@ function onMouseDown (event: MouseEvent) {
     isMouseDown = true
     lastMouseX = event.clientX
     lastMouseY = event.clientY
-
-    event.preventDefault()
 }
 
 function onMouseUp (event: MouseEvent) {

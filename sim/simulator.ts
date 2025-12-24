@@ -69,6 +69,7 @@ namespace pxsim {
         public frameRate: number = DEFAULT_FRAME_RATE
         public colorStates: { [index: number]: Color } = {}
         public joystickState: JoystickState
+        public buttonsState: ButtonsState
 
         constructor () {
             super()
@@ -79,6 +80,7 @@ namespace pxsim {
             this.frameRate = DEFAULT_FRAME_RATE
             this.colorStates = {}
             this.joystickState = new JoystickState()
+            this.buttonsState = new ButtonsState()
 
             // Draw the initial view
             this.updateView()
