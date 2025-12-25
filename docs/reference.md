@@ -7,8 +7,10 @@ basic.onFrame(function (frameNumber, timeSinceStart) {})
 lights.setLights()
 colors.randomColor()
 shapes.ball()
+sensors.buttonPressed(Button.ArrowUp)
 for (let i = 0; i < 5; ++i) {}
 if (true) {}
+let element = 0
 ```
 
 ## Poglejte tudi
@@ -16,6 +18,7 @@ if (true) {}
 [osnovno](/reference/basic),
 [lučke](/reference/lights),
 [barve](/reference/colors),
-[oblike](/reference/shapes)
+[oblike](/reference/shapes),
+[senzorji](/reference/sensors)
 
 [koordiantni sistem](/reference/coordinates)

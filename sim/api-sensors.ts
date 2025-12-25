@@ -36,12 +36,14 @@ namespace pxsim.sensors {
 
     /**
      * Get the state of a button
+     * @param button the button to check
      */
     //% blockId=sensors-button-pressed
     //% help=sensors/button-pressed weight=45
     //% block="button %button pressed"
     //% block.loc.sl="gumb %button pritisnjen"
     //% jsdoc.loc.sl="Pridobi stanje gumba"
+    //% button.loc.sl="gumb, ki ga želimo preveriti"
     //% parts="buttons"
     export function buttonPressed (button: GlobalButton): boolean {
         return pxsim.board().buttonsState[button] > 0

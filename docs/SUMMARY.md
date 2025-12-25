@@ -43,6 +43,10 @@
         * [Valj](/reference/shapes/cylinder)
         * [Ravnina](/reference/shapes/plane)
         * [Primerjava z ravnino](/reference/shapes/plane-relation)
+    * [Senzorji](/reference/sensors)
+        * [Razdalja igralne palice](/reference/sensors/joystick-distance)
+        * [Kot igralne palice](/reference/sensors/joystick-angle)
+        * [Gumb pritisnjen](/reference/sensors/button-pressed)
     * [Koordinatni sistem](/reference/coordinates)
 
 ## Bloki #blocks

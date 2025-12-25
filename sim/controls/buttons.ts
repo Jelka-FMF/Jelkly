@@ -94,7 +94,7 @@ Object.entries(buttonElements).forEach(([button, element]) => {
 
     // Configure events for the Enter key
     element.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" && !event.repeat) {
+        if (event.key === "Enter") {
             event.preventDefault()
             setButtonInput(buttonEnum, InputSource.Enter, true)
         }
@@ -115,7 +115,7 @@ Object.entries(buttonElements).forEach(([button, element]) => {
 // Configure global keyboard events
 document.addEventListener("keydown", (event) => {
     const button = keyButtons[event.key.toLowerCase()]
-    if (button !== undefined && !event.repeat) {
+    if (button !== undefined) {
         event.preventDefault()
         setButtonInput(button, InputSource.Keyboard, true)
     }

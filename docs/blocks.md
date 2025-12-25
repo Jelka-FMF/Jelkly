@@ -56,7 +56,8 @@ shapes.ball()
 [osnovno](/reference/basic),
 [lučke](/reference/lights),
 [barve](/reference/colors),
-[oblike](/reference/shapes)
+[oblike](/reference/shapes),
+[senzorji](/reference/sensors)
 
 [koordiantni sistem](/reference/coordinates)
 

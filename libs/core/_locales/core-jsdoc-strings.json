@@ -243,6 +243,7 @@
   "randint|param|min": "the lower inclusive bound, eg: 0",
   "sensors": "Provides access to sensors.",
   "sensors.buttonPressed": "Get the state of a button",
+  "sensors.buttonPressed|param|button": "the button to check",
   "sensors.joystickAngle": "Get the angle value from the joystick",
   "sensors.joystickDistance": "Get the distance value from the joystick",
   "shapes": "Provides access to shapes and objects.",
