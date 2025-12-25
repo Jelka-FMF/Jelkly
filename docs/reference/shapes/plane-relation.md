@@ -16,6 +16,10 @@ shapes.planeRelation(0, 0, 50, 0, 0, Relation.Greater)
 * **ksi (druga rotacija)**: Rotacija ravnine okoli `xy` ravnine (v stopinjah).
 * **relation**: Razmerje, ki ga želite preveriti.
 
+<!---->
+
+* **lights**: Seznam lučk, ki jih želite preveriti. Če ni podan, se uporabijo vse lučke na jelki.
+
 Rotacije ter ostali parametri delujejo enako, kot pri bloku [ravnina](/reference/shapes/plane).
 
 ## Vrne

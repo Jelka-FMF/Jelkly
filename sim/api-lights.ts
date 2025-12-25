@@ -218,21 +218,23 @@ namespace pxsim.lights {
      */
     //% blockId=lights-where
     //% help=lights/lights-where weight=35
-    //% block="lights where $axis $relation $value from $lights"
-    //% block.loc.sl="lučke kjer je $axis $relation $value iz $lights"
+    //% block="lights where $axis $relation $value || from $lights"
+    //% block.loc.sl="lučke kjer je $axis $relation $value || iz $lights"
     //% jsdoc.loc.sl="Najdi lučke, kjer je vrednost osi v določenem razmerju"
     //% axis.loc.sl="os, ki jo želimo preveriti"
     //% relation.loc.sl="razmerje, ki ga želimo preveriti"
     //% value.loc.sl="vrednost, ki jo želimo preveriti"
     //% lights.loc.sl="seznam lučk, ki jih želimo preveriti"
     //% inlineInputMode="inline"
-    //% lights.shadow="lights-list" lights.defl="lights-list"
-    export function lightsWhere (axis: Axis, relation: Relation, value: number, lights: number[]) {
+    //% lights.shadow="lights-list"
+    export function lightsWhere (axis: Axis, relation: Relation, value: number, lights?: number[]) {
+        // Default to all lights
+        if (lights === undefined) lights = Object.keys(positions).map(Number)
+
         // Check for null values
         pxtrt.nullCheck(axis)
         pxtrt.nullCheck(relation)
         pxtrt.nullCheck(value)
-        pxtrt.nullCheck(lights)
 
         // Convert from RefCollection type
         lights = fromRefCollection(lights)
@@ -268,8 +270,8 @@ namespace pxsim.lights {
      */
     //% blockId=lights-bound
     //% help=lights/lights-bound weight=34
-    //% block="$bound value of $axis from $lights"
-    //% block.loc.sl="$bound vrednost $axis iz $lights"
+    //% block="$bound value of $axis || from $lights"
+    //% block.loc.sl="$bound vrednost $axis || iz $lights"
     //% jsdoc.loc.sl="Vrni najmanjšo ali največjo vrednost osi"
     //% axis.loc.sl="os, za katero želimo vrednost"
     //% bound.loc.sl="ali želimo najmanjšo ali največjo vrednost"
@@ -277,11 +279,13 @@ namespace pxsim.lights {
     //% inlineInputMode="inline"
     //% lights.shadow="lights-list" lights.defl="lights-list"
     //% blockGap=40
-    export function lightsBound (axis: Axis, bound: Bound, lights: number[]): number {
+    export function lightsBound (axis: Axis, bound: Bound, lights?: number[]): number {
+        // Default to all lights
+        if (lights === undefined) lights = Object.keys(positions).map(Number)
+
         // Check for null values
         pxtrt.nullCheck(axis)
         pxtrt.nullCheck(bound)
-        pxtrt.nullCheck(lights)
 
         // Convert from RefCollection type
         lights = fromRefCollection(lights)

@@ -15,6 +15,10 @@ shapes.sphere(0, 0, 50, 20, 5)
 * **r (polmer)**: Polmer sfere.
 * **d (debelina)**: Debelina sfere
 
+<!---->
+
+* **lights**: Seznam lučk, ki jih želite preveriti. Če ni podan, se uporabijo vse lučke na jelki.
+
 ## Vrne
 
 * Seznam lučk, ki se sekajo s sfero.

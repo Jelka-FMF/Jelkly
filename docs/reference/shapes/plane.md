@@ -16,6 +16,10 @@ shapes.plane(0, 0, 50, 0, 0, 10)
 * **ksi (druga rotacija)**: Rotacija ravnine okoli `xy` ravnine (v stopinjah).
 * **d (debelina)**: Debelina ravnine.
 
+<!---->
+
+* **lights**: Seznam lučk, ki jih želite preveriti. Če ni podan, se uporabijo vse lučke na jelki.
+
 Če sta rotaciji nastavljeni na 0, je ravnina vzporedna z `yz` ravnino, torej
 je na jelki videti kot navpična črta.
 

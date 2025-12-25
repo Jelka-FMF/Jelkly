@@ -22,6 +22,6 @@ function toRefCollection<T>(items: T[]): T[] {
  */
 function fromRefCollection<T>(collection: T): T {
     // @ts-ignore: Different type during runtime
-    if (collection.hasOwnProperty("data")) return collection.data
+    if (collection?.hasOwnProperty("data")) return collection.data
     else return collection
 }

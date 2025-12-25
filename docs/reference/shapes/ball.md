@@ -13,6 +13,10 @@ shapes.ball(0, 0, 50, 20)
 * **z0**: Z-koordinata središča krogle.
 * **r (polmer)**: Polmer krogle.
 
+<!---->
+
+* **lights**: Seznam lučk, ki jih želite preveriti. Če ni podan, se uporabijo vse lučke na jelki.
+
 ## Vrne
 
 * Seznam lučk znotraj krogle.
@@ -39,6 +43,17 @@ basic.onFrame(function (frameNumber, timeSinceStart) {
     lights.setLights(
         shapes.ball(0, 0, 50, (frameNumber / 5) % 60),
         colors.rgbColor(255, 0, 255)
+    )
+})
+```
+
+Vzorec, ki nariše spodnjo polovico krogle:
+
+```blocks
+basic.onFrame(function (frameNumber, timeSinceStart) {
+    lights.setLights(
+        shapes.ball(0, 0, 50, 20, lights.lightsWhere(Axis.Z, Relation.Less, 50)),
+        colors.cmykColor(100, 0, 100, 0)
     )
 })
 ```

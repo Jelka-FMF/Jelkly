@@ -17,6 +17,10 @@ shapes.cylinder(0, 0, 50, 0, 0, 20, 10)
 * **r (polmer)**: Polmer valja.
 * **h (višina)**: Višina valja.
 
+<!---->
+
+* **lights**: Seznam lučk, ki jih želite preveriti. Če ni podan, se uporabijo vse lučke na jelki.
+
 Če sta rotaciji nastavljeni na 0, je valj v ležečem položaju z osjo vzdolž `x` osi.
 
 ## Vrne
