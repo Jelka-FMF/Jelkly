@@ -23,7 +23,6 @@ namespace pxsim.sensors {
      * Get the angle value from the joystick
      */
     //% blockId=sensors-joystick-angle
-    //% help=sensors/joystick-angle weight=45
     //% help=sensors/joystick-angle weight=54
     //% block="joystick angle"
     //% block.loc.sl="kot igralne palice"
@@ -42,6 +41,6 @@ namespace pxsim.sensors {
     //% block.loc.sl="gumb %button pritisnjen"
     //% jsdoc.loc.sl="Pridobi stanje gumba"
     export function buttonPressed (button: GlobalButton): boolean {
-        return pxsim.board().buttonsState[button]
+        return pxsim.board().buttonsState[button] > 0
     }
 }

@@ -394,7 +394,7 @@ declare namespace sensors {
      * Get the angle value from the joystick
      */
     //% blockId=sensors-joystick-angle
-    //% help=sensors/joystick-angle weight=45
+    //% help=sensors/joystick-angle weight=54
     //% block="joystick angle"
     //% block.loc.sl="kot igralne palice"
     //% jsdoc.loc.sl="Pridobi vrednost kota igralne palice"
