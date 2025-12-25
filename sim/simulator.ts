@@ -71,21 +71,29 @@ namespace pxsim {
         public joystickState: JoystickState
         public buttonsState: ButtonsState
 
+        public parts: string[] = []
+
         constructor () {
             super()
         }
 
-        initAsync (msg: pxsim.SimulatorRunMessage): Promise<void> {
+        async initAsync (msg: pxsim.SimulatorRunMessage): Promise<void> {
+            await super.initAsync(msg)
+
             // Reset the board state
             this.frameRate = DEFAULT_FRAME_RATE
             this.colorStates = {}
             this.joystickState = new JoystickState()
             this.buttonsState = new ButtonsState()
 
+            // Store the used parts
+            this.parts = msg.parts || []
+
+            // Render the controls based on used parts
+            renderControls()
+
             // Draw the initial view
             this.updateView()
-
-            return Promise.resolve()
         }
 
         screenshotAsync (width?: number): Promise<ImageData> {

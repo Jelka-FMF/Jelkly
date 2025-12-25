@@ -32,10 +32,20 @@ body {
     z-index: 999;
 }
 
-.simulation-controls > .column {
-    width: fit-content;
-    height: fit-content;
+.simulation-controls > * {
+    margin: 0 !important;
+}
+
+.simulation-controls > * > .column {
+    min-width: fit-content;
+    min-height: fit-content;
     padding: 0 !important;
+}
+
+@media (max-width: 25rem) {
+    .simulation-controls > * > .column {
+        padding: 8px !important;
+    }
 }
 
 /** Joystick **/

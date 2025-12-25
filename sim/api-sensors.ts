@@ -15,6 +15,7 @@ namespace pxsim.sensors {
     //% block="joystick distance"
     //% block.loc.sl="razdalja igralne palice"
     //% jsdoc.loc.sl="Pridobi vrednost razdalje igralne palice"
+    //% parts="joystick"
     export function joystickDistance (): number {
         return pxsim.board().joystickState.distance
     }
@@ -27,6 +28,7 @@ namespace pxsim.sensors {
     //% block="joystick angle"
     //% block.loc.sl="kot igralne palice"
     //% jsdoc.loc.sl="Pridobi vrednost kota igralne palice"
+    //% parts="joystick"
     //% blockGap=40
     export function joystickAngle (): number {
         return pxsim.board().joystickState.angle
@@ -40,6 +42,7 @@ namespace pxsim.sensors {
     //% block="button %button pressed"
     //% block.loc.sl="gumb %button pritisnjen"
     //% jsdoc.loc.sl="Pridobi stanje gumba"
+    //% parts="buttons"
     export function buttonPressed (button: GlobalButton): boolean {
         return pxsim.board().buttonsState[button] > 0
     }

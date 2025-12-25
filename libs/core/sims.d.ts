@@ -387,6 +387,7 @@ declare namespace sensors {
     //% block="joystick distance"
     //% block.loc.sl="razdalja igralne palice"
     //% jsdoc.loc.sl="Pridobi vrednost razdalje igralne palice"
+    //% parts="joystick"
     //% shim=sensors::joystickDistance
     function joystickDistance(): number;
 
@@ -398,6 +399,7 @@ declare namespace sensors {
     //% block="joystick angle"
     //% block.loc.sl="kot igralne palice"
     //% jsdoc.loc.sl="Pridobi vrednost kota igralne palice"
+    //% parts="joystick"
     //% blockGap=40
     //% shim=sensors::joystickAngle
     function joystickAngle(): number;
@@ -410,6 +412,7 @@ declare namespace sensors {
     //% block="button %button pressed"
     //% block.loc.sl="gumb %button pritisnjen"
     //% jsdoc.loc.sl="Pridobi stanje gumba"
+    //% parts="buttons"
     //% shim=sensors::buttonPressed
     function buttonPressed(button: Button): boolean;
 

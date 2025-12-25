@@ -34,7 +34,11 @@
 
     "simulator": {
         "autoRun": true,
-        "aspectRatio": 1.05
+        "aspectRatio": 1.05,
+        "parts": true,
+        "boardDefinition": {
+            "onboardComponents": []
+        }
     },
 
     "appTheme": {
