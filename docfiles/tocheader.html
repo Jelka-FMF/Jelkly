@@ -3,7 +3,9 @@
         @sidebarToggle@
         <div class="logo-group" role="menuitem">
             <img src="/docs/static/orglogowide.png" alt="Fakulteta za matematiko in fiziko Logo" />
-            <div class="header-title"><img src="/docs/static/icons/favicon-wide.svg" alt="Jelka Logo" /></div>
+            <div class="header-title">
+                <a href="https://jelkly.fmf.uni-lj.si/"><img src="/docs/static/icons/favicon-wide.svg" alt="Jelka Logo" /></a>
+            </div>
         </div>
     </div>
     <form id="tocsearch1" class="search" method="get" action="https://www.bing.com/search" role="search">
@@ -14,11 +16,12 @@
     </form>
 </div>
 
-<div id="side-menu" class="ui vertical accent @tocclass@ sidebar menu left hideprint docs" role="menubar">
+<div id="side-menu" class="ui vertical accent @tocclass@ sidebar menu left hideprint docs uncover visible" role="menubar">
     <div class="menuContainer" role="menu">@TOC@</div>
 </div>
 
 <style>
     .header-title { padding: 0 !important; }
     .header-title img { height: 1.1rem !important; }
+    .header-title a { display: flex; align-items: center; }
 </style>

@@ -19,5 +19,7 @@ lights.getLights()
 Vzorec, ki vse lučke na jelki nastavi na rdečo barvo:
 
 ```blocks
-lights.setLights(lights.getLights(), colors.rgbColor(255, 0, 0))
+basic.onFrame(function (frameNumber, timeSinceStart) {
+    lights.setLights(lights.getLights(), colors.rgbColor(255, 0, 0))
+})
 ```

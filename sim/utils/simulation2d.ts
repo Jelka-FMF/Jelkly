@@ -22,7 +22,8 @@ function renderView2D () {
     canvas.setAttribute("height", (canvas.getBoundingClientRect().height * 5).toString())
 
     // Move the origin up to adjust for controls
-    ctx.translate(0, -480)
+    if (pxsim.board().parts.length) ctx.translate(0, -480)
+    else ctx.translate(0, -240)
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 

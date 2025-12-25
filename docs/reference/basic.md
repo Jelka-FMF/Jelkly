@@ -3,7 +3,7 @@
 ## Na začetku (on start)
 
 Dogodek [na začetku](/blocks/on-start) se izvede prvi. V njem lahko nastavite začetne
-vrednosti in ostale stvari, ki jih želite, da se izvedejo le enkrat. V njem ne morete
+vrednosti in ostale stvari, za katere želite, da se izvedejo le enkrat. V njem ne morete
 prižigati ali ugašati lučk.
 
 ```blocks

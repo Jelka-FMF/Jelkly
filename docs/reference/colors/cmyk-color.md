@@ -1,4 +1,4 @@
-# Barva RGB
+# Barva CMYK
 
 [Barvni model CMYK](https://en.wikipedia.org/wiki/CMYK_color_model) je subtraktivni barvni model,
 ki se običajno uporablja za tiskanje. Vsaka barva se določi z vrednostmi cian (C), magenta (M),

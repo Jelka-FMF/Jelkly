@@ -17,5 +17,7 @@ lights.resetLights(lights.getLights())
 Vzorec, ki izklopi vse lučke na jelki:
 
 ```blocks
-lights.resetLights(lights.getLights())
+basic.onFrame(function (frameNumber, timeSinceStart) {
+    lights.resetLights(lights.getLights())
+})
 ```
