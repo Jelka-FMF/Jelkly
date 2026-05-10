@@ -5,8 +5,8 @@
 ## Kaj je projekt Jelka FMF?
 
 Na [Fakulteti za matematiko in fiziko Univerze v Ljubljani](https://www.fmf.uni-lj.si/)
-smo v okviru [Programerskega kluba FMF](https://programerski-klub-fmf.github.io/)
-postavili jelko z lučkami, ki jih lahko programiramo.
+smo v okviru [Programerskega kluba FMF](https://progklub.si/) postavili jelko z lučkami
+ki jih lahko programiramo.
 
 Več informacij o Jelki FMF lahko najdete na [spletni strani projekta](https://jelka.fmf.uni-lj.si/about/).
 

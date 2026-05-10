@@ -1,4 +1,4 @@
-# Informacije o urejevalniku Jelkly
+# Informacije
 
 ### @description Osnovne informacije o urejevalniku Jelkly
 
@@ -15,7 +15,7 @@ urejevalnik omogoča enostavno sestavljanje programov z uporabo vizualnih blokov
 Bolj izkušeni uporabniki lahko svoje vzorce neposredno v urejevalniku napišejo
 tudi s pomočjo načina za pisanje v JavaScriptu ali Pythonu.
 
-Projekt smo ustvarili člani [Programerskega kluba FMF](https://programerski-klub-fmf.github.io/).
+Projekt smo ustvarili člani [Programerskega kluba FMF](https://progklub.si/).
 Če želite izvedeti več o delovanju in programiranju jelke ali se povezati z nami,
 si lahko ogledate [glavno stran projekta](https://jelka.fmf.uni-lj.si/about/), nas
 [kontaktirate](/contact) ali pa se pridružite našemu [Discord strežniku](https://discord.gg/ccg4nKVR44).
