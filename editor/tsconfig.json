@@ -14,6 +14,7 @@
         "newLine": "LF",
         "sourceMap": false,
         "jsx": "react",
+        "types": [],
         "lib": [
             "DOM",
             "DOM.Iterable",

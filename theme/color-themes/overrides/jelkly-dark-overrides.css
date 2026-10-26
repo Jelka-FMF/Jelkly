@@ -1,0 +1,145 @@
+#simulator .editor-sidebar .filemenu {
+    --pxt-focus-border: yellow;
+}
+
+#langmodal #availablelocales .langoption .header {
+    /* Better contrast than default, which is purple */
+    color: var(--pxt-neutral-foreground1);
+}
+
+.pxtToolbox span.blocklyTreeLabel,
+.pxtToolbox .blocklyTreeSelected span.blocklyTreeLabel,
+.pxtToolbox .blocklyTreeSelected .blocklyTreeIcon {
+    /* Better contrast in toolbox */
+    color: var(--pxt-target-foreground3);
+}
+
+.pxtToolbox #blocks-advanced > .blocklyTreeRow {
+    /* Better contrast for advanced section color */
+    border-color: var(--pxt-neutral-alpha80);
+}
+
+.pxtToolbox #blocks-advanced > .blocklyTreeRow .blocklyTreeIcon {
+    /* Better contrast for advanced section arrow icon */
+    color: var(--pxt-neutral-alpha80);
+}
+
+#computertogglesim, #mobiletogglesim, #sidedocstoggle {
+    background-color: var(--pxt-neutral-alpha80);
+}
+
+.coloredToolbox .blocklyTreeRoot div.blocklyTreeRow:is(
+    [data-ns="colors"],
+    [data-ns="shapes"],
+    [data-ns="sensors"],
+    [data-ns="addpackage"],
+    [data-ns="functions"]
+) {
+    /* Better contrast for block category colors */
+
+    --meta-bright: oklch(
+        from var(--block-meta-color)
+        clamp(0, calc(l + 0.1), 1)
+        calc(c * 1.5)
+        h
+    );
+
+    border-left: 8px solid var(--meta-bright);
+    color: var(--meta-bright);
+
+    &.blocklyTreeSelected {
+        background-color: var(--meta-bright);
+    }
+}
+
+#filelist, #editortools {
+    &::before {
+        /* Toolbar texture should be brighter */
+        filter: invert(1);
+    }
+}
+
+#mainmenu {
+    /* Prevent the menu from bleeding in, as some parts of the app use the same color as a background */
+    border-bottom: 1px solid var(--pxt-header-stencil);
+}
+
+.projectsdialog .ui.card:hover {
+    /* Neutral and target colors are the same in dark theme, so it helps to have a clearer border when hovering over cards */
+    border-color: var(--pxt-focus-border) !important;
+}
+
+.fullscreensim #boardview {
+    /* Gradient background is a little too intense in dark mode, use a solid color instead */
+    background: var(--pxt-target-background2);
+}
+
+.barcharticon,
+.blockly-ws-search-next-btn,
+.blockly-ws-search-previous-btn,
+.blockly-ws-search-close-btn {
+    /* Invert some image colors */
+    filter: invert(1);
+}
+
+.modals .ui.button.immersive-reader-button,
+#mainmenu .immersive-reader-button.ui.item,
+#simulator .editor-sidebar .immersive-reader-button.ui.item {
+    background-image: url("/static/icons/immersive-reader-light.svg") !important;
+}
+
+/* For inverted buttons, it almost always looks better to have the background be dark instead of light (even though non-inverted has a light foreground) */
+
+button.ui.button.inverted:not(.teaching-bubble-button),
+button.common-button.inverted:not(.teaching-bubble-button) {
+    background-color: var(--pxt-neutral-background2) !important;
+}
+
+button.ui.button.inverted:hover:not(.teaching-bubble-button),
+button.common-button.inverted:hover:not(.teaching-bubble-button) {
+    background-color: var(--pxt-neutral-background2-hover) !important;
+}
+
+table.diffview.update .diff-added .ch-added {
+    color: var(--pxt-neutral-background1) !important;
+}
+
+body.pxt-theme-root:not(.hc) .ui.popup,
+body.pxt-theme-root:not(.hc) .ui.popup::before,
+body.pxt-theme-root:not(.hc) .blocklyDropDownDiv,
+body.pxt-theme-root:not(.hc) .blocklyWidgetDiv .goog-menu,
+body.pxt-theme-root:not(.hc) .monaco-hover {
+    background-color: var(--pxt-neutral-background2, #181818) !important;
+    color: var(--pxt-neutral-foreground2, #f3f2f1) !important;
+    border-color: var(--pxt-neutral-stencil2, #3b3a39) !important;
+}
+
+body.pxt-theme-root:not(.hc) .ui.popup .header,
+body.pxt-theme-root:not(.hc) .ui.popup p,
+body.pxt-theme-root:not(.hc) .ui.popup .content {
+    color: var(--pxt-neutral-foreground2, #f3f2f1) !important;
+}
+
+body.pxt-theme-root:not(.hc) .ui.popup a {
+    color: var(--pxt-link, #479ef5) !important;
+}
+
+/* Modals look better with darker backdrop and background color */
+
+.common-modal-container,
+.ui.dimmer {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.common-modal-container .common-modal,
+.common-modal-container .common-modal-header,
+.common-modal-container .common-modal-body,
+.common-modal-container .common-modal-footer,
+.ui.modal,
+.ui.modal .header,
+.ui.modal .content,
+.ui.modal .actions {
+    background-color: #181818 !important;
+    border-color: #505050 !important;
+    color: #f3f2f1 !important;
+}

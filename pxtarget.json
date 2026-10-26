@@ -109,16 +109,20 @@
                 "snap": false
             }
         },
+        "blocklyKeyboardControlsByDefault": true,
 
+        "enabledFeatures": {
+            "blocksErrorList": {}
+        },
         "experiments": [
-            "accessibleBlocks",
-            "blocksErrorList",
-            "debugExtensionCode",
-            "identity"
+            "debugExtensionCode"
         ],
 
         "extendEditor": true,
         "extendFieldEditors": false,
+
+        "defaultColorTheme": "jelkly-light",
+        "highContrastColorTheme": "pxt-high-contrast",
 
         "errorList": true,
         "blocksErrorList": true,
@@ -142,12 +146,17 @@
         "python": true,
         "selectLanguage": true,
         "tutorialCodeValidation": true,
-        "tutorialSimSidebarLayout": true,
+        "tutorialSimSidebarLangs": [
+            "blocks",
+            "javascript",
+            "python"
+        ],
         "immersiveReader": true,
         "condenseProfile": true,
         "nameProjectFirst": true,
         "githubEditor": true,
         "openProjectNewTab": true,
+        "shareHomepageContent": true,
 
         "simGifTransparent": "rgba(0,0,0,0)",
         "simGifMaxFrames": 44,
@@ -179,6 +188,7 @@
             "it",
             "ja",
             "ko",
+            "lo",
             "nl",
             "nb",
             "nn-NO",

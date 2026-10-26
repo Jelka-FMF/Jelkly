@@ -25,38 +25,76 @@
     src: @RobotoWoff2 format("woff2"), @RobotoTtf format("truetype");
 }
 
+:root, .pxt-theme-root {
+    --pxt-page-font: @pageFont;
+}
+
+.ui.button {
+    border: none !important;
+}
+
 .ui.button.download-button {
-    &:extend(.ui.purple.button all);
+    background-color: var(--pxt-primary-background);
+    color: var(--pxt-primary-foreground);
 }
 
 .ui.button.hw-button {
-    background-color: darken(@purple, 10%);
+    background-color: var(--pxt-primary-accent) !important;
+    color: var(--pxt-primary-foreground) !important;
 }
 
 .docs.inlinebutton.ui.button.download-button:hover {
-    &:extend(.ui.purple.button all);
+    background-color: var(--pxt-primary-background);
+    color: var(--pxt-primary-foreground);
 }
 
-.ui.button.play-button.play-button-full {
-    &:extend(.ui.inverted.button all);
+#editortools .ui.button.editortools-btn, .simtoolbar .ui.button.icon {
+    background-color: var(--pxt-secondary-background);
+    color: var(--pxt-secondary-foreground);
+
+    &:hover {
+        background-color: var(--pxt-secondary-background-hover);
+        color: var(--pxt-secondary-foreground-hover);
+    }
 }
 
-.ui.button.getting-started-btn {
-    &:extend(.ui.orange.button all);
+.main:not(.hc) {
+    #editortools .ui.button.editortools-btn, .simtoolbar .ui.button.icon {
+        &:hover {
+            filter: none;
+        }
+    }
 }
 
-.ui.button.editortools-btn {
-    &:extend(.ui.blue.button all);
+#simulator .ui.button.play-button .icon.play {
+    color: var(--pxt-secondary-foreground) !important;
 }
 
-.ui.button.exit-tutorial-btn {
-    &:extend(.ui.inverted.button all);
+#simulator .ui.button.debug-button.active {
+    background-color: var(--pxt-colors-orange-background);
+    color: var(--pxt-colors-orange-foreground);
+
+    &:hover {
+        background-color: var(--pxt-colors-orange-hover);
+    }
+}
+
+.ui.input > input::placeholder {
+    color: hsla(0, 0%, 75%, .87);
 }
 
 #filelist, #editortools {
-    background-image: data-uri("../docs/static/texture.png");
-    background-size: contain;
-    background-color: #FFFFFF;
+    &::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        z-index: -99;
+        pointer-events: none;
+
+        background-image: data-uri("../docs/static/texture.png");
+        background-size: contain;
+    }
 }
 
 #downloadArea {
@@ -65,6 +103,19 @@
 
 .sandbox #downloadArea {
     display: none;
+}
+
+.ui.input > input::placeholder {
+    color: var(--pxt-placeholder) !important;
+}
+
+.ui.input.focus > input::placeholder,
+.ui.input > input:focus::placeholder {
+    color: var(--pxt-placeholder-focus) !important;
+}
+
+.sound-effect-header {
+    background-color: rgb(230, 48, 34);
 }
 
 #homescreen .ui.home {
@@ -77,6 +128,14 @@
     .tutorial-progress.orange {
         background-color: @mainMenuTutorialBackground !important;
         border-color: @mainMenuTutorialBackground !important;
+    }
+}
+
+@media only screen and (max-width: @largestTabletScreen) {
+    .projectsdialog .ui.card.file .meta {
+        /* Ensure project card timestamp fits within the card on tablet-width screens */
+        font-size: 0.7rem;
+        padding: 0.5rem;
     }
 }
 
@@ -118,11 +177,67 @@
     }
 }
 
+#mainmenu .right.menu .icon.large {
+    margin: 0 !important;
+}
+
 .hero-banner-contents .description {
     height: unset !important;
     padding-top: 1rem;
     padding-bottom: 0;
     overflow: hidden;
+}
+
+.carouselarrow {
+    opacity: 1 !important;
+}
+
+.left.undefined, .right.undefined {
+    /* Hide incorrect icon elements */
+    display: none;
+}
+
+/* High Contrast */
+
+.hc {
+    /* Modals look better with darker backdrop and background color */
+
+    .common-modal-container,
+    .ui.dimmer {
+        background-color: rgba(0, 0, 0, 0.85) !important;
+    }
+
+    .common-modal-container .common-modal,
+    .common-modal-container .common-modal-header,
+    .common-modal-container .common-modal-body,
+    .common-modal-container .common-modal-footer,
+    .ui.modal,
+    .ui.modal .header,
+    .ui.modal .content,
+    .ui.modal .actions {
+        background-color: #000000 !important;
+        border-color: #FFFFFF !important;
+        color: #FFFFFF !important;
+    }
+
+    .common-modal-container .common-modal,
+    .ui.modal {
+        border: 2px solid #FFFFFF !important;
+    }
+
+    /* Borders should have consistent widths */
+
+    #mainmenu {
+        border-bottom: 2px solid #FFFFFF !important;
+    }
+
+    #editortools {
+        border-top: 2px solid #FFFFFF !important;
+    }
+
+    #downloadArea {
+        background: transparent !important;
+    }
 }
 
 /* Simulator */
@@ -161,7 +276,7 @@ div.portrait:nth-child(5) {
 /* Mobile */
 
 @media only screen and (max-width: @largestMobileScreen) {
-    #filelist {
+    #filelist::before {
         background: transparent !important;
     }
 
@@ -173,7 +288,7 @@ div.portrait:nth-child(5) {
 /* Tablet */
 
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
-    #filelist {
+    #filelist::before {
         background: transparent !important;
     }
 }

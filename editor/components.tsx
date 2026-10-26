@@ -117,7 +117,7 @@ class SubmitDialog extends React.Component<SubmitDialogProps, SubmitDialogState>
         this.props.projectView.updateHeaderName(this.state.patternName)
 
         // Upload the project code and other contents
-        const shareData = await this.props.projectView.publishAsync(this.state.patternName, undefined, true)
+        const shareData = await this.props.projectView.publishAsync(this.state.patternName, undefined, undefined, true)
         console.log("Received share data:", shareData)
 
         // Check for errors while uploading the project
