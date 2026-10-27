@@ -4,8 +4,8 @@
 
 @importGoogleFonts: false;
 
-@headerFont        : Roboto,"Arial Narrow","Helvetica Neue",Helvetica,Arial,sans-serif;
-@pageFont          : Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+@headerFont        : Roboto,"Arial Narrow","Helvetica Neue",Arial,Helvetica,sans-serif;
+@pageFont          : Roboto,Arial,Helvetica,sans-serif;
 
 @primaryColor: @purple;
 

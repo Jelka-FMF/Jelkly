@@ -4,6 +4,8 @@
     "weight": 20,
     "overrideFiles": ["/overrides/jelkly-light-overrides.css"],
     "colors": {
+        "jelkly-theme": "light",
+
         "pxt-header-background": "#3454d1",
         "pxt-header-foreground": "#ffffff",
         "pxt-header-background-hover": "#1d3282",

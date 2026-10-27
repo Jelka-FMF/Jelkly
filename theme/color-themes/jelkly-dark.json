@@ -5,6 +5,8 @@
     "monacoBaseTheme": "vs-dark",
     "overrideFiles": ["/overrides/jelkly-dark-overrides.css"],
     "colors": {
+        "jelkly-theme": "dark",
+
         "pxt-header-background": "#181818",
         "pxt-header-foreground": "#ffffff",
         "pxt-header-background-hover": "#252525",

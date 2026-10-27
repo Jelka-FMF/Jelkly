@@ -1,18 +1,23 @@
 /* Component Imports */
+
 @import "pxtsemantic";
 @import "pxt";
-@import "themepacks";
+
 @import "blockly-toolbox";
+
 @import "themes/default/globals/site.variables";
 @import "themes/pxt/globals/site.variables";
 @import "site/globals/site.variables";
 
 /* Reference Import */
+
 @import (reference) "semantic.less";
 
 /*******************************
     Add your custom CSS here
 *******************************/
+
+/* Fonts */
 
 @RobotoWoff2: data-url("../docs/static/fonts/Roboto-Regular.woff2");
 @RobotoTtf: data-url("../docs/static/fonts/Roboto-Regular.ttf");
@@ -29,24 +34,53 @@
     --pxt-page-font: @pageFont;
 }
 
-.ui.button {
-    border: none !important;
+/* Menu Bar */
+
+.menubar {
+    .ui.menu .brand .ui.logo {
+        height: 1.1rem;
+    }
 }
 
-.ui.button.download-button {
-    background-color: var(--pxt-primary-background);
-    color: var(--pxt-primary-foreground);
+#mainmenu .right.menu .icon.large {
+    margin: 0 !important;
 }
 
-.ui.button.hw-button {
-    background-color: var(--pxt-primary-accent) !important;
-    color: var(--pxt-primary-foreground) !important;
+/* Home Page */
+
+.hero-banner-contents .description {
+    height: unset !important;
+    padding-top: 1rem;
+    padding-bottom: 0;
+    overflow: hidden;
 }
 
-.docs.inlinebutton.ui.button.download-button:hover {
-    background-color: var(--pxt-primary-background);
-    color: var(--pxt-primary-foreground);
+.carouselarrow {
+    opacity: 1 !important;
 }
+
+.left.undefined, .right.undefined {
+    /* Hide incorrect empty icon elements */
+    display: none;
+}
+
+/* Toolbar Texture */
+
+#filelist, #editortools {
+    &::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        z-index: -99;
+        pointer-events: none;
+
+        background-image: data-uri("../docs/static/texture.png");
+        background-size: contain;
+    }
+}
+
+/* Editor Buttons */
 
 #editortools .ui.button.editortools-btn, .simtoolbar .ui.button.icon {
     background-color: var(--pxt-secondary-background);
@@ -55,14 +89,6 @@
     &:hover {
         background-color: var(--pxt-secondary-background-hover);
         color: var(--pxt-secondary-foreground-hover);
-    }
-}
-
-.main:not(.hc) {
-    #editortools .ui.button.editortools-btn, .simtoolbar .ui.button.icon {
-        &:hover {
-            filter: none;
-        }
     }
 }
 
@@ -79,55 +105,76 @@
     }
 }
 
-.ui.input > input::placeholder {
-    color: hsla(0, 0%, 75%, .87);
-}
-
-#filelist, #editortools {
-    &::before {
-        content: "";
-
-        position: absolute;
-        inset: 0;
-        z-index: -99;
-        pointer-events: none;
-
-        background-image: data-uri("../docs/static/texture.png");
-        background-size: contain;
-    }
-}
-
-#downloadArea {
-    background: transparent !important;
-}
-
 .sandbox #downloadArea {
     display: none;
 }
 
-.ui.input > input::placeholder {
-    color: var(--pxt-placeholder) !important;
+/* Simulator */
+
+.simulator-container .simPanel {
+    padding: 1rem;
 }
 
-.ui.input.focus > input::placeholder,
-.ui.input > input:focus::placeholder {
-    color: var(--pxt-placeholder-focus) !important;
+.simulator-container .simframe {
+    padding: 0 !important;
+    height: 500px;
 }
 
-.sound-effect-header {
-    background-color: rgb(230, 48, 34);
+div.portrait:nth-child(3),
+div.portrait:nth-child(4),
+div.portrait:nth-child(5) {
+    display: none !important;
 }
+
+.fullscreensim #boardview {
+    /* Remove gradient from fullscreen simulator */
+    background: var(--pxt-target-background2) !important
+}
+
+.fullscreensim #mainmenu {
+    /* Recolor main menu for fullscreen simulator */
+    background: var(--pxt-header-background) !important;
+}
+
+/* Documentation */
+
+#docs #printbtn {
+    margin-bottom: 1rem;
+}
+
+#docs .codesnippet {
+    padding-top: 0;
+    padding-bottom: 1rem;
+}
+
+#docs .ui.card.sim {
+    width: 640px;
+    height: 610px;
+}
+
+/* Time Machine */
+
+.time-machine-header {
+    background-color: var(--pxt-header-background);
+    color: var(--pxt-header-foreground);
+}
+
+.time-machine-preview > div {
+    background-color: var(--pxt-neutral-background1);
+    color: var(--pxt-neutral-foreground1);
+}
+
+.time-machine-actions > .time-machine-label {
+    color: var(--pxt-header-foreground);
+}
+
+/* Tutorials */
 
 #homescreen .ui.home {
     .detailview .actions .card-action {
         .button.approve {
             background-color: @mainMenuTutorialBackground;
         }
-    }
-
-    .tutorial-progress.orange {
-        background-color: @mainMenuTutorialBackground !important;
-        border-color: @mainMenuTutorialBackground !important;
     }
 }
 
@@ -139,67 +186,21 @@
     }
 }
 
-#tutorialcard {
-    .ui.button.orange.right.attached {
-        background-color: @mainMenuTutorialBackground;
-
-        &:focus, &:hover {
-            background-color: darken(@mainMenuTutorialBackground, 20%);
-        }
-    }
-}
-
-.time-machine-header {
-    background-color: @blue;
-}
-
-.time-machine-preview {
-    & > div {
-        background: #E8E8E8;
-    }
-}
-
-#root:not(.hc) .tutorial-menu {
-    .ui.circular.label.selected {
-        background-color: @purple !important;
-        color: #E8E8E8 !important;
-        border: 1px solid #E8E8E8 !important;
-
-        &:focus, &:hover {
-            background-color: darken(@purple, 20%) !important;
-        }
-    }
-}
-
-.menubar {
-    .ui.menu .brand .ui.logo {
-        height: 1.1rem;
-    }
-}
-
-#mainmenu .right.menu .icon.large {
-    margin: 0 !important;
-}
-
-.hero-banner-contents .description {
-    height: unset !important;
-    padding-top: 1rem;
-    padding-bottom: 0;
-    overflow: hidden;
-}
-
-.carouselarrow {
-    opacity: 1 !important;
-}
-
-.left.undefined, .right.undefined {
-    /* Hide incorrect icon elements */
-    display: none;
-}
-
 /* High Contrast */
 
 .hc {
+    /* Toolbox categories need better contrast */
+
+    .pxtToolbox #blocks-advanced > .blocklyTreeRow {
+        /* Better contrast for advanced section color */
+        border-color: var(--pxt-neutral-alpha80);
+    }
+
+    .pxtToolbox #blocks-advanced > .blocklyTreeRow .blocklyTreeIcon {
+        /* Better contrast for advanced section arrow icon */
+        color: var(--pxt-neutral-alpha80);
+    }
+
     /* Modals look better with darker backdrop and background color */
 
     .common-modal-container,
@@ -227,7 +228,7 @@
 
     /* Borders should have consistent widths */
 
-    #mainmenu {
+    #mainmenu, .time-machine-header {
         border-bottom: 2px solid #FFFFFF !important;
     }
 
@@ -240,37 +241,40 @@
     }
 }
 
-/* Simulator */
+/* Dark & High Contrast */
 
-.simulator-container .simPanel {
-    padding: 1rem;
+.toolbox-category-rules() {
+    .coloredToolbox .blocklyTreeRoot div.blocklyTreeRow:is(
+        [data-ns="colors"],
+        [data-ns="shapes"],
+        [data-ns="sensors"],
+        [data-ns="addpackage"],
+        [data-ns="functions"]
+    ) {
+        /* Better contrast for some toolbox categories */
+
+        --meta-bright: oklch(
+            from var(--block-meta-color)
+            clamp(0, calc(l + 0.1), 1)
+            calc(c * 1.5)
+            h
+        );
+
+        border-left: 8px solid var(--meta-bright);
+        color: var(--meta-bright);
+
+        &.blocklyTreeSelected {
+            background-color: var(--meta-bright);
+        }
+    }
 }
 
-.simulator-container .simframe {
-    padding: 0 !important;
-    height: 500px;
+@container style(--jelkly-theme: dark) {
+    .toolbox-category-rules();
 }
 
-div.portrait:nth-child(3),
-div.portrait:nth-child(4),
-div.portrait:nth-child(5) {
-    display: none !important;
-}
-
-/* Documentation */
-
-#docs #printbtn {
-    margin-bottom: 1rem;
-}
-
-#docs .codesnippet {
-    padding-top: 0;
-    padding-bottom: 1rem;
-}
-
-#docs .ui.card.sim {
-    width: 640px;
-    height: 610px;
+.hc {
+    .toolbox-category-rules();
 }
 
 /* Mobile */
@@ -291,14 +295,4 @@ div.portrait:nth-child(5) {
     #filelist::before {
         background: transparent !important;
     }
-}
-
-/* Small Monitor */
-
-@media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-}
-
-/* Large Monitor */
-
-@media only screen and (min-width: @largeMonitorBreakpoint) {
 }
