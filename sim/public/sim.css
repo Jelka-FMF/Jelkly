@@ -111,3 +111,69 @@ body {
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
     scale: 0.95;
 }
+
+/* Button Theming */
+
+.simulation-toolbar .ui.button:focus-visible,
+.simulation-controls .ui.button:focus-visible {
+    /* Native PXT style outline on focus */
+    outline: 4px solid var(--pxt-focus-border);
+}
+
+:root[data-theme="dark"] .simulation-toolbar .ui.button,
+:root[data-theme="dark"] .simulation-controls .ui.button {
+    background-color: var(--pxt-secondary-background);
+    color: var(--pxt-secondary-foreground);
+}
+
+:root[data-theme="dark"] .simulation-toolbar .ui.button:hover,
+:root[data-theme="dark"] .simulation-toolbar .ui.button:focus-visible,
+:root[data-theme="dark"] .simulation-controls .ui.button:hover,
+:root[data-theme="dark"] .simulation-controls .ui.button:focus-visible {
+    background-color: var(--pxt-secondary-background-hover);
+    color: var(--pxt-secondary-foreground-hover);
+}
+
+:root[data-theme="dark"] .simulation-toolbar .ui.button.active:not(:hover):not(:focus-visible) {
+    background-color: var(--pxt-secondary-accent);
+    color: var(--pxt-secondary-foreground);
+}
+
+:root[data-theme="hc"] .simulation-toolbar .ui.button,
+:root[data-theme="hc"] .simulation-controls .ui.button {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+:root[data-theme="hc"] .simulation-toolbar .ui.button:hover,
+:root[data-theme="hc"] .simulation-toolbar .ui.button:focus-visible,
+:root[data-theme="hc"] .simulation-controls .ui.button:hover,
+:root[data-theme="hc"] .simulation-controls .ui.button:focus-visible {
+    outline: 3px solid #FFFF00;
+}
+
+:root[data-theme="hc"] .simulation-toolbar .ui.button.active:not(:hover):not(:focus-visible) {
+    outline: 2px solid #FFFF00;
+    outline-offset: -2px;
+}
+
+/* Joystick Theming */
+
+:root[data-theme="dark"] .joystick {
+    background-color: var(--pxt-secondary-background);
+}
+
+:root[data-theme="dark"] .joystick-knob {
+    background-color: var(--pxt-secondary-foreground);
+}
+
+:root[data-theme="hc"] .joystick {
+    background-color: #000000;
+    border: 1px solid #FFFFFF;
+}
+
+:root[data-theme="hc"] .joystick-knob {
+    background-color: #FFFFFF;
+    box-shadow: none;
+}

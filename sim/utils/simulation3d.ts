@@ -197,7 +197,7 @@ function drawLights3D (ctx: CanvasRenderingContext2D, origin: Position, scale: n
         ctx.fill()
 
         if (alphaChannel < 0.05) {
-            ctx.strokeStyle = "#D3D3D3"
+            ctx.strokeStyle = pxsim.board().theme === "light" ? "#D0D0D0" : "#424242"
             ctx.stroke()
         }
     }

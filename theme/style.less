@@ -86,7 +86,7 @@
     background-color: var(--pxt-secondary-background);
     color: var(--pxt-secondary-foreground);
 
-    &:hover {
+    &:focus, &:hover {
         background-color: var(--pxt-secondary-background-hover);
         color: var(--pxt-secondary-foreground-hover);
     }
@@ -100,13 +100,25 @@
     background-color: var(--pxt-colors-orange-background);
     color: var(--pxt-colors-orange-foreground);
 
-    &:hover {
+    &:focus, &:hover {
         background-color: var(--pxt-colors-orange-hover);
     }
 }
 
 .sandbox #downloadArea {
     display: none;
+}
+
+/* File Menu */
+
+.filemenu .ui.button.icon:is(.gray, .grey, .neutral) {
+    background-color: var(--pxt-neutral-background2) !important;
+    color: var(--pxt-neutral-foreground2) !important;
+}
+
+.filemenu .ui.button.icon:is(.gray, .grey, .neutral):is(:focus, :hover) {
+    background-color: var(--pxt-neutral-background2-hover) !important;
+    color: var(--pxt-neutral-foreground2-hover) !important;
 }
 
 /* Simulator */

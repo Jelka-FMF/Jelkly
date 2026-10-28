@@ -19,20 +19,23 @@ const enum SimulationMode {
 
 let simulationMode = SimulationMode["3D"] as SimulationMode
 
+const simulationToolbar = document.getElementById("simulation-toolbar")
 const mode2dButton = document.getElementById("simulation-mode-2d")
 const mode3dButton = document.getElementById("simulation-mode-3d")
 
 if (simulationMode === SimulationMode["2D"]) mode2dButton.classList.add("active")
 if (simulationMode === SimulationMode["3D"]) mode3dButton.classList.add("active")
 
-mode2dButton.addEventListener("click", () => {
+mode2dButton.addEventListener("click", (event) => {
+    event.preventDefault()
     simulationMode = SimulationMode["2D"]
     mode2dButton.classList.add("active")
     mode3dButton.classList.remove("active")
     pxsim.board().updateView()
 })
 
-mode3dButton.addEventListener("click", () => {
+mode3dButton.addEventListener("click", (event) => {
+    event.preventDefault()
     simulationMode = SimulationMode["3D"]
     mode3dButton.classList.add("active")
     mode2dButton.classList.remove("active")
@@ -45,6 +48,28 @@ const ctx = canvas.getContext("2d")
 window.addEventListener("resize", () => {
     pxsim.board().updateView()
 }, true)
+
+function syncNativeButtonTheme (board: pxsim.Board, msg: pxsim.SimulatorRunMessage) {
+    const root = window.parent.document.querySelector<HTMLElement>(".pxt-theme-root")
+    const styles = window.parent.getComputedStyle(root)
+
+    const mode = styles.getPropertyValue("--jelkly-theme")
+    board.theme = msg.highContrast ? "hc" : mode === "dark" ? "dark" : "light"
+    document.documentElement.dataset.theme = board.theme
+
+    const themeVariables = [
+        "--pxt-secondary-background",
+        "--pxt-secondary-foreground",
+        "--pxt-secondary-background-hover",
+        "--pxt-secondary-foreground-hover",
+        "--pxt-secondary-accent",
+        "--pxt-focus-border",
+    ]
+
+    for (const name of themeVariables) {
+        document.documentElement.style.setProperty(name, styles.getPropertyValue(name))
+    }
+}
 
 namespace pxsim {
     /**
@@ -73,6 +98,8 @@ namespace pxsim {
 
         public parts: string[] = []
 
+        public theme: "light" | "dark" | "hc" = "light"
+
         constructor () {
             super()
         }
@@ -89,7 +116,11 @@ namespace pxsim {
             // Store the used parts
             this.parts = msg.parts || []
 
+            // Store the editor theme
+            syncNativeButtonTheme(this, msg)
+
             // Render the controls based on used parts
+            simulationToolbar.classList.remove("hidden")
             renderControls()
 
             // Draw the initial view

@@ -8,7 +8,7 @@
     background-color: #E0E1E2;
     color: rgba(0, 0, 0, 0.6);
 
-    &:hover {
+    &:focus, &:hover {
         background-color: #CACBCD;
         color: rgba(0, 0, 0, 0.8);
     }
