@@ -16,6 +16,9 @@ find built/packaged -name '*.html' | while read -r filename; do
     # Remove the nofollow attribute from HTML files to allow indexing
     sed -i 's/rel="nofollow noopener"\s*//g' "$filename"
 
+    # Remove empty href attributes to avoid broken links
+    sed -i 's/href=""//g' "$filename"
+
     # Fix the editor link in the documentation buttons
     sed -i 's/href="OPEN-EDITOR-URL"/href="\/"/g' "$filename"
 done

@@ -8,10 +8,13 @@
             </div>
         </div>
     </div>
-    <form id="tocsearch1" class="search" method="get" action="https://www.bing.com/search" role="search">
-        <div class="ui fluid icon input">
-            <input type="hidden" name="q1" value="site:@homeurl@ "/>
-            @searchBar1@
+    <form id="search" class="search" role="search" action="https://www.google.com/search" method="get" target="_blank" rel="noopener">
+        <div class="ui fluid action input">
+            <input type="hidden" name="as_sitesearch" value="@homeurl@" />
+            <input type="search" name="q" placeholder="Išči ..." aria-label="Iskanje" required />
+            <button type="submit" class="ui icon button" aria-label="Išči">
+                <i class="search icon" aria-hidden="true"></i>
+            </button>
         </div>
     </form>
 </div>

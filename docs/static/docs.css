@@ -1,0 +1,37 @@
+.docs-top-bar {
+    height: 4rem !important;
+    border: 0 solid transparent !important;
+    background: #3454D1 !important;
+    color: #FFFFFF !important;
+}
+
+.docs-top-bar .item.icon {
+    height: 4rem !important;
+    width: 4rem !important;
+}
+
+.docs.sidebar.menu {
+    top: 4rem !important;
+    max-height: calc(100% - 4rem) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #FDFDFF !important;
+    color: #010101 !important;
+}
+
+.docs.sidebar.menu .item:not(.accordion) {
+    padding-left: 1.75rem !important;
+}
+
+.docs.sidebar.menu .item.accordion > *:first-child {
+    padding-left: 0.5rem !important;
+}
+
+.docs.segment.footer {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #010101 !important;
+}
+
+.docs.segment.footer .item {
+    color: #010101 !important;
+}
