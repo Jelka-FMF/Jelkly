@@ -256,6 +256,15 @@ div.portrait:nth-child(5) {
 /* Dark & High Contrast */
 
 .toolbox-category-rules() {
+    .coloredToolbox .blocklyTreeRoot div.blocklyTreeRow:is([data-ns="search"]) {
+        border-left: 8px solid var(--pxt-neutral-alpha80);
+        color: var(--pxt-neutral-alpha80);
+
+        &.blocklyTreeSelected {
+            background-color: var(--pxt-neutral-alpha80);
+        }
+    }
+
     .coloredToolbox .blocklyTreeRoot div.blocklyTreeRow:is(
         [data-ns="colors"],
         [data-ns="shapes"],

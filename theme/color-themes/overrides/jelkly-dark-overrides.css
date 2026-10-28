@@ -37,6 +37,12 @@
     background-image: url("/static/icons/immersive-reader-light.svg") !important;
 }
 
+/* Toolbox search placeholder needs better contrast */
+
+.blocklySearchInputField::placeholder {
+    color: var(--pxt-neutral-alpha80) !important
+}
+
 /* Toolbox categories need better contrast */
 
 .pxtToolbox span.blocklyTreeLabel,
