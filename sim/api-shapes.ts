@@ -19,8 +19,8 @@ namespace pxsim.shapes {
      */
     //% blockId=shapes-ball
     //% help=shapes/ball weight=50
-    //% block="ball with center | x: $x0 | y: $y0 | z: $z0 | radius $r || from lights $lights"
-    //% block.loc.sl="krogla s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r || iz lučk $lights"
+    //% block="ball with center|x: $x0|y: $y0|z: $z0|radius $r||from lights $lights"
+    //% block.loc.sl="krogla s središčem|x: $x0|y: $y0|z: $z0|polmerom $r||iz lučk $lights"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo s kroglo"
     //% x0.loc.sl="x koordinata središča krogle"
     //% y0.loc.sl="y koordinata središča krogle"
@@ -61,8 +61,8 @@ namespace pxsim.shapes {
      */
     //% blockId=shapes-sphere
     //% help=shapes/sphere weight=50
-    //% block="sphere with center | x: $x0 | y: $y0 | z: $z0 | radius $r | thickness $d || from lights $lights"
-    //% block.loc.sl="sfera s središčem | x: $x0 | y: $y0 | z: $z0 | polmerom $r | debelino $d || iz lučk $lights"
+    //% block="sphere with center|x: $x0|y: $y0|z: $z0|radius $r|thickness $d||from lights $lights"
+    //% block.loc.sl="sfera s središčem|x: $x0|y: $y0|z: $z0|polmerom $r|debelino $d||iz lučk $lights"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo s sfero"
     //% x0.loc.sl="x koordinata središča sfere"
     //% y0.loc.sl="y koordinata središča sfere"
@@ -111,8 +111,8 @@ namespace pxsim.shapes {
      */
     //% blockId=shapes-cylinder
     //% help=shapes/cylinder weight=50
-    //% block="cylinder with center | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | radius $r | height $h || from lights $lights"
-    //% block.loc.sl="valj s središčem | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | polmerom $r | višino $h || iz lučk $lights"
+    //% block="cylinder with center|x: $x0|y: $y0|z: $z0|first rotation $psi|second rotation $ksi|radius $r|height $h||from lights $lights"
+    //% block.loc.sl="valj s središčem|x: $x0|y: $y0|z: $z0|prvo rotacijo $psi|drugo rotacijo $ksi|polmerom $r|višino $h||iz lučk $lights"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z valjem"
     //% x0.loc.sl="x koordinata središča valja"
     //% y0.loc.sl="y koordinata središča valja"
@@ -182,8 +182,8 @@ namespace pxsim.shapes {
      */
     //% blockId=shapes-plane
     //% help=shapes/plane weight=50
-    //% block="plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi | thickness $d || from lights $lights"
-    //% block.loc.sl="ravnina s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi | debelino $d || iz lučk $lights"
+    //% block="plane with point|x: $x0|y: $y0|z: $z0|first rotation $psi|second rotation $ksi|thickness $d||from lights $lights"
+    //% block.loc.sl="ravnina s točko|x: $x0|y: $y0|z: $z0|prvo rotacijo $psi|drugo rotacijo $ksi|debelino $d||iz lučk $lights"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki se sekajo z ravnino"
     //% x0.loc.sl="x koordinata točke na ravnini"
     //% y0.loc.sl="y koordinata točke na ravnini"
@@ -238,8 +238,8 @@ namespace pxsim.shapes {
      */
     //% blockId=shapes-plane-relation
     //% help=shapes/plane-relation weight=50
-    //% block="$relation than plane with point | x: $x0 | y: $y0 | z: $z0 | first rotation $psi | second rotation $ksi || from lights $lights"
-    //% block.loc.sl="$relation od ravnine s točko | x: $x0 | y: $y0 | z: $z0 | prvo rotacijo $psi | drugo rotacijo $ksi || iz lučk $lights"
+    //% block="$relation than plane with point|x: $x0|y: $y0|z: $z0|first rotation $psi|second rotation $ksi||from lights $lights"
+    //% block.loc.sl="$relation od ravnine s točko|x: $x0|y: $y0|z: $z0|prvo rotacijo $psi|drugo rotacijo $ksi||iz lučk $lights"
     //% jsdoc.loc.sl="Vrni seznam lučk, ki so v razmerju z ravnino"
     //% relation.loc.sl="razmerje, ki ga želimo preveriti"
     //% x0.loc.sl="x koordinata točke na ravnini"

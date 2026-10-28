@@ -37,8 +37,8 @@ namespace pxsim.colors {
      */
     //% blockId=colors-rgb
     //% help=colors/rgb-color weight=45
-    //% block="red $red | green $green | blue $blue"
-    //% block.loc.sl="rdeča $red | zelena $green | modra $blue"
+    //% block="red $red|green $green|blue $blue"
+    //% block.loc.sl="rdeča $red|zelena $green|modra $blue"
     //% jsdoc.loc.sl="Ustvari RGB barvo"
     //% red.loc.sl="vrednost rdeče komponente (0-255)"
     //% green.loc.sl="vrednost zelene komponente (0-255)"
@@ -62,8 +62,8 @@ namespace pxsim.colors {
      */
     //% blockId=colors-hsl
     //% help=colors/hsl-color weight=44
-    //% block="hue $hue | saturation $saturation | lightness $lightness"
-    //% block.loc.sl="odtenek $hue | nasičenost $saturation | svetlost $lightness"
+    //% block="hue $hue|saturation $saturation|lightness $lightness"
+    //% block.loc.sl="odtenek $hue|nasičenost $saturation|svetlost $lightness"
     //% jsdoc.loc.sl="Ustvari HSL barvo"
     //% hue.loc.sl="barvni odtenek (0-360)"
     //% saturation.loc.sl="nasičenost barve (0-100)"
@@ -84,8 +84,8 @@ namespace pxsim.colors {
      */
     //% blockId=colors-hsv
     //% help=colors/hsv-color weight=43
-    //% block="hue $hue | saturation $saturation | value $value"
-    //% block.loc.sl="odtenek $hue | nasičenost $saturation | vrednost $value"
+    //% block="hue $hue|saturation $saturation|value $value"
+    //% block.loc.sl="odtenek $hue|nasičenost $saturation|vrednost $value"
     //% jsdoc.loc.sl="Ustvari HSV barvo"
     //% hue.loc.sl="barvni odtenek (0-360)"
     //% saturation.loc.sl="nasičenost barve (0-100)"
@@ -107,8 +107,8 @@ namespace pxsim.colors {
      */
     //% blockId=colors-cmyk
     //% help=colors/cmyk-color weight=42
-    //% block="cyan $cyan | magenta $magenta | yellow $yellow | key $key"
-    //% block.loc.sl="cian $cyan | magenta $magenta | rumena $yellow | črna $key"
+    //% block="cyan $cyan|magenta $magenta|yellow $yellow|key $key"
+    //% block.loc.sl="cian $cyan|magenta $magenta|rumena $yellow|črna $key"
     //% jsdoc.loc.sl="Ustvari CMYK barvo"
     //% cyan.loc.sl="vrednost cian komponente (0-100)"
     //% magenta.loc.sl="vrednost magenta komponente (0-100)"

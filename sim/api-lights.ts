@@ -218,8 +218,8 @@ namespace pxsim.lights {
      */
     //% blockId=lights-where
     //% help=lights/lights-where weight=35
-    //% block="lights where $axis $relation $value || from $lights"
-    //% block.loc.sl="lučke kjer je $axis $relation $value || iz $lights"
+    //% block="lights where $axis $relation $value||from $lights"
+    //% block.loc.sl="lučke kjer je $axis $relation $value||iz $lights"
     //% jsdoc.loc.sl="Najdi lučke, kjer je vrednost osi v določenem razmerju"
     //% axis.loc.sl="os, ki jo želimo preveriti"
     //% relation.loc.sl="razmerje, ki ga želimo preveriti"
@@ -270,8 +270,8 @@ namespace pxsim.lights {
      */
     //% blockId=lights-bound
     //% help=lights/lights-bound weight=34
-    //% block="$bound value of $axis || from $lights"
-    //% block.loc.sl="$bound vrednost $axis || iz $lights"
+    //% block="$bound value of $axis||from $lights"
+    //% block.loc.sl="$bound vrednost $axis||iz $lights"
     //% jsdoc.loc.sl="Vrni najmanjšo ali največjo vrednost osi"
     //% axis.loc.sl="os, za katero želimo vrednost"
     //% bound.loc.sl="ali želimo najmanjšo ali največjo vrednost"

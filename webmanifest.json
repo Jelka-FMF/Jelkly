@@ -1,6 +1,6 @@
 {
     "name": "Jelkly",
-    "description": "Blockly editor for creating and editing Jelka FMF patterns",
+    "description": "Vizualni urejevalnik za izdelavo vzorcev za Jelko FMF",
     "display": "standalone",
     "icons": [
         {
